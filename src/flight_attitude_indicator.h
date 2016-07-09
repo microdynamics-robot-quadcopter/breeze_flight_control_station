@@ -21,8 +21,8 @@ signals:
 protected slots:
     void updateCanvas(void);
 protected:
-    void resizeEvent(void);
-    void paintEvent(void);
+    void paintEvent(QPaintEvent *event);
+    void resizeEvent(QResizeEvent *event);
     void keyPressEvent(QKeyEvent *event);
 private:
     int    widget_size_min_;

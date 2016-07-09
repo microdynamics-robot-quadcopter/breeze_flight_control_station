@@ -15,10 +15,12 @@ TEMPLATE = app
 SOURCES += main.cpp\
         flight_control_station.cpp \
     flight_attitude_indicator.cpp \
-    flight_altitude_indicator.cpp
+    flight_altitude_indicator.cpp \
+    flight_compass_indicator.cpp
 
 HEADERS  += flight_control_station.h \
     flight_attitude_indicator.h \
-    flight_altitude_indicator.h
+    flight_altitude_indicator.h \
+    flight_compass_indicator.h
 
 FORMS    += flight_control_station.ui

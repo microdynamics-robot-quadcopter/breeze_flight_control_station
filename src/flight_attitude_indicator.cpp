@@ -94,16 +94,16 @@ void FlightAttitudeIndicator::updateCanvas(void)
     update();
 }
 
-void FlightAttitudeIndicator::resizeEvent(void)
+void FlightAttitudeIndicator::resizeEvent(QResizeEvent *)
 {
     widget_size_curr_ = qMin(width(), height()) - 2 * widget_size_offset_;
 }
 
-void FlightAttitudeIndicator::paintEvent(void)
+void FlightAttitudeIndicator::paintEvent(QPaintEvent *)
 {
     QPainter painter(this);
     QBrush   background_sky(QColor(48, 172, 220));
-    QBrush   background(QColor(247, 168, 21));
+    QBrush   background_ground(QColor(247, 168, 21));
     QPen     pen_white(Qt::white);
     QPen     pen_black(Qt::black);
     QPen     pen_pitch(Qt::white);
@@ -148,13 +148,13 @@ void FlightAttitudeIndicator::paintEvent(void)
                            theta * 16,
                            (180 - 2 * theta) * 16);
 
-        painter.setBrush(background);
+        painter.setBrush(background_ground);
         painter.drawChord(-widget_size_curr_ / 2,
                           -widget_size_curr_ / 2,
                            widget_size_curr_,
                            widget_size_curr_,
                            theta * 16,
-                           (180 + 2 * theta) * 16);
+                           -(180 + 2 * theta) * 16);
     } while(false);
 
     QRegion mask_region(-widget_size_curr_ / 2,
@@ -347,4 +347,3 @@ void FlightAttitudeIndicator::keyPressEvent(QKeyEvent *event)
 
     update();
 }
-
