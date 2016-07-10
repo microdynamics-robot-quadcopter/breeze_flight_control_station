@@ -3,7 +3,7 @@
 
 #include <QWidget>
 
-#define VALUE_CHANGING_STEP  1
+#define VALUE_CHANGING_STEP 1
 
 class FlightAttitudeIndicator : public QWidget
 {
@@ -21,8 +21,8 @@ signals:
 protected slots:
     void updateCanvas(void);
 protected:
-    void paintEvent(QPaintEvent *event);
-    void resizeEvent(QResizeEvent *event);
+    void paintEvent(QPaintEvent *);
+    void resizeEvent(QResizeEvent *);
     void keyPressEvent(QKeyEvent *event);
 private:
     int    widget_size_min_;

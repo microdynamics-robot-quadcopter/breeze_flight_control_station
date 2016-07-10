@@ -9,7 +9,12 @@ FlightControlStation::FlightControlStation(QWidget *parent) :
     this->setWindowTitle("Flight Control Station");
 
     flight_attitude_indicator_ = new FlightAttitudeIndicator(this);
+    flight_altitude_indicator_ = new FlightAltitudeIndicator(this);
+    flight_compass_indicator_  = new FlightCompassIndicator(this);
+
     ui->layoutIndicator->addWidget(flight_attitude_indicator_);
+    ui->layoutIndicator->addWidget(flight_altitude_indicator_);
+    ui->layoutIndicator->addWidget(flight_compass_indicator_);
 
     connect(ui->actionExit, SIGNAL(triggered()), this, SLOT(close()));
     connect(ui->actionAboutQt, SIGNAL(triggered()), qApp, SLOT(aboutQt()));

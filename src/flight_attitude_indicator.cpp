@@ -94,16 +94,11 @@ void FlightAttitudeIndicator::updateCanvas(void)
     update();
 }
 
-void FlightAttitudeIndicator::resizeEvent(QResizeEvent *)
-{
-    widget_size_curr_ = qMin(width(), height()) - 2 * widget_size_offset_;
-}
-
 void FlightAttitudeIndicator::paintEvent(QPaintEvent *)
 {
     QPainter painter(this);
-    QBrush   background_sky(QColor(48, 172, 220));
-    QBrush   background_ground(QColor(247, 168, 21));
+    QBrush   brush_key(QColor(48, 172, 220));
+    QBrush   brush_ground(QColor(247, 168, 21));
     QPen     pen_white(Qt::white);
     QPen     pen_black(Qt::black);
     QPen     pen_pitch(Qt::white);
@@ -140,7 +135,7 @@ void FlightAttitudeIndicator::paintEvent(QPaintEvent *)
         theta = theta * 180 / M_PI;
 
         painter.setPen(pen_black);
-        painter.setBrush(background_sky);
+        painter.setBrush(brush_key);
         painter.drawChord(-widget_size_curr_ / 2,
                           -widget_size_curr_ / 2,
                            widget_size_curr_,
@@ -148,7 +143,7 @@ void FlightAttitudeIndicator::paintEvent(QPaintEvent *)
                            theta * 16,
                            (180 - 2 * theta) * 16);
 
-        painter.setBrush(background_ground);
+        painter.setBrush(brush_ground);
         painter.drawChord(-widget_size_curr_ / 2,
                           -widget_size_curr_ / 2,
                            widget_size_curr_,
@@ -170,7 +165,7 @@ void FlightAttitudeIndicator::paintEvent(QPaintEvent *)
         int     text_width;
         int     line_short;
         int     line_long = widget_size_curr_ / 8;
-        int     font_size = 8;
+        int     font_size = 10;
         double  pitch;
         double  chord_length;
         QString string;
@@ -254,7 +249,7 @@ void FlightAttitudeIndicator::paintEvent(QPaintEvent *)
     do {
         int     roll_line_number = 36;
         int     roll_line_length = widget_size_curr_ / 25;
-        int     font_size        = 8;
+        int     font_size        = 10;
         double  unit_angular     = 360.0 / roll_line_number;
         double  fx_a, fx_b, fy_a, fy_b;
         QString string;
@@ -316,26 +311,31 @@ void FlightAttitudeIndicator::paintEvent(QPaintEvent *)
     } while (false);
 }
 
+void FlightAttitudeIndicator::resizeEvent(QResizeEvent *)
+{
+    widget_size_curr_ = qMin(width(), height()) - 2 * widget_size_offset_;
+}
+
 void FlightAttitudeIndicator::keyPressEvent(QKeyEvent *event)
 {
     switch (event->key()) {
-        case Qt::Key_Up: {
+        case Qt::Key_W: {
             if (pitch_ < 90) {
                 pitch_ += VALUE_CHANGING_STEP;
             }
             break;
         }
-        case Qt::Key_Down: {
+        case Qt::Key_S: {
             if (pitch_ > -90) {
                 pitch_ -= VALUE_CHANGING_STEP;
             }
             break;
         }
-        case Qt::Key_Left: {
+        case Qt::Key_A: {
             roll_ -= VALUE_CHANGING_STEP;
             break;
         }
-        case Qt::Key_Right: {
+        case Qt::Key_D: {
             roll_ += VALUE_CHANGING_STEP;
             break;
         }
