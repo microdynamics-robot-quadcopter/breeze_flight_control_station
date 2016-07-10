@@ -84,34 +84,29 @@ void FlightCompassIndicator::paintEvent(QPaintEvent *)
         double  fx_a, fx_b, fy_a, fy_b;
         QString string;
 
+        pen_black.setWidth(2);
         painter.setPen(pen_black);
         painter.rotate(-yaw_);
 
         for (int i = 0; i < yaw_line_number; i++) {
             if (i == 0) {
                 string = "N";
-                painter.setPen(pen_black);
                 painter.setFont(QFont("Monospace", font_size * 1.2));
             }
             else if (i == 9) {
                 string = "W";
-                painter.setPen(pen_black);
                 painter.setFont(QFont("Monospace", font_size * 1.2));
             }
             else if (i == 18) {
                 string = "S";
-                painter.setPen(pen_black);
                 painter.setFont(QFont("Monospace", font_size * 1.2));
             }
             else if (i == 27) {
                 string = "E";
-                painter.setPen(pen_black);
                 painter.setFont(QFont("Monospace", font_size * 1.2));
             }
             else {
-                pen_black.setWidth(1);
                 string = QString("%1").arg(i * unit_angular);
-                painter.setPen(pen_black);
                 painter.setFont(QFont("", font_size));
             }
 

@@ -254,7 +254,7 @@ void FlightAttitudeIndicator::paintEvent(QPaintEvent *)
         double  fx_a, fx_b, fy_a, fy_b;
         QString string;
 
-        pen_black.setWidth(1);
+        pen_black.setWidth(2);
         painter.setPen(pen_black);
         painter.setFont(QFont("", font_size));
 
