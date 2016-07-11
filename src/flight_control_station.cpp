@@ -6,15 +6,17 @@ FlightControlStation::FlightControlStation(QWidget *parent) :
     ui(new Ui::FlightControlStation)
 {
     ui->setupUi(this);
-    this->setWindowTitle("Flight Control Station");
+    this->setWindowTitle("Flight Control Station V1");
+
+    this->setFixedSize(width(), height());
 
     flight_attitude_indicator_ = new FlightAttitudeIndicator(this);
     flight_altitude_indicator_ = new FlightAltitudeIndicator(this);
     flight_compass_indicator_  = new FlightCompassIndicator(this);
 
-    ui->layoutIndicator->addWidget(flight_attitude_indicator_);
-    ui->layoutIndicator->addWidget(flight_altitude_indicator_);
-    ui->layoutIndicator->addWidget(flight_compass_indicator_);
+    ui->verticalLayoutAttitude->addWidget(flight_attitude_indicator_);
+    ui->verticalLayoutAltitude->addWidget(flight_altitude_indicator_);
+    ui->verticalLayoutCompass->addWidget(flight_compass_indicator_);
 
     connect(ui->actionExit, SIGNAL(triggered()), this, SLOT(close()));
     connect(ui->actionAboutQt, SIGNAL(triggered()), qApp, SLOT(aboutQt()));
