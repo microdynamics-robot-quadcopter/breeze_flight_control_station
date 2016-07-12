@@ -51,7 +51,7 @@ FlightControlStation::FlightControlStation(QWidget *parent) :
     ui(new Ui::FlightControlStation)
 {
     ui->setupUi(this);
-    this->setWindowTitle("Flight Control Station V1");
+    this->setWindowTitle(tr("Flight Control Station V1"));
 
     this->setFixedSize(width(), height());
     this->setFocus();
@@ -66,11 +66,26 @@ FlightControlStation::FlightControlStation(QWidget *parent) :
 
     connect(ui->actionExit, SIGNAL(triggered()), this, SLOT(close()));
     connect(ui->actionAboutQt, SIGNAL(triggered()), qApp, SLOT(aboutQt()));
+    connect(ui->actionAbout, SIGNAL(triggered()), this,
+            SLOT(openAboutWidget()));
 }
 
 FlightControlStation::~FlightControlStation()
 {
     delete ui;
+}
+
+void FlightControlStation::openAboutWidget(void)
+{
+    about_widget_ = new QMessageBox(this);
+    about_widget_->setWindowTitle(tr("About"));
+    about_widget_->setText(
+           QString("Breeze quadcopter flight control station can implement ") +
+           QString("the real-time monitoring and control on the computer ")   +
+           QString("client.\n\n\t\t\t                Team MicroDynamics"));
+    about_widget_->setStandardButtons(QMessageBox::Yes);
+    about_widget_->setDefaultButton(QMessageBox::Yes);
+    about_widget_->exec();
 }
 
 void FlightControlStation::keyPressEvent(QKeyEvent *event)
@@ -110,12 +125,14 @@ void FlightControlStation::keyPressEvent(QKeyEvent *event)
         }
         case Qt::Key_U: {
             value = flight_altitude_indicator_->getAltitude();
-            flight_altitude_indicator_->setAltitude(value + VALUE_STEP_ALTITUDE);
+            flight_altitude_indicator_->setAltitude(
+                value + VALUE_STEP_ALTITUDE);
             break;
         }
         case Qt::Key_I: {
             value = flight_altitude_indicator_->getAltitude();
-            flight_altitude_indicator_->setAltitude(value - VALUE_STEP_ALTITUDE);
+            flight_altitude_indicator_->setAltitude(
+                value - VALUE_STEP_ALTITUDE);
             break;
         }
         case Qt::Key_J: {

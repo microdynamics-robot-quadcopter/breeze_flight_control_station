@@ -46,6 +46,7 @@
 #ifndef FLIGHT_CONTROL_STATION_H
 #define FLIGHT_CONTROL_STATION_H
 
+#include <QMessageBox>
 #include <QMainWindow>
 #include "flight_attitude_indicator.h"
 #include "flight_altitude_indicator.h"
@@ -58,10 +59,11 @@ class FlightControlStation;
 class FlightControlStation : public QMainWindow
 {
     Q_OBJECT
-
 public:
     explicit FlightControlStation(QWidget *parent = 0);
     ~FlightControlStation();
+protected slots:
+    void openAboutWidget(void);
 protected:
     void keyPressEvent(QKeyEvent *event);
     void mousePressEvent(QMouseEvent *event);
@@ -71,6 +73,7 @@ private:
     FlightAttitudeIndicator  *flight_attitude_indicator_;
     FlightAltitudeIndicator  *flight_altitude_indicator_;
     FlightCompassIndicator   *flight_compass_indicator_;
+    QMessageBox              *about_widget_;
 };
 
 #endif // FLIGHT_CONTROL_STATION_H
