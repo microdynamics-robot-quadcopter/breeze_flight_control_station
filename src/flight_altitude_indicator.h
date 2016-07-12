@@ -64,7 +64,7 @@ public:
     double getHeight(void);
 signals:
     void replotCanvas(void);
-public slots:
+protected slots:
     void updateCanvas(void);
 protected:
     void paintEvent(QPaintEvent *);
