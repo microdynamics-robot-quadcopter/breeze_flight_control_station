@@ -225,13 +225,26 @@ void FlightAltitudeIndicator::paintEvent(QPaintEvent *)
         painter.setFont(QFont("", font_size));
         painter.drawRect(fx, fy, width, height);
 
-        string = QString("%1").arg(altitude_);
-        string = "ALT: " + string + "m";
+        qDebug() << altitude_;
+
+        if (altitude_ >= 9.99) {
+            altitude_ = 9.99;
+        }
+        if (altitude_ <= -9.99) {
+            altitude_ = -9.99;
+        }
+        if (height_ >= 9.99) {
+            height_ = 9.99;
+        }
+        if (height_ <= -9.99) {
+            height_ = -9.99;
+        }
+
+        string.sprintf("ALT: %.2lf m", altitude_);
         painter.drawText(QRectF(fx, fy + 2, width, height / 2),
                          Qt::AlignCenter, string);
 
-        string = QString("%1").arg(height_);
-        string = "HEI: " + string + "m";
+        string.sprintf("HEI: %.2lf m", height_);
         painter.drawText(QRectF(fx, fy + height / 2, width, height / 2),
                          Qt::AlignCenter, string);
     } while (false);
