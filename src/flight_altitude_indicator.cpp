@@ -225,8 +225,6 @@ void FlightAltitudeIndicator::paintEvent(QPaintEvent *)
         painter.setFont(QFont("", font_size));
         painter.drawRect(fx, fy, width, height);
 
-        qDebug() << altitude_;
-
         if (altitude_ >= 9.99) {
             altitude_ = 9.99;
         }

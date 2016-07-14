@@ -42,6 +42,7 @@
  *  This .cpp file implements the gui of flight control station.
  **********************************************************************/
 
+#include <QDebug>
 #include <QKeyEvent>
 #include "flight_control_station.h"
 #include "ui_flight_control_station.h"
@@ -56,6 +57,9 @@ FlightControlStation::FlightControlStation(QWidget *parent) :
     this->setFixedSize(width(), height());
     this->setFocus();
 
+    timer_ = new QTimer(this);
+    timer_->start(1000);
+
     flight_attitude_indicator_ = new FlightAttitudeIndicator(this);
     flight_altitude_indicator_ = new FlightAltitudeIndicator(this);
     flight_compass_indicator_  = new FlightCompassIndicator(this);
@@ -64,6 +68,7 @@ FlightControlStation::FlightControlStation(QWidget *parent) :
     ui->verticalLayoutAltitude->addWidget(flight_altitude_indicator_);
     ui->verticalLayoutCompass->addWidget(flight_compass_indicator_);
 
+    connect(timer_, SIGNAL(timeout()), this, SLOT(updateTimerOperation()));
     connect(ui->actionExit, SIGNAL(triggered()), this, SLOT(close()));
     connect(ui->actionAboutQt, SIGNAL(triggered()), qApp, SLOT(aboutQt()));
     connect(ui->actionAbout, SIGNAL(triggered()), this,
@@ -86,6 +91,10 @@ void FlightControlStation::openAboutWidget(void)
     about_widget_->setStandardButtons(QMessageBox::Yes);
     about_widget_->setDefaultButton(QMessageBox::Yes);
     about_widget_->exec();
+}
+
+void FlightControlStation::updateTimerOperation(void)
+{
 }
 
 void FlightControlStation::keyPressEvent(QKeyEvent *event)
