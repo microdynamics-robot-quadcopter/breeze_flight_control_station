@@ -44,7 +44,7 @@
 
 #include <QApplication>
 #include <QDesktopWidget>
-#include "flight_control_station.h"
+#include <flight_control_station.h>
 
 int main(int argc, char *argv[])
 {

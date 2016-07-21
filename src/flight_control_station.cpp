@@ -44,7 +44,7 @@
 
 #include <QDebug>
 #include <QKeyEvent>
-#include "flight_control_station.h"
+#include <flight_control_station.h>
 #include "ui_flight_control_station.h"
 
 FlightControlStation::FlightControlStation(QWidget *parent) :
@@ -85,9 +85,9 @@ void FlightControlStation::openAboutWidget(void)
     about_widget_ = new QMessageBox(this);
     about_widget_->setWindowTitle(tr("About"));
     about_widget_->setText(
-           QString("Breeze quadcopter flight control station can implement ") +
-           QString("the real-time monitoring and control on the computer ")   +
-           QString("client.\n\n\t\t\t                Team MicroDynamics"));
+        QString("Breeze quadcopter flight control station can implement ") +
+        QString("the real-time monitoring and control on the computer ")   +
+        QString("client.\n\n\t\t\t                Team MicroDynamics"));
     about_widget_->setStandardButtons(QMessageBox::Yes);
     about_widget_->setDefaultButton(QMessageBox::Yes);
     about_widget_->exec();
@@ -101,6 +101,7 @@ void FlightControlStation::keyPressEvent(QKeyEvent *event)
 {
     double value;
 
+#if KEYBOARD_CONTROL
     switch (event->key()) {
         case Qt::Key_W: {
             value = flight_attitude_indicator_->getPitch();
@@ -158,6 +159,7 @@ void FlightControlStation::keyPressEvent(QKeyEvent *event)
             break;
         }
     }
+#endif
 }
 
 void FlightControlStation::mousePressEvent(QMouseEvent *event)

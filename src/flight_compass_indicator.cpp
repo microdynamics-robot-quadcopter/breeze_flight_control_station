@@ -49,7 +49,7 @@
 #include <QRegion>
 #include <QtMath>
 #include <QDebug>
-#include "flight_compass_indicator.h"
+#include <flight_compass_indicator.h>
 
 FlightCompassIndicator::FlightCompassIndicator(QWidget *parent) :
     QWidget(parent)

@@ -49,7 +49,7 @@
 #include <QRegion>
 #include <QtMath>
 #include <QDebug>
-#include "flight_altitude_indicator.h"
+#include <flight_altitude_indicator.h>
 
 FlightAltitudeIndicator::FlightAltitudeIndicator(QWidget *parent) :
     QWidget(parent)
