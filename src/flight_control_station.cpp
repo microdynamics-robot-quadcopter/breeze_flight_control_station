@@ -45,11 +45,14 @@
 #include <QDebug>
 #include <QKeyEvent>
 #include <flight_control_station.h>
-#include "ui_flight_control_station.h"
+#include <ui_flight_control_station.h>
 
-FlightControlStation::FlightControlStation(QWidget *parent) :
+FlightControlStation::FlightControlStation(QWidget *parent,
+                                           std::string serial_url,
+                                           std::string config_addr) :
     QMainWindow(parent),
-    ui(new Ui::FlightControlStation)
+    ui(new Ui::FlightControlStation),
+    serial_interface_(serial_url, config_addr)
 {
     ui->setupUi(this);
     this->setWindowTitle(tr("Flight Control Station V1"));
@@ -95,13 +98,13 @@ void FlightControlStation::openAboutWidget(void)
 
 void FlightControlStation::updateTimerOperation(void)
 {
+
 }
 
 void FlightControlStation::keyPressEvent(QKeyEvent *event)
 {
     double value;
 
-#if KEYBOARD_CONTROL
     switch (event->key()) {
         case Qt::Key_W: {
             value = flight_attitude_indicator_->getPitch();
@@ -159,7 +162,6 @@ void FlightControlStation::keyPressEvent(QKeyEvent *event)
             break;
         }
     }
-#endif
 }
 
 void FlightControlStation::mousePressEvent(QMouseEvent *event)
@@ -170,4 +172,46 @@ void FlightControlStation::mousePressEvent(QMouseEvent *event)
 void FlightControlStation::resizeEvent(QResizeEvent *event)
 {
     QWidget::resizeEvent(event);
+}
+
+void FlightControlStation::updateBufferRead(void)
+{
+    acc_x_ = serial_interface_.getDataType()->robot_imu_actual_.acc.acc_x;
+    acc_y_ = serial_interface_.getDataType()->robot_imu_actual_.acc.acc_y;
+    acc_z_ = serial_interface_.getDataType()->robot_imu_actual_.acc.acc_z;
+
+    att_r_ = serial_interface_.getDataType()->robot_imu_actual_.att.att_r;
+    att_p_ = serial_interface_.getDataType()->robot_imu_actual_.att.att_p;
+    att_y_ = serial_interface_.getDataType()->robot_imu_actual_.att.att_y;
+
+    motor_speed_a_ =
+        serial_interface_.getDataType()->motor_speed_actual_.motor_a;
+    motor_speed_b_ =
+        serial_interface_.getDataType()->motor_speed_actual_.motor_b;
+    motor_speed_c_ =
+        serial_interface_.getDataType()->motor_speed_actual_.motor_c;
+    motor_speed_d_ =
+        serial_interface_.getDataType()->motor_speed_actual_.motor_d;
+
+    motor_mileage_a_ =
+        serial_interface_.getDataType()->motor_mileage_actual_.motor_a;
+    motor_mileage_b_ =
+        serial_interface_.getDataType()->motor_mileage_actual_.motor_b;
+    motor_mileage_c_ =
+        serial_interface_.getDataType()->motor_mileage_actual_.motor_c;
+    motor_mileage_d_ =
+        serial_interface_.getDataType()->motor_mileage_actual_.motor_d;
+
+    motor_thrust_ = serial_interface_.getDataType()->motor_thrust_actual_.thrust;
+
+    robot_alt_ = serial_interface_.getDataType()->robot_height_actual_.alt;
+    robot_hei_ = serial_interface_.getDataType()->robot_height_actual_.hei;
+
+    battery_capacity_ =
+        serial_interface_.getDataType()->robot_system_info_actual_.battery_capacity;
+}
+
+void FlightControlStation::updateBufferWrite(void)
+{
+
 }

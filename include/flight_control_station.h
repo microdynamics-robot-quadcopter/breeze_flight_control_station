@@ -49,11 +49,14 @@
 #include <QTimer>
 #include <QMessageBox>
 #include <QMainWindow>
+#include <communication_serial_interface.h>
 #include "flight_attitude_indicator.h"
 #include "flight_altitude_indicator.h"
 #include "flight_compass_indicator.h"
 
 #define KEYBOARD_CONTROL 0
+
+using namespace communication_serial;
 
 namespace Ui {
 class FlightControlStation;
@@ -63,7 +66,9 @@ class FlightControlStation : public QMainWindow
 {
     Q_OBJECT
 public:
-    explicit FlightControlStation(QWidget *parent = 0);
+    explicit FlightControlStation(QWidget *parent = 0,
+                                  std::string serial_url = "",
+                                  std::string config_addr = "");
     ~FlightControlStation();
 protected slots:
     void openAboutWidget(void);
@@ -73,12 +78,26 @@ protected:
     void mousePressEvent(QMouseEvent *event);
     void resizeEvent(QResizeEvent *event);
 private:
-    Ui::FlightControlStation *ui;
-    FlightAttitudeIndicator  *flight_attitude_indicator_;
-    FlightAltitudeIndicator  *flight_altitude_indicator_;
-    FlightCompassIndicator   *flight_compass_indicator_;
-    QMessageBox              *about_widget_;
-    QTimer                   *timer_;
+    void updateBufferRead(void);
+    void updateBufferWrite(void);
+private:
+    float                        acc_x_, acc_y_, acc_z_;
+    float                        att_r_, att_p_, att_z_;
+    float                        motor_speed_a_, motor_speed_b_;
+    float                        motor_speed_c_, motor_speed_d_;
+    float                        motor_mileage_a_, motor_mileage_b_;
+    float                        motor_mileage_c_, motor_mileage_d_;
+    float                        motor_thrust_;
+    float                        robot_alt_;
+    float                        robot_hei_;
+    float                        battery_capacity_;
+    QMessageBox                  *about_widget_;
+    QTimer                       *timer_;
+    FlightAttitudeIndicator      *flight_attitude_indicator_;
+    FlightAltitudeIndicator      *flight_altitude_indicator_;
+    FlightCompassIndicator       *flight_compass_indicator_;
+    Ui::FlightControlStation     *ui;
+    CommunicationSerialInterface serial_interface_;
 };
 
 #endif // FLIGHT_CONTROL_STATION_H
