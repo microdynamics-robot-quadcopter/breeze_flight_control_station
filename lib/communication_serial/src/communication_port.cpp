@@ -49,7 +49,7 @@ namespace communication_serial {
 CommunicationPort::CommunicationPort(std::string comm_url) :
     comm_url_(comm_url)
 {
-    io_service_ = IO();
+    io_service_ = boost::make_shared<boost::asio::io_service>();
 }
 
 bool CommunicationPort::getFlagInit(void)

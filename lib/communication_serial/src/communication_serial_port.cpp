@@ -53,11 +53,11 @@ CommunicationSerialPort::CommunicationSerialPort(void) :
     serial_param_.port_ = "/dev/ttyUSB0";
 
     if (!initializeSerialPort()) {
-        std::cerr << "Serial port initialize unsuccessfully!" << std::endl;
+        std::cerr << "Failed to initialize serial port!" << std::endl;
         flag_init_ = false;
     }
     else {
-        std::cout << "Serial port initialize succesfully!" << std::endl;
+        std::cout << "Initialize serial port successfully!" << std::endl;
         flag_init_ = true;
     }
 }
@@ -75,11 +75,11 @@ CommunicationSerialPort::CommunicationSerialPort(std::string serial_url) :
                                            comm_url_.find("://"));
 
     if (!initializeSerialPort()) {
-        std::cerr << "Serial port initialize unsuccessfully!" << std::endl;
+        std::cerr << "Failed to initialize serial port!" << std::endl;
         flag_init_ = false;
     }
     else {
-        std::cout << "Serial port initialize succesfully!" << std::endl;
+        std::cout << "Initialize serial port successfully!" << std::endl;
         flag_init_ = true;
     }
 }
@@ -134,7 +134,7 @@ void CommunicationSerialPort::startOneWrite(void)
 
 void CommunicationSerialPort::runMainThread(void)
 {
-    std::cout << "Start serial port read/write thread!" << std::endl;
+    std::cout << "Start thread to read/write serial port!" << std::endl;
     startOneRead();
     io_service_->run();
 }
@@ -188,8 +188,9 @@ bool CommunicationSerialPort::initializeSerialPort(void)
         serial_port_->set_option(boost::asio::serial_port::character_size(8));
     }
     catch(std::exception &exce) {
-        std::cerr << "Open the serial port unsuccessfully!" << std::endl;
-        std::cerr << "Error information: " << exce.what() << std::endl;
+        std::cerr << "Failed to open serial port!" << std::endl;
+        std::cerr << "Error information: " << "(" << exce.what() << ")"
+                  << std::endl;
         return false;
     }
 
@@ -201,8 +202,9 @@ bool CommunicationSerialPort::initializeSerialPort(void)
                                     this));
     }
     catch (std::exception &exce) {
-        std::cerr << "Create the serial thread unsuccessfully!" << std::endl;
-        std::cerr << "Error information: " << exce.what() << std::endl;
+        std::cerr << "Failed to create serial port thread!" << std::endl;
+        std::cerr << "Error information: " << "(" << exce.what() << ")"
+                  << std::endl;
         return false;
     }
 

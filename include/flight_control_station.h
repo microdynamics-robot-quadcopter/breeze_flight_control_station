@@ -80,17 +80,25 @@ protected:
 private:
     void updateBufferRead(void);
     void updateBufferWrite(void);
+    void updateUIFromRead(void);
+    void updateUIFromWrite(void);
 private:
-    float                        acc_x_, acc_y_, acc_z_;
-    float                        att_r_, att_p_, att_z_;
-    float                        motor_speed_a_, motor_speed_b_;
-    float                        motor_speed_c_, motor_speed_d_;
-    float                        motor_mileage_a_, motor_mileage_b_;
-    float                        motor_mileage_c_, motor_mileage_d_;
-    float                        motor_thrust_;
-    float                        robot_alt_;
-    float                        robot_hei_;
+    int                          count_;
+    float                        acc_x_actual_, acc_y_actual_, acc_z_actual_;
+    float                        att_r_actual_, att_p_actual_, att_y_actual_;
+    float                        acc_x_target_, acc_y_target_, acc_z_target_;
+    float                        att_r_target_, att_p_target_, att_y_target_;
+    float                        motor_thrust_acutal_;
+    float                        motor_thrust_target_;
+    float                        robot_alt_actual_;
+    float                        robot_alt_target_;
+    float                        robot_hei_actual_;
+    float                        robot_hei_target_;
     float                        battery_capacity_;
+    std::vector<float>           motor_speed_actual_;
+    std::vector<float>           motor_speed_target_;
+    std::vector<float>           motor_mileage_actual_;
+    std::vector<float>           motor_mileage_target_;
     QMessageBox                  *about_widget_;
     QTimer                       *timer_;
     FlightAttitudeIndicator      *flight_attitude_indicator_;

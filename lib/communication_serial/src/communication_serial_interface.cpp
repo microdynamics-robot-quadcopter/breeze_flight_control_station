@@ -88,7 +88,7 @@ void CommunicationSerialInterface::checkShakeHandState(void)
 {
     if (serial_link_->getReceiveState(SHAKE_HANDS)) {
         sendCommand(SHAKE_HANDS);
-        std::cout << "Send shake hands command" << std::endl;
+        std::cout << "Send shake hands command." << std::endl;
     }
 }
 

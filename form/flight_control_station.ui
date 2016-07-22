@@ -419,6 +419,19 @@
         <item>
          <layout class="QVBoxLayout" name="verticalLayout">
           <item>
+           <widget class="QLabel" name="labelDataRoll">
+            <property name="font">
+             <font>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>Roll(degree)</string>
+            </property>
+           </widget>
+          </item>
+          <item>
            <widget class="QLabel" name="labelDataPitch">
             <property name="font">
              <font>
@@ -441,19 +454,6 @@
             </property>
             <property name="text">
              <string>Yaw(degree)</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLabel" name="labelDataRoll">
-            <property name="font">
-             <font>
-              <weight>75</weight>
-              <bold>true</bold>
-             </font>
-            </property>
-            <property name="text">
-             <string>Roll(degree)</string>
             </property>
            </widget>
           </item>
@@ -488,6 +488,13 @@
         <item>
          <layout class="QVBoxLayout" name="verticalLayoutDataActualColumnB">
           <item>
+           <widget class="QLineEdit" name="lineEditDataRoll">
+            <property name="text">
+             <string>0.00</string>
+            </property>
+           </widget>
+          </item>
+          <item>
            <widget class="QLineEdit" name="lineEditDataPitch">
             <property name="text">
              <string>0.00</string>
@@ -496,13 +503,6 @@
           </item>
           <item>
            <widget class="QLineEdit" name="lineEditDataYaw">
-            <property name="text">
-             <string>0.00</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLineEdit" name="lineEditDataRoll">
             <property name="text">
              <string>0.00</string>
             </property>
