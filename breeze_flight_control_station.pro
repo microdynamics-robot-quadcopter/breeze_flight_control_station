@@ -26,17 +26,37 @@ LIBS += \
     /usr/lib/x86_64-linux-gnu/libboost_thread.so
 
 HEADERS += \
-    include/flight_altitude_indicator.h \
-    include/flight_attitude_indicator.h \
-    include/flight_compass_indicator.h \
+    include/flight_control_station.h \
+    include/fcs_indicator_attitude.h \
+    include/fcs_indicator_compass.h \
+    include/fcs_instrucment_attitude.h \
+    include/fcs_instrucment_compass.h \
+    include/fcs_instrucment_pfd.h \
+    include/fcs_indicator/fcs_indicator_altitude.h \
+    include/fcs_indicator/fcs_indicator_attitude.h \
+    include/fcs_indicator/fcs_indicator_compass.h \
+    include/fcs_instrucment/fcs_instrucment_altitude.h \
+    include/fcs_instrucment/fcs_instrucment_attitude.h \
+    include/fcs_instrucment/fcs_instrucment_compass.h \
+    include/fcs_instrucment/fcs_instrucment_pfd.h \
     include/flight_control_station.h
 
 SOURCES += \
-    src/flight_altitude_indicator.cpp \
-    src/flight_attitude_indicator.cpp \
-    src/flight_compass_indicator.cpp \
     src/flight_control_station.cpp \
-    src/main.cpp
+    src/main.cpp \
+    src/fcs_instrucment_attitude.cpp \
+    src/fcs_instrucment_altitude.cpp \
+    src/fcs_instrucment_compass.cpp \
+    src/fcs_indicator_attitude.cpp \
+    src/fcs_indicator_compass.cpp \
+    src/fcs_instrucment_pfd.cpp \
+    src/fcs_indicator/fcs_indicator_altitude.cpp \
+    src/fcs_indicator/fcs_indicator_attitude.cpp \
+    src/fcs_indicator/fcs_indicator_compass.cpp \
+    src/fcs_instrucment/fcs_instrucment_altitude.cpp \
+    src/fcs_instrucment/fcs_instrucment_attitude.cpp \
+    src/fcs_instrucment/fcs_instrucment_compass.cpp \
+    src/fcs_instrucment/fcs_instrucment_pfd.cpp
 
 SOURCES += \
     lib/communication_serial/src/communication_port.cpp \
@@ -47,3 +67,6 @@ SOURCES += \
 
 FORMS += \
     form/flight_control_station.ui
+
+RESOURCES += \
+    breeze_flight_control_station.qrc

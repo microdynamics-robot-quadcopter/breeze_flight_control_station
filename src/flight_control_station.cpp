@@ -59,51 +59,51 @@ FlightControlStation::FlightControlStation(QWidget *parent,
     this->setFixedSize(width(), height());
     this->setFocus();
 
-    timer_ = new QTimer(this);
-    timer_->start(1000);
+//    timer_ = new QTimer(this);
+//    timer_->start(1000);
 
-    flight_attitude_indicator_ = new FlightAttitudeIndicator(this);
-    flight_altitude_indicator_ = new FlightAltitudeIndicator(this);
-    flight_compass_indicator_  = new FlightCompassIndicator(this);
+//    flight_attitude_indicator_ = new FlightAttitudeIndicator(this);
+//    flight_altitude_indicator_ = new FlightAltitudeIndicator(this);
+//    flight_compass_indicator_  = new FlightCompassIndicator(this);
 
-    ui->verticalLayoutAttitude->addWidget(flight_attitude_indicator_);
-    ui->verticalLayoutAltitude->addWidget(flight_altitude_indicator_);
-    ui->verticalLayoutCompass->addWidget(flight_compass_indicator_);
+//    ui->verticalLayoutAttitude->addWidget(flight_attitude_indicator_);
+//    ui->verticalLayoutAltitude->addWidget(flight_altitude_indicator_);
+//    ui->verticalLayoutCompass->addWidget(flight_compass_indicator_);
 
-    connect(timer_, SIGNAL(timeout()), this, SLOT(updateTimerOperation()));
-    connect(ui->actionExit, SIGNAL(triggered()), this, SLOT(close()));
-    connect(ui->actionAboutQt, SIGNAL(triggered()), qApp, SLOT(aboutQt()));
-    connect(ui->actionAbout, SIGNAL(triggered()), this,
-            SLOT(openAboutWidget()));
+//    connect(timer_, SIGNAL(timeout()), this, SLOT(updateTimerOperation()));
+//    connect(ui->actionExit, SIGNAL(triggered()), this, SLOT(close()));
+//    connect(ui->actionAboutQt, SIGNAL(triggered()), qApp, SLOT(aboutQt()));
+//    connect(ui->actionAbout, SIGNAL(triggered()), this,
+//            SLOT(openAboutWidget()));
 
-    count_ = 0;
+//    count_ = 0;
 
-    acc_x_actual_ = acc_y_actual_ = acc_z_actual_ = 0.0;
-    att_r_actual_ = att_p_actual_ = att_y_actual_ = 0.0;
-    acc_x_target_ = acc_y_target_ = acc_z_target_ = 0.0;
-    att_r_target_ = att_p_target_ = att_y_target_ = 0.0;
+//    acc_x_actual_ = acc_y_actual_ = acc_z_actual_ = 0.0;
+//    att_r_actual_ = att_p_actual_ = att_y_actual_ = 0.0;
+//    acc_x_target_ = acc_y_target_ = acc_z_target_ = 0.0;
+//    att_r_target_ = att_p_target_ = att_y_target_ = 0.0;
 
-    motor_thrust_acutal_ = motor_thrust_target_ = 0.0;
+//    motor_thrust_acutal_ = motor_thrust_target_ = 0.0;
 
-    robot_alt_actual_ = robot_alt_target_ = 0.0;
-    robot_hei_actual_ = robot_hei_target_ = 0.0;
+//    robot_alt_actual_ = robot_alt_target_ = 0.0;
+//    robot_hei_actual_ = robot_hei_target_ = 0.0;
 
-    battery_capacity_ = 0.0;
+//    battery_capacity_ = 0.0;
 
-    motor_speed_actual_.resize(4, 0.0);
-    motor_speed_target_.resize(4, 0.0);
+//    motor_speed_actual_.resize(4, 0.0);
+//    motor_speed_target_.resize(4, 0.0);
 
-    motor_mileage_actual_.resize(4, 0.0);
-    motor_mileage_target_.resize(4, 0.0);
+//    motor_mileage_actual_.resize(4, 0.0);
+//    motor_mileage_target_.resize(4, 0.0);
 
-    if (serial_interface_.getFlagInit()) {
-        std::cout << "Initialize system successfully, ready for communication!"
-                  << std::endl;
-    }
-    else {
-        std::cerr << "Failed to initialized system, check the hardware!"
-                  << std::endl;
-    }
+//    if (serial_interface_.getFlagInit()) {
+//        std::cout << "Initialize system successfully, ready for communication!"
+//                  << std::endl;
+//    }
+//    else {
+//        std::cerr << "Failed to initialized system, check the hardware!"
+//                  << std::endl;
+//    }
 }
 
 FlightControlStation::~FlightControlStation()

@@ -38,7 +38,7 @@
  *  myyerrol         2016.7.12     Finish the basic gui
  *
  *  Description:
- *  This .cpp file implements the gui of flight altitude indicator.
+ *  This .cpp file implements the gui of flight compass indicator.
  **********************************************************************/
 
 #include <QString>
@@ -48,9 +48,9 @@
 #include <QRegion>
 #include <QtMath>
 #include <QDebug>
-#include <flight_altitude_indicator.h>
+#include <fcs_indicator_compass.h>
 
-FlightAltitudeIndicator::FlightAltitudeIndicator(QWidget *parent) :
+FlightCompassIndicator::FlightCompassIndicator(QWidget *parent) :
     QWidget(parent)
 {
     widget_size_min_    = 200;
@@ -64,52 +64,40 @@ FlightAltitudeIndicator::FlightAltitudeIndicator(QWidget *parent) :
 
     setFocusPolicy(Qt::NoFocus);
 
-    altitude_ = 0.0;
-    height_   = 0.0;
+    yaw_ = 0.0;
 
     connect(this, SIGNAL(replotCanvas(void)), this, SLOT(updateCanvas(void)));
 }
 
-FlightAltitudeIndicator::~FlightAltitudeIndicator()
+FlightCompassIndicator::~FlightCompassIndicator()
 {
 }
 
-void FlightAltitudeIndicator::setAltitudeAndHeight(double altitude,
-                                                   double height)
+void FlightCompassIndicator::setYaw(double yaw)
 {
-    altitude_ = altitude;
-    height_   = height;
+    yaw_ = yaw;
+
+    if (yaw_ < 0) {
+        yaw_ = 360 + yaw_;
+    }
+    if (yaw_ > 360) {
+        yaw_ = yaw_ - 360;
+    }
+
     emit replotCanvas();
 }
 
-void FlightAltitudeIndicator::setAltitude(double altitude)
+double FlightCompassIndicator::getYaw()
 {
-    altitude_ = altitude;
-    emit replotCanvas();
+    return yaw_;
 }
 
-void FlightAltitudeIndicator::setHeight(double height)
-{
-    height_ = height;
-    emit replotCanvas();
-}
-
-double FlightAltitudeIndicator::getAltitude(void)
-{
-    return altitude_;
-}
-
-double FlightAltitudeIndicator::getHeight(void)
-{
-    return height_;
-}
-
-void FlightAltitudeIndicator::updateCanvas(void)
+void FlightCompassIndicator::updateCanvas(void)
 {
     update();
 }
 
-void FlightAltitudeIndicator::paintEvent(QPaintEvent *)
+void FlightCompassIndicator::paintEvent(QPaintEvent *)
 {
     QPainter painter(this);
     QPen pen_black(Qt::black);
@@ -141,10 +129,29 @@ void FlightAltitudeIndicator::paintEvent(QPaintEvent *)
 
         pen_black.setWidth(2);
         painter.setPen(pen_black);
-        painter.setFont(QFont("", font_size));
+        painter.rotate(-yaw_);
 
         for (int i = 0; i < yaw_line_number; i++) {
-            string = QString("%1").arg(i);
+            if (i == 0) {
+                string = "N";
+                painter.setFont(QFont("Monospace", font_size * 1.2));
+            }
+            else if (i == 9) {
+                string = "W";
+                painter.setFont(QFont("Monospace", font_size * 1.2));
+            }
+            else if (i == 18) {
+                string = "S";
+                painter.setFont(QFont("Monospace", font_size * 1.2));
+            }
+            else if (i == 27) {
+                string = "E";
+                painter.setFont(QFont("Monospace", font_size * 1.2));
+            }
+            else {
+                string = QString("%1").arg(i * unit_angular);
+                painter.setFont(QFont("", font_size));
+            }
 
             fx_a = 0.0;
             fy_a = -widget_size_curr_ / 2 + widget_size_offset_;
@@ -164,6 +171,71 @@ void FlightAltitudeIndicator::paintEvent(QPaintEvent *)
 
             painter.rotate(-unit_angular);
         }
+
+        painter.rotate(yaw_);
+    } while (false);
+
+    // Draw the quadrotor.
+    do {
+        double quadrotor_body_size    = widget_size_curr_ / 10;
+        double quadrotor_motor_radius = quadrotor_body_size;
+        double quadrotor_motor_point  = quadrotor_body_size * 1.5;
+        QPen   pen_orange(QColor(255, 140, 0));
+        QPoint point_a(-quadrotor_motor_point, -quadrotor_motor_point);
+        QPoint point_b(-quadrotor_motor_point, +quadrotor_motor_point);
+        QPoint point_c(+quadrotor_motor_point, -quadrotor_motor_point);
+        QPoint point_d(+quadrotor_motor_point, +quadrotor_motor_point);
+        QPoint point_rect_a(-quadrotor_body_size / 2,
+                            -quadrotor_body_size / 2);
+        QPoint point_rect_b(-quadrotor_body_size / 2,
+                            +quadrotor_body_size / 2);
+        QPoint point_rect_c(+quadrotor_body_size / 2,
+                            -quadrotor_body_size / 2);
+        QPoint point_rect_d(+quadrotor_body_size / 2,
+                            +quadrotor_body_size / 2);
+
+        pen_orange.setWidth(5);
+        painter.setPen(pen_orange);
+        painter.setBrush(Qt::NoBrush);
+        painter.drawPoint(point_a);
+        painter.drawPoint(point_b);
+        painter.drawPoint(point_c);
+        painter.drawPoint(point_d);
+
+        pen_orange.setWidth(3);
+        painter.setPen(pen_orange);
+        painter.drawRect(-quadrotor_body_size / 2,
+                         -quadrotor_body_size / 2,
+                          quadrotor_body_size,
+                          quadrotor_body_size);
+        painter.drawLine(point_a, point_rect_a);
+        painter.drawLine(point_b, point_rect_b);
+        painter.drawLine(point_c, point_rect_c);
+        painter.drawLine(point_d, point_rect_d);
+        painter.drawEllipse(QRect(-quadrotor_motor_point -
+                                   quadrotor_motor_radius,
+                                  -quadrotor_motor_point -
+                                   quadrotor_motor_radius,
+                                   quadrotor_motor_radius * 2,
+                                   quadrotor_motor_radius * 2));
+        painter.drawEllipse(QRect(-quadrotor_motor_point -
+                                   quadrotor_motor_radius,
+                                  +quadrotor_motor_point -
+                                   quadrotor_motor_radius,
+                                   quadrotor_motor_radius * 2,
+                                   quadrotor_motor_radius * 2));
+        painter.drawEllipse(QRect(+quadrotor_motor_point -
+                                   quadrotor_motor_radius,
+                                  -quadrotor_motor_point -
+                                   quadrotor_motor_radius,
+                                   quadrotor_motor_radius * 2,
+                                   quadrotor_motor_radius * 2));
+        painter.drawEllipse(QRect(+quadrotor_motor_point -
+                                   quadrotor_motor_radius,
+                                  +quadrotor_motor_point -
+                                   quadrotor_motor_radius,
+                                   quadrotor_motor_radius * 2,
+                                   quadrotor_motor_radius * 2));
     } while (false);
 
     // Draw the arrow.
@@ -171,7 +243,6 @@ void FlightAltitudeIndicator::paintEvent(QPaintEvent *)
         int    arrow_size = widget_size_curr_ / 12;
         double fx_a, fx_b, fx_c, fy_a, fy_b, fy_c;
 
-        painter.rotate(-100 * altitude_);
         painter.setPen(Qt::NoPen);
         painter.setBrush(QBrush(QColor(Qt::red)));
 
@@ -189,86 +260,23 @@ void FlightAltitudeIndicator::paintEvent(QPaintEvent *)
         };
 
         painter.drawPolygon(points, 3);
-        painter.rotate(100 * altitude_);
-    } while (false);
-
-    // Draw the text.
-    do {
-        int    font_size = 15;
-        double fx_a, fy_a;
-
-        fx_a = -50;
-        fy_a = -widget_size_curr_ / 3.5 + widget_size_offset_;
-
-        painter.setPen(pen_black);
-        painter.setBrush(Qt::NoBrush);
-        painter.setFont(QFont("", font_size));
-        painter.drawText(QRectF(fx_a, fy_a, 100, font_size + 5),
-                         Qt::AlignCenter, "x 0.1m");
-    } while (false);
-
-    // Draw the altitude and height.
-    do {
-        int     font_size = 15;
-        int     fx, fy, width, height;
-        QString string;
-
-        width  = 120;
-        height = (font_size + 10) * 2;
-        fx     = - width  / 2;
-        fy     = - height / 2;
-
-        pen_black.setWidth(2);
-        painter.setPen(pen_black);
-        painter.setBrush(QBrush(Qt::white));
-        painter.setFont(QFont("", font_size));
-        painter.drawRect(fx, fy, width, height);
-
-        if (altitude_ >= 9.99) {
-            altitude_ = 9.99;
-        }
-        if (altitude_ <= -9.99) {
-            altitude_ = -9.99;
-        }
-        if (height_ >= 9.99) {
-            height_ = 9.99;
-        }
-        if (height_ <= -9.99) {
-            height_ = -9.99;
-        }
-
-        string.sprintf("ALT: %.2lf m", altitude_);
-        painter.drawText(QRectF(fx, fy + 2, width, height / 2),
-                         Qt::AlignCenter, string);
-
-        string.sprintf("HEI: %.2lf m", height_);
-        painter.drawText(QRectF(fx, fy + height / 2, width, height / 2),
-                         Qt::AlignCenter, string);
     } while (false);
 }
 
-void FlightAltitudeIndicator::resizeEvent(QResizeEvent *)
+void FlightCompassIndicator::resizeEvent(QResizeEvent *)
 {
     widget_size_curr_ = qMin(width(), height()) - 2 * widget_size_offset_;
 }
 
-void FlightAltitudeIndicator::keyPressEvent(QKeyEvent *event)
+void FlightCompassIndicator::keyPressEvent(QKeyEvent *event)
 {
     switch (event->key()) {
-        case Qt::Key_U: {
-            altitude_ += VALUE_STEP_ALTITUDE;
+        case Qt::Key_Q: {
+            yaw_ -= VALUE_STEP_COMPASS;
             break;
         }
-        case Qt::Key_I: {
-            altitude_ -= VALUE_STEP_ALTITUDE;
-            break;
-        }
-        case Qt::Key_J: {
-            height_ += VALUE_STEP_HEIGHT;
-            break;
-        }
-        case Qt::Key_K: {
-            height_ -= VALUE_STEP_HEIGHT;
+        case Qt::Key_E: {
+            yaw_ += VALUE_STEP_COMPASS;
             break;
         }
         default: {

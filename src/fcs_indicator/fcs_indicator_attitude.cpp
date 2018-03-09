@@ -47,7 +47,7 @@
 #include <QPainter>
 #include <QRegion>
 #include <QtMath>
-#include <flight_attitude_indicator.h>
+#include <fcs_indicator_attitude.h>
 
 FlightAttitudeIndicator::FlightAttitudeIndicator(QWidget *parent) :
     QWidget(parent)

@@ -49,9 +49,9 @@
 #include <QMessageBox>
 #include <QMainWindow>
 #include <communication_serial_interface.h>
-#include "flight_attitude_indicator.h"
-#include "flight_altitude_indicator.h"
-#include "flight_compass_indicator.h"
+#include "fcs_indicator_attitude.h"
+#include "fcs_indicator_altitude.h"
+#include "fcs_indicator_compass.h"
 
 #define KEYBOARD_CONTROL 0
 
