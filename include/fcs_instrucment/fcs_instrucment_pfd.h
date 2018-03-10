@@ -21,25 +21,68 @@ public:
     ~FCSInstrucmentPFD();
     void reinitPFD(void);
     void updatePFD(void);
-    inline void setPFDRollAngle(float roll_angle) {}
-    inline void setPFDPitchAngle(float pitch_angle) {}
+    inline void setPFDRollAngle(float roll_angle)
+    {
+        pfd_panel_adi_->setADIRollAngle(roll_angle);
+    }
+    inline void setPFDPitchAngle(float pitch_angle)
+    {
+        pfd_panel_adi_->setADIPitchAngle(pitch_angle);
+    }
     inline void setPFDPathMarker(float attack_angle, float sideslip_angle,
                                  bool visible = true)
     {
-
+        pfd_panel_adi_->setADIFlightPathMarker(attack_angle, sideslip_angle,
+                                               visible);
     }
-    inline void setPFDSlipSkid(float slip_skid) {}
-    inline void setPFDTurnRate(float turn_rate) {}
-    inline void setPFDBarHorizontal(float bar, bool visible = true) {}
-    inline void setPFDBarVertical(float bar, bool visible = true) {}
-    inline void setPFDDotHorizontal(float dot, bool visible = true) {}
-    inline void setPFDDotVertical(float dot, book visible = true) {}
-    inline void setPFDAltitude(float altitude) {}
-    inline void setPFDPressure(float pressure, PressureUnit unit) {}
-    inline void setPFDAirspeed(float airspeed) {}
-    inline void setPFDMachNumber(float mach_number) {}
-    inline void setPFDHeading(float heading) {}
-    inline void setPFDClimbRate(float climb_rate) {}
+    inline void setPFDSlipSkid(float slip_skid)
+    {
+        pfd_panel_adi_->setADISlipSkid(slip_skid);
+    }
+    inline void setPFDTurnRate(float turn_rate)
+    {
+        pfd_panel_adi_->setADITurnRate(turn_rate);
+    }
+    inline void setPFDDeviateBarPositionH(float bar_pos, bool visible = true)
+    {
+        pfd_panel_adi_->setADIDeviateBarPositionH(bar_pos, visible);
+    }
+    inline void setPFDDeviateBarPositionV(float bar_pos, bool visible = true)
+    {
+        pfd_panel_adi_->setADIDeviateBarPositionV(bar_pos, visible);
+    }
+    inline void setPFDDeviateDotPositionH(float dot_pos, bool visible = true)
+    {
+        pfd_panel_adi_->setADIDeviateDotPositionH(dot_pos, visible);
+    }
+    inline void setPFDDeviateDotPositionV(float dot_pos, book visible = true)
+    {
+        pfd_panel_adi_->setADIDeviateDotPositionV(dot_pos, visible);
+    }
+    inline void setPFDAltitude(float altitude)
+    {
+        pfd_panel_alt_->setALTAltitude(altitude);
+    }
+    inline void setPFDPressure(float pressure, PressureUnit unit)
+    {
+        pfd_panel_alt_->setALTPressure(pressure, unit);
+    }
+    inline void setPFDAirspeed(float airspeed)
+    {
+        pfd_panel_asi_->setASIAirspeed(airspeed);
+    }
+    inline void setPFDMachNumber(float mach_number)
+    {
+        pfd_panel_asi_->setASIMachNumber(mach_number);
+    }
+    inline void setPFDHeading(float heading)
+    {
+        pfd_panel_hsi_->setHSIHeading(heading);
+    }
+    inline void setPFDClimbRate(float climb_rate)
+    {
+        pfd_panel_vsi_->setVSIClimbRate(climb_rate);
+    }
 protected:
     void resizeEvent(QResizeEvent *event);
 private:
@@ -56,10 +99,10 @@ private:
                                     bool visible = true );
         void setADISlipSkid(float slip_skid);
         void setADITurnRate(float turn_rate);
-        void setADIBarHorizontal(float bar, bool visible = true);
-        void setADIBarVertical(float bar, bool visible = true);
-        void setADIDotHorizontal(float dot, bool visible = true);
-        void setADIDotVertical(float dot, bool visible = true);
+        void setADIDeviateBarPositionH(float bar_pos, bool visible = true);
+        void setADIDeviateBarPositionV(float bar_pos, bool visible = true);
+        void setADIDeviateDotPositionH(float dot_pos, bool visible = true);
+        void setADIDeviateDotPositionV(float dot_pos, bool visible = true);
     private:
         void resetADI(void);
         void updateADILadd(float delta, float roll_sin, float roll_cos);
