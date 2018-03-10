@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT += core gui
+QT += core gui svg
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -15,7 +15,9 @@ INCLUDEPATH += \
     /usr/include/boost
 
 INCLUDEPATH += \
-    include
+    include \
+    include/fcs_indicator \
+    include/fcs_instrucment
 
 INCLUDEPATH += \
     lib/communication_link/include \
@@ -27,36 +29,24 @@ LIBS += \
 
 HEADERS += \
     include/flight_control_station.h \
-    include/fcs_indicator_attitude.h \
-    include/fcs_indicator_compass.h \
-    include/fcs_instrucment_attitude.h \
-    include/fcs_instrucment_compass.h \
-    include/fcs_instrucment_pfd.h \
     include/fcs_indicator/fcs_indicator_altitude.h \
     include/fcs_indicator/fcs_indicator_attitude.h \
     include/fcs_indicator/fcs_indicator_compass.h \
-    include/fcs_instrucment/fcs_instrucment_altitude.h \
-    include/fcs_instrucment/fcs_instrucment_attitude.h \
-    include/fcs_instrucment/fcs_instrucment_compass.h \
     include/fcs_instrucment/fcs_instrucment_pfd.h \
-    include/flight_control_station.h
+    include/fcs_instrucment/fcs_instrucment_alt.h \
+    include/fcs_instrucment/fcs_instrucment_hsi.h \
+    include/fcs_instrucment/fcs_instrucment_adi.h
 
 SOURCES += \
     src/flight_control_station.cpp \
     src/main.cpp \
-    src/fcs_instrucment_attitude.cpp \
-    src/fcs_instrucment_altitude.cpp \
-    src/fcs_instrucment_compass.cpp \
-    src/fcs_indicator_attitude.cpp \
-    src/fcs_indicator_compass.cpp \
-    src/fcs_instrucment_pfd.cpp \
     src/fcs_indicator/fcs_indicator_altitude.cpp \
     src/fcs_indicator/fcs_indicator_attitude.cpp \
     src/fcs_indicator/fcs_indicator_compass.cpp \
-    src/fcs_instrucment/fcs_instrucment_altitude.cpp \
-    src/fcs_instrucment/fcs_instrucment_attitude.cpp \
-    src/fcs_instrucment/fcs_instrucment_compass.cpp \
-    src/fcs_instrucment/fcs_instrucment_pfd.cpp
+    src/fcs_instrucment/fcs_instrucment_pfd.cpp \
+    src/fcs_instrucment/fcs_instrucment_hsi.cpp \
+    src/fcs_instrucment/fcs_instrucment_adi.cpp \
+    src/fcs_instrucment/fcs_instrucment_alt.cpp
 
 SOURCES += \
     lib/communication_serial/src/communication_port.cpp \
@@ -69,4 +59,4 @@ FORMS += \
     form/flight_control_station.ui
 
 RESOURCES += \
-    breeze_flight_control_station.qrc
+    fcs_instrucment.qrc
