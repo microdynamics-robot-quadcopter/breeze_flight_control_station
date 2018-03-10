@@ -238,7 +238,7 @@ private:
         QPointF alt_original_frame_pos_;
         QPointF alt_original_altitude_ctr_;
         QPointF alt_original_pressure_ctr_;
-        // ALT z asix variables.
+        // ALT z axis variables.
         const int alt_back_z_;
         const int alt_scale_z_;
         const int alt_labels_z_;
@@ -359,6 +359,65 @@ private:
         const int m_marks_z_;
         const int m_frame_text_z_;
     };
+
+    class PanelVSI
+    {
+    public:
+        PanelVSI(QGraphicsScene *scene);
+        ~PanelVSI();
+        void initVSI(float scale_x, float scale_y);
+        void updateVSI(float scale_x, float scale_y);
+        void setVSIClimbRate(float climb_rate);
+    private:
+        void resetVSI(void);
+        void updateVSI(void);
+    private:
+        QGraphicsScene    *vsi_scene_;
+        QGraphicsSvgItem  *vsi_item_scale_;
+        QGraphicsSvgItem  *vsi_item_arrow_;
+        // VSI climb rate.
+        float vsi_climb_rate_;
+        // VSI delta variables.
+        float vsi_arrow_delta_y_new_;
+        float vsi_arrow_delta_y_old_;
+        // VSI scale variables.
+        float vsi_scale_x_;
+        float vsi_scale_y_;
+        // VSI original float variables.
+        const float vsi_original_marke_height_;
+        const float vsi_original_pix_per_spd1_;
+        const float vsi_original_pix_per_spd2_;
+        const float vsi_original_pix_per_spd4_;
+        // VSI original QPointF variables.
+        QPointF vsi_original_scale_pos_;
+        QPointF vsi_original_arrow_pos_;
+        // VSI z axis variables.
+        const int vsi_scale_z_;
+        const int vsi_arrow_z_;
+    };
+private:
+    void initPFD(void);
+    void resetPFD(void);
+    void updatePFDView(void);
+private:
+    QGraphicsScene *pfd_scene_;
+    PanelADI       *pfd_panel_adi_;
+    PanelALT       *pfd_panel_alt_;
+    PanelASI       *pfd_panel_asi_;
+    PanelHSI       *pfd_panel_hsi_;
+    PanelVSI       *pfd_panel_vsi_;
+    // PFD svg items
+    QGraphicsSvgItem *pfd_item_back_;
+    QGraphicsSvgItem *pfd_item_mask_;
+    // PFD scale variables.
+    float pfd_scale_x_;
+    float pfd_scale_y_;
+    // PFD original variables.
+    const int pfd_original_height_;
+    const int pfd_original_width_;
+    // PFD z axis variables.
+    const int pfd_back_z_;
+    const int pfd_mask_z_;
 };
 
 #endif // FCS_INSTRUCMENT_PFD_H
