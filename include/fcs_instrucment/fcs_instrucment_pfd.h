@@ -49,7 +49,6 @@
 class FCSInstrucmentPFD : public QGraphicsView
 {
     Q_OBJECT
-
     // Altimeter pressure units.
     enum PressureUnit
     {
@@ -57,7 +56,6 @@ class FCSInstrucmentPFD : public QGraphicsView
         MB,  // Milibars.
         IN   // Inches of mercury.
     };
-
 public:
     explicit FCSInstrucmentPFD(QWidget *parent = 0);
     ~FCSInstrucmentPFD();
@@ -169,6 +167,7 @@ public:
 protected:
     void resizeEvent(QResizeEvent *event);
 private:
+    // Attitude Director Indicator(ADI) Panel.
     class PanelADI
     {
     public:
@@ -197,107 +196,108 @@ private:
         void updateADIBars(void);
         void updateADIDots(void);
     private:
-        QGraphicsScene    *pfd_scene_;
-        QGraphicsSvgItem  *pfd_item_back_;
-        QGraphicsSvgItem  *pfd_item_ladd_;
-        QGraphicsSvgItem  *pfd_item_roll_;
-        QGraphicsSvgItem  *pfd_item_slip_;
-        QGraphicsSvgItem  *pfd_item_turn_;
-        QGraphicsSvgItem  *pfd_item_path_;
-        QGraphicsSvgItem  *pfd_item_mark_;
-        QGraphicsSvgItem  *pfd_item_bar_h_;
-        QGraphicsSvgItem  *pfd_item_bar_v_;
-        QGraphicsSvgItem  *pfd_item_dot_h_;
-        QGraphicsSvgItem  *pfd_item_dot_v_;
-        QGraphicsSvgItem  *pfd_item_mask_;
-        QGraphicsSvgItem  *pfd_item_scale_h_;
-        QGraphicsSvgItem  *pfd_item_scale_v_;
-        // PFD variables.
-        float pfd_angle_roll_;
-        float pfd_angle_pitch_;
-        float pfd_angle_attack_;
-        float pfd_angle_sideslip_;
-        float pfd_slip_skid_;
-        float pfd_turn_rate_;
-        float pfd_bar_h_;
-        float pfd_bar_v_;
-        float pfd_dot_h_;
-        float pfd_dot_v_;
-        // PFD visible variables.
-        bool pfd_path_valid_;
-        bool pfd_path_visible_;
-        bool pfd_bar_h_visible_;
-        bool pfd_bar_v_visible_;
-        bool pfd_dot_h_visible_;
-        bool pfd_dot_v_visible_;
-        // PFD delta variables.
-        float pfd_ladd_delta_x_new_;
-        float pfd_ladd_delta_x_old_;
-        float pfd_ladd_back_delta_x_new_;
-        float pfd_ladd_back_delta_x_old_;
-        float pfd_ladd_back_delta_y_new_;
-        float pfd_ladd_back_delta_y_old_;
-        float pfd_ladd_delta_y_new_;
-        float pfd_ladd_delta_y_old_;
-        float pfd_slip_delta_x_new_;
-        float pfd_slip_delta_x_old_;
-        float pfd_slip_delta_y_new_;
-        float pfd_slip_delta_y_old_;
-        float pfd_turn_delta_x_new_;
-        float pfd_turn_delta_x_old_;
-        float pfd_path_delta_x_new_;
-        float pfd_path_delta_x_old_;
-        float pfd_path_delta_y_new_;
-        float pfd_path_delta_y_old_;
-        float pfd_mark_delta_x_new_;
-        float pfd_mark_delta_x_old_;
-        float pfd_mark_delta_y_new_;
-        float pfd_mark_delta_y_old_;
-        float pfd_bar_h_delta_x_new_;
-        float pfd_bar_h_delta_x_old_;
-        float pfd_bar_v_delta_y_new_;
-        float pfd_bar_v_delta_y_old_;
-        float pfd_dot_h_delta_x_new_;
-        float pfd_dot_h_delta_x_old_;
-        float pfd_dot_v_delta_y_new_;
-        float pfd_dot_v_delta_y_old_;
-        float pfd_scale_x_;
-        float pfd_scale_y_;
-        // PFD deflection variables.
-        const float pfd_original_pix_per_deg_;
-        const float pfd_delta_ladd_back_max_;
-        const float pfd_delta_ladd_back_min_;
-        const float pfd_max_slip_deflection_;
-        const float pfd_max_turn_deflection_;
-        const float pfd_max_bars_deflection_;
-        const float pfd_max_dots_deflection_;
-        // PFD original variables.
-        QPointF pfd_original_adi_ctr_;
-        QPointF pfd_original_back_pos_;
-        QPointF pfd_original_ladd_pos_;
-        QPointF pfd_original_roll_pos_;
-        QPointF pfd_original_slip_pos_;
-        QPointF pfd_original_turn_pos_;
-        QPointF pfd_original_path_pos_;
-        QPointF pfd_original_bar_h_pos_;
-        QPointF pfd_original_bar_v_pos_;
-        QPointF pfd_original_dot_h_pos_;
-        QPointF pfd_original_dot_v_pos_;
-        QPointF pfd_original_scale_h_pos_;
-        QPointF pfd_original_scale_v_pos_;
-        // PFD z axis variables.
-        const int pfd_back_z_;
-        const int pfd_ladd_z_;
-        const int pfd_roll_z_;
-        const int pfd_slip_z_;
-        const int pfd_path_z_;
-        const int pfd_bars_z_;
-        const int pfd_dots_z_;
-        const int pfd_scales_z_;
-        const int pfd_mask_z_;
-        const int pfd_turn_z_;
+        QGraphicsScene    *adi_scene_;
+        QGraphicsSvgItem  *adi_item_back_;
+        QGraphicsSvgItem  *adi_item_ladd_;
+        QGraphicsSvgItem  *adi_item_roll_;
+        QGraphicsSvgItem  *adi_item_slip_;
+        QGraphicsSvgItem  *adi_item_turn_;
+        QGraphicsSvgItem  *adi_item_path_;
+        QGraphicsSvgItem  *adi_item_mark_;
+        QGraphicsSvgItem  *adi_item_bar_h_;
+        QGraphicsSvgItem  *adi_item_bar_v_;
+        QGraphicsSvgItem  *adi_item_dot_h_;
+        QGraphicsSvgItem  *adi_item_dot_v_;
+        QGraphicsSvgItem  *adi_item_mask_;
+        QGraphicsSvgItem  *adi_item_scale_h_;
+        QGraphicsSvgItem  *adi_item_scale_v_;
+        // ADI basic variables.
+        float adi_angle_roll_;
+        float adi_angle_pitch_;
+        float adi_angle_attack_;
+        float adi_angle_sideslip_;
+        float adi_slip_skid_;
+        float adi_turn_rate_;
+        float adi_bar_h_;
+        float adi_bar_v_;
+        float adi_dot_h_;
+        float adi_dot_v_;
+        // ADI visible variables.
+        bool adi_path_valid_;
+        bool adi_path_visible_;
+        bool adi_bar_h_visible_;
+        bool adi_bar_v_visible_;
+        bool adi_dot_h_visible_;
+        bool adi_dot_v_visible_;
+        // ADI delta variables.
+        float adi_ladd_delta_x_new_;
+        float adi_ladd_delta_x_old_;
+        float adi_ladd_back_delta_x_new_;
+        float adi_ladd_back_delta_x_old_;
+        float adi_ladd_back_delta_y_new_;
+        float adi_ladd_back_delta_y_old_;
+        float adi_ladd_delta_y_new_;
+        float adi_ladd_delta_y_old_;
+        float adi_slip_delta_x_new_;
+        float adi_slip_delta_x_old_;
+        float adi_slip_delta_y_new_;
+        float adi_slip_delta_y_old_;
+        float adi_turn_delta_x_new_;
+        float adi_turn_delta_x_old_;
+        float adi_path_delta_x_new_;
+        float adi_path_delta_x_old_;
+        float adi_path_delta_y_new_;
+        float adi_path_delta_y_old_;
+        float adi_mark_delta_x_new_;
+        float adi_mark_delta_x_old_;
+        float adi_mark_delta_y_new_;
+        float adi_mark_delta_y_old_;
+        float adi_bar_h_delta_x_new_;
+        float adi_bar_h_delta_x_old_;
+        float adi_bar_v_delta_y_new_;
+        float adi_bar_v_delta_y_old_;
+        float adi_dot_h_delta_x_new_;
+        float adi_dot_h_delta_x_old_;
+        float adi_dot_v_delta_y_new_;
+        float adi_dot_v_delta_y_old_;
+        // ADI scale variables.
+        float adi_scale_x_;
+        float adi_scale_y_;
+        // ADI deflection variables.
+        const float adi_original_pix_per_deg_;
+        const float adi_delta_ladd_back_max_;
+        const float adi_delta_ladd_back_min_;
+        const float adi_max_slip_deflection_;
+        const float adi_max_turn_deflection_;
+        const float adi_max_bars_deflection_;
+        const float adi_max_dots_deflection_;
+        // ADI original variables.
+        QPointF adi_original_adi_ctr_;
+        QPointF adi_original_back_pos_;
+        QPointF adi_original_ladd_pos_;
+        QPointF adi_original_roll_pos_;
+        QPointF adi_original_slip_pos_;
+        QPointF adi_original_turn_pos_;
+        QPointF adi_original_path_pos_;
+        QPointF adi_original_bar_h_pos_;
+        QPointF adi_original_bar_v_pos_;
+        QPointF adi_original_dot_h_pos_;
+        QPointF adi_original_dot_v_pos_;
+        QPointF adi_original_scale_h_pos_;
+        QPointF adi_original_scale_v_pos_;
+        // ADI z axis variables.
+        const int adi_back_z_;
+        const int adi_ladd_z_;
+        const int adi_roll_z_;
+        const int adi_slip_z_;
+        const int adi_path_z_;
+        const int adi_bars_z_;
+        const int adi_dots_z_;
+        const int adi_scales_z_;
+        const int adi_mask_z_;
+        const int adi_turn_z_;
     };
-
+    // Altimeter(ALT) Panel.
     class PanelALT
     {
     public:
@@ -372,7 +372,7 @@ private:
         const int alt_frame_z_;
         const int alt_frame_text_z_;
     };
-
+    // Airspeed Indicator(ASI) Panel.
     class PanelASI
     {
     public:
@@ -446,7 +446,7 @@ private:
         const int asi_frame_z_;
         const int asi_frame_text_z_;
     };
-
+    // Horizontal Situation Indicator(HSI) Panel.
     class PanelHSI
     {
     public:
@@ -485,7 +485,7 @@ private:
         const int m_marks_z_;
         const int m_frame_text_z_;
     };
-
+    // Vertical Speed Indicator(VSI) Panel.
     class PanelVSI
     {
     public:
