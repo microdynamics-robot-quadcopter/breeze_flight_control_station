@@ -136,9 +136,9 @@ public:
     // Set pressure.
     // param1: pressure (dimensionless numeric value).
     // param2: pressure unit according to PressureUnit.
-    inline void setPFDPressure(float pressure, PressureUnit unit)
+    inline void setPFDPressure(float pressure, PressureUnit pressure_unit)
     {
-        pfd_panel_alt_->setALTPressure(pressure, unit);
+        pfd_panel_alt_->setALTPressure(pressure, pressure_unit);
     }
     // Set airspeed.
     // param1: airspeed (dimensionless numeric value).
@@ -306,7 +306,7 @@ private:
         void initALT(float scale_x, float scale_y);
         void updateALT(float scale_x, float scale_y);
         void setALTAltitude(float altitude);
-        void setALTPressure(float pressure, int unit);
+        void setALTPressure(float pressure, int pressure_unit);
     private:
         void resetALT(void);
         void updateALTAltitude(void);
