@@ -65,25 +65,25 @@ public:
     void updatePFD(void);
     // Set roll angle.
     // param1: roll angle [deg].
-    inline void setPFDRollAngle(float roll_angle)
+    inline void setPFDAngleRoll(float angle_roll)
     {
-        pfd_panel_adi_->setADIRollAngle(roll_angle);
+        pfd_panel_adi_->setADIAngleRoll(angle_roll);
     }
     // Set pitch angle.
     // param1: pitch angle [deg].
-    inline void setPFDPitchAngle(float pitch_angle)
+    inline void setPFDAnglePitch(float angle_pitch)
     {
-        pfd_panel_adi_->setADIPitchAngle(pitch_angle);
+        pfd_panel_adi_->setADIAnglePitch(angle_pitch);
     }
     // Set flight path marker.
     // param1: angle of attach [deg].
     // param2: angle of sideslip [deg].
     // param3: flight path marker visibility.
-    inline void setPFDFlightPathMarker(float attack_angle,
-                                       float sideslip_angle,
+    inline void setPFDFlightPathMarker(float angle_attack,
+                                       float angle_sideslip,
                                        bool visible = true)
     {
-        pfd_panel_adi_->setADIFlightPathMarker(attack_angle, sideslip_angle,
+        pfd_panel_adi_->setADIFlightPathMarker(angle_attack, angle_sideslip,
                                                visible);
     }
     // Set slip or skid.
@@ -102,16 +102,16 @@ public:
     // Set horizontal deviation bar position.
     // param1: normalized horizontal deviation bar position (range from -1.0 to 1.0).
     // param2: horizontal deviation bar visibility.
-    inline void setPFDDeviateBarPositionH(float bar_pos, bool visible = true)
+    inline void setPFDDeviateBarPositionH(float bar_h, bool visible = true)
     {
-        pfd_panel_adi_->setADIDeviateBarPositionH(bar_pos, visible);
+        pfd_panel_adi_->setADIDeviateBarPositionH(bar_h, visible);
     }
     // Set vertical deviation bar position.
     // param1: normalized vertical deviation bar position (range from -1.0 to 1.0).
     // param2: vertical deviation bar visibility.
-    inline void setPFDDeviateBarPositionV(float bar_pos, bool visible = true)
+    inline void setPFDDeviateBarPositionV(float bar_v, bool visible = true)
     {
-        pfd_panel_adi_->setADIDeviateBarPositionV(bar_pos, visible);
+        pfd_panel_adi_->setADIDeviateBarPositionV(bar_v, visible);
     }
     // Set horizontal deviation dot position.
     // param1: normalized horizontal deviation dot position (range from -1.0 to 1.0).
@@ -175,22 +175,22 @@ private:
         ~PanelADI();
         void initADI(float scale_x, float scale_y);
         void updateADI(float scale_x, float scale_y);
-        void setADIRollAngle(float roll_angle);
-        void setADIPitchAngle(float pitch_angle);
-        void setADIFlightPathMarker(float attack_angle, float sideslip_angle,
+        void setADIAngleRoll(float angle_roll);
+        void setADIAnglePitch(float angle_pitch);
+        void setADIFlightPathMarker(float angle_attack, float angle_sideslip,
                                     bool visible = true );
         void setADISlipSkid(float slip_skid);
         void setADITurnRate(float turn_rate);
-        void setADIDeviateBarPositionH(float bar_pos, bool visible = true);
-        void setADIDeviateBarPositionV(float bar_pos, bool visible = true);
-        void setADIDeviateDotPositionH(float dot_pos, bool visible = true);
-        void setADIDeviateDotPositionV(float dot_pos, bool visible = true);
+        void setADIDeviateBarPositionH(float bar_h, bool visible = true);
+        void setADIDeviateBarPositionV(float bar_v, bool visible = true);
+        void setADIDeviateDotPositionH(float dot_h, bool visible = true);
+        void setADIDeviateDotPositionV(float dot_v, bool visible = true);
     private:
         void resetADI(void);
         void updateADILadd(float delta, float roll_sin, float roll_cos);
         void updateADILaddBack(float delta, float roll_sin, float roll_cos);
-        void updateADIRollAngle(void);
-        void updateSlipSkip(float roll_sin, float roll_cos);
+        void updateADIAngleRoll(void);
+        void updateADiSlipSkip(float roll_sin, float roll_cos);
         void updateADITurnRate(void);
         void updateADIFlightPath(void);
         void updateADIBars(void);
@@ -232,12 +232,12 @@ private:
         // ADI delta variables.
         float adi_ladd_delta_x_new_;
         float adi_ladd_delta_x_old_;
+        float adi_ladd_delta_y_new_;
+        float adi_ladd_delta_y_old_;
         float adi_ladd_back_delta_x_new_;
         float adi_ladd_back_delta_x_old_;
         float adi_ladd_back_delta_y_new_;
         float adi_ladd_back_delta_y_old_;
-        float adi_ladd_delta_y_new_;
-        float adi_ladd_delta_y_old_;
         float adi_slip_delta_x_new_;
         float adi_slip_delta_x_old_;
         float adi_slip_delta_y_new_;
