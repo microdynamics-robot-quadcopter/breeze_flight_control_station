@@ -480,7 +480,7 @@ void FCSInstrucmentPFD::PanelADI::setADIAngleRoll(float angle_roll)
         adi_angle_roll_ = 180.0f;
     }
     else {
-        return;
+        ;
     }
 }
 
@@ -495,7 +495,7 @@ void FCSInstrucmentPFD::PanelADI::setADIAnglePitch(float angle_pitch)
         adi_angle_pitch_ = 90.0f;
     }
     else {
-        return;
+        ;
     }
 }
 
@@ -517,7 +517,7 @@ void FCSInstrucmentPFD::PanelADI::setADIFlightPathMarker(float angle_attack,
         adi_path_valid_ = false;
     }
     else {
-        return;
+        ;
     }
 
     if (adi_angle_sideslip_ < -10.0f) {
@@ -529,7 +529,7 @@ void FCSInstrucmentPFD::PanelADI::setADIFlightPathMarker(float angle_attack,
         adi_path_valid_ = false;
     }
     else {
-        return;
+        ;
     }
 
     adi_path_visible_ = visible;
@@ -546,7 +546,7 @@ void FCSInstrucmentPFD::PanelADI::setADISlipSkid(float slip_skid)
         adi_slip_skid_ = 1.0f;
     }
     else {
-        return;
+        ;
     }
 }
 
@@ -561,7 +561,7 @@ void FCSInstrucmentPFD::PanelADI::setADITurnRate(float turn_rate)
         adi_turn_rate_ = 1.0f;
     }
     else {
-        return;
+        ;
     }
 }
 
@@ -577,7 +577,7 @@ void FCSInstrucmentPFD::PanelADI::setADIDeviateBarPositionH(float bar_h,
         adi_bar_h_ = 1.0f;
     }
     else {
-        return;
+        ;
     }
 
     adi_bar_h_visible_ = visible;
@@ -595,7 +595,7 @@ void FCSInstrucmentPFD::PanelADI::setADIDeviateBarPositionV(float bar_v,
         adi_bar_v_ = 1.0f;
     }
     else {
-        return;
+        ;
     }
 
     adi_bar_v_visible_ = visible;
@@ -613,7 +613,7 @@ void FCSInstrucmentPFD::PanelADI::setADIDeviateDotPositionH(float dot_h,
         adi_dot_h_ = 1.0f;
     }
     else {
-        return;
+        ;
     }
 
     adi_dot_h_visible_ = visible;
@@ -631,7 +631,7 @@ void FCSInstrucmentPFD::PanelADI::setADIDeviateDotPositionV(float dot_v,
         adi_dot_v_ = 1.0f;
     }
     else {
-        return;
+        ;
     }
 
     adi_dot_v_visible_ = visible;
@@ -870,8 +870,420 @@ void FCSInstrucmentPFD::PanelADI::updateADIDots(void)
 
 FCSInstrucmentPFD::PanelALT::PanelALT(QGraphicsScene *scene) :
     alt_scene_(scene),
-
+    alt_item_back_    (0),
+    alt_item_scale1_  (0),
+    alt_item_scale2_  (0),
+    alt_item_label1_  (0),
+    alt_item_label2_  (0),
+    alt_item_label3_  (0),
+    alt_item_ground_  (0),
+    alt_item_frame_   (0),
+    alt_item_altitude_(0),
+    alt_item_pressure_(0),
+    alt_frame_text_color_(255, 255, 255),
+    alt_press_text_color_(  0, 255,   0),
+    alt_labels_color_    (255, 255, 255),
+    alt_altitude_(0.0f),
+    alt_pressure_(0.0f),
+    alt_pressure_unit_(0),
+    alt_scale1_delta_y_new_(0.0f),
+    alt_scale1_delta_y_old_(0.0f),
+    alt_scale2_delta_y_new_(0.0f),
+    alt_scale2_delta_y_old_(0.0f),
+    alt_ground_delta_y_new_(0.0f),
+    alt_ground_delta_y_old_(0.0f),
+    alt_labels_delta_y_new_(0.0f),
+    alt_labels_delta_y_old_(0.0f),
+    alt_scale_x_(1.0f),
+    alt_scale_y_(1.0f),
+    alt_original_pix_per_alt_ (0.150f),
+    alt_original_scale_height_(300.0f),
+    alt_original_labels_x_    (250.0f),
+    alt_original_label1_y_    ( 50.0f),
+    alt_original_label2_y_    (125.0f),
+    alt_original_label3_y_    (200.0f),
+    alt_original_back_pos_    (231.0f,   37.5f),
+    alt_original_scale1_pos_  (231.0f, -174.5f),
+    alt_original_scale2_pos_  (231.0f, -474.5f),
+    alt_original_ground_pos_  (231.5f,  124.5f),
+    alt_original_frame_pos_   (225.0f,  110.0f),
+    alt_original_altitude_ctr_(254.0f,  126.0f),
+    alt_original_pressure_ctr_(254.0f,  225.0f),
+    alt_back_z_      ( 70),
+    alt_scale_z_     ( 77),
+    alt_labels_z_    ( 78),
+    alt_ground_z_    ( 79),
+    alt_frame_z_     (110),
+    alt_frame_text_z_(120)
 {
+    alt_frame_text_font_.setFamily("Courier");
+    alt_frame_text_font_.setPointSizeF(10.0f);
+    alt_frame_text_font_.setStretch(QFont::Condensed);
+    alt_frame_text_font_.setWeight(QFont::Bold);
 
+    alt_labels_font_.setFamily("Courier");
+    alt_labels_font_.setPointSizeF(8.0f);
+    alt_labels_font_.setStretch(QFont::Condensed);
+    alt_labels_font_.setWeight(QFont::Bold);
+
+    resetALT();
 }
+
+void FCSInstrucmentPFD::PanelALT::initALT(float scale_x, float scale_y)
+{
+    alt_scale_x_ = scale_x;
+    alt_scale_y_ = scale_y;
+
+    resetALT();
+
+    alt_item_back_ = new QGraphicsSvgItem(
+        ":/fcs_instrucment/res/fcs_instrucment_pfd/pfd_alt_back.svg");
+    alt_item_back_->setCacheMode(QGraphicsItem::NoCache);
+    alt_item_back_->setZValue(alt_back_z_);
+    alt_item_back_->setTransform(
+        QTransform::fromScale(alt_scale_x_, alt_scale_y_),
+        true);
+    alt_item_back_->moveBy(alt_scale_x_ * alt_original_back_pos_.x(),
+                           alt_scale_y_ * alt_original_back_pos_.y());
+    alt_scene_->addItem(alt_item_back_);
+
+    alt_item_scale1_ = new QGraphicsSvgItem(
+        ":/fcs_instrucment/res/fcs_instrucment_pfd/pfd_alt_scale.svg");
+    alt_item_scale1_->setCacheMode(QGraphicsItem::NoCache);
+    alt_item_scale1_->setZValue(alt_scale_z_);
+    alt_item_scale1_->setTransform(
+        QTransform::fromScale(alt_scale_x_, alt_scale_y_),
+        true);
+    alt_item_scale1_->moveBy(alt_scale_x_ * alt_original_scale1_pos_.x(),
+                             alt_scale_y_ * alt_original_scale1_pos_.y());
+    alt_scene_->addItem(alt_item_scale1_);
+
+    alt_item_scale2_ = new QGraphicsSvgItem(
+        ":/fcs_instrucment/res/fcs_instrucment_pfd/pfd_alt_scale.svg");
+    alt_item_scale2_->setCacheMode(QGraphicsItem::NoCache);
+    alt_item_scale2_->setZValue(alt_scale_z_);
+    alt_item_scale2_->setTransform(
+        QTransform::fromScale(alt_scale_x_, alt_scale_y_),
+        true);
+    alt_item_scale2_->moveBy(alt_scale_x_ * alt_original_scale2_pos_.x(),
+                             alt_scale_y_ * alt_original_scale2_pos_.y());
+    alt_scene_->addItem(alt_item_scale2_);
+
+    alt_item_label1_ = new QGraphicsTextItem(QString( "99999" ));
+    alt_item_label1_->setCacheMode(QGraphicsItem::NoCache);
+    alt_item_label1_->setZValue(alt_labels_z_);
+    alt_item_label1_->setDefaultTextColor(alt_labels_color_);
+    alt_item_label1_->setFont(alt_labels_font_);
+    alt_item_label1_->setTransform(
+        QTransform::fromScale(alt_scale_x_, alt_scale_y_),
+        true);
+    alt_item_label1_->moveBy(
+        alt_scale_x_ * (alt_original_labels_x_ -
+                        alt_item_label1_->boundingRect().width()  / 2.0f),
+        alt_scale_y_ * (alt_original_label1_y_ -
+                        alt_item_label1_->boundingRect().height() / 2.0f));
+    alt_scene_->addItem(alt_item_label1_);
+
+    alt_item_label2_ = new QGraphicsTextItem(QString( "99999" ));
+    alt_item_label2_->setCacheMode(QGraphicsItem::NoCache);
+    alt_item_label2_->setZValue(alt_labels_z_);
+    alt_item_label2_->setDefaultTextColor(alt_labels_color_);
+    alt_item_label2_->setFont(alt_labels_font_);
+    alt_item_label2_->setTransform(
+        QTransform::fromScale(alt_scale_x_, alt_scale_y_),
+        true);
+    alt_item_label2_->moveBy(
+        alt_scale_x_ * (alt_original_labels_x_ -
+                        alt_item_label2_->boundingRect().width()  / 2.0f),
+        alt_scale_y_ * (alt_original_label2_y_ -
+                        alt_item_label2_->boundingRect().height() / 2.0f));
+    alt_scene_->addItem(alt_item_label2_);
+
+    alt_item_label3_ = new QGraphicsTextItem(QString( "99999" ));
+    alt_item_label3_->setCacheMode(QGraphicsItem::NoCache);
+    alt_item_label3_->setZValue(alt_labels_z_);
+    alt_item_label3_->setDefaultTextColor(alt_labels_color_);
+    alt_item_label3_->setFont(alt_labels_font_);
+    alt_item_label3_->setTransform(
+        QTransform::fromScale(alt_scale_x_, alt_scale_y_),
+        true);
+    alt_item_label3_->moveBy(
+        alt_scale_x_ * (alt_original_labels_x_ -
+                        alt_item_label3_->boundingRect().width()  / 2.0f),
+        alt_scale_y_ * (alt_original_label3_y_ -
+                        alt_item_label3_->boundingRect().height() / 2.0f));
+    alt_scene_->addItem(alt_item_label3_);
+
+    alt_item_ground_ = new QGraphicsSvgItem(
+        ":/fcs_instrucment/res/fcs_instrucment_pfd/pfd_alt_ground.svg");
+    alt_item_ground_->setCacheMode(QGraphicsItem::NoCache);
+    alt_item_ground_->setZValue(alt_ground_z_);
+    alt_item_ground_->setTransform(
+        QTransform::fromScale(alt_scale_x_, alt_scale_y_),
+        true);
+    alt_item_ground_->moveBy(alt_scale_x_ * alt_original_ground_pos_.x(),
+                             alt_scale_y_ * alt_original_ground_pos_.y());
+    alt_scene_->addItem(alt_item_ground_);
+
+    alt_item_frame_ = new QGraphicsSvgItem(
+        ":/fcs_instrucment/res/fcs_instrucment_pfd/pfd_alt_frame.svg");
+    alt_item_frame_->setCacheMode(QGraphicsItem::NoCache);
+    alt_item_frame_->setZValue(alt_frame_z_);
+    alt_item_frame_->setTransform(
+        QTransform::fromScale(alt_scale_x_, alt_scale_y_),
+        true);
+    alt_item_frame_->moveBy(alt_scale_x_ * alt_original_frame_pos_.x(),
+                            alt_scale_y_ * alt_original_frame_pos_.y());
+    alt_scene_->addItem(alt_item_frame_);
+
+    alt_item_altitude_ = new QGraphicsTextItem(QString("0"));
+    alt_item_altitude_->setCacheMode(QGraphicsItem::NoCache);
+    alt_item_altitude_->setZValue(alt_frame_text_z_);
+    alt_item_altitude_->setDefaultTextColor(alt_frame_text_color_);
+    alt_item_altitude_->setFont(alt_frame_text_font_);
+    alt_item_altitude_->setTransform(
+        QTransform::fromScale(alt_scale_x_, alt_scale_y_),
+        true);
+    alt_item_altitude_->moveBy(
+        alt_scale_x_ * (alt_original_altitude_ctr_.x() -
+                        alt_item_altitude_->boundingRect().width()  / 2.0f),
+        alt_scale_y_ * (alt_original_altitude_ctr_.y() -
+                        alt_item_altitude_->boundingRect().height() / 2.0f));
+    alt_scene_->addItem(alt_item_altitude_);
+
+    alt_item_pressure_ = new QGraphicsTextItem(QString("STD"));
+    alt_item_pressure_->setCacheMode(QGraphicsItem::NoCache);
+    alt_item_pressure_->setZValue(alt_frame_text_z_);
+    alt_item_pressure_->setDefaultTextColor(alt_press_text_color_);
+    alt_item_pressure_->setFont(alt_frame_text_font_);
+    alt_item_pressure_->setTransform(
+        QTransform::fromScale(alt_scale_x_, alt_scale_y_),
+        true);
+    alt_item_pressure_->moveBy(
+        alt_scale_x_ * (alt_original_pressure_ctr_.x() -
+                        alt_item_pressure_->boundingRect().width()  / 2.0f),
+        alt_scale_y_ * (alt_original_pressure_ctr_.y() -
+                        alt_item_pressure_->boundingRect().height() / 2.0f));
+    alt_scene_->addItem(alt_item_pressure_);
+
+    updateALT(scale_x, scale_y);
+}
+
+void FCSInstrucmentPFD::PanelALT::updateALT(float scale_x, float scale_y)
+{
+    alt_scale_x_ = scale_x;
+    alt_scale_y_ = scale_y;
+
+    updateALTAltitude();
+    updateALTPressure();
+
+    alt_scale1_delta_y_old_ = alt_scale1_delta_y_new_;
+    alt_scale2_delta_y_old_ = alt_scale2_delta_y_new_;
+    alt_ground_delta_y_old_ = alt_ground_delta_y_new_;
+    alt_labels_delta_y_old_ = alt_labels_delta_y_new_;
+}
+
+void FCSInstrucmentPFD::PanelALT::setALTAltitude(float altitude)
+{
+    alt_altitude_ = altitude;
+
+    if (alt_altitude_ < 0.0f) {
+        alt_altitude_ = 0.0f;
+    }
+    else if (alt_altitude_ > 99999.0f) {
+        alt_altitude_ = 99999.0f;
+    }
+    else {
+        ;
+    }
+}
+
+void FCSInstrucmentPFD::PanelALT::setALTPressure(float pressure,
+                                                 int   pressure_unit)
+{
+    alt_pressure_ = pressure;
+
+    if (alt_pressure_ < 0.0f) {
+        alt_pressure_ = 0.0f;
+    }
+    else if (alt_pressure_ > 2000.0f) {
+        alt_pressure_ = 2000.0f;
+    }
+    else {
+        ;
+    }
+
+    alt_pressure_unit_ = 0;
+
+    if (pressure_unit == 1) {
+        alt_pressure_unit_ = 1;
+    }
+    else if (pressure_unit == 2) {
+        alt_pressure_unit_ = 2;
+    }
+    else {
+        ;
+    }
+}
+
+void FCSInstrucmentPFD::PanelALT::resetALT(void)
+{
+    alt_item_back_     = 0;
+    alt_item_scale1_   = 0;
+    alt_item_scale2_   = 0;
+    alt_item_label1_   = 0;
+    alt_item_label2_   = 0;
+    alt_item_label3_   = 0;
+    alt_item_ground_   = 0;
+    alt_item_frame_    = 0;
+    alt_item_altitude_ = 0;
+    alt_item_pressure_ = 0;
+
+    alt_altitude_ = 0.0f;
+    alt_pressure_ = 0.0f;
+
+    alt_pressure_unit_ = 0;
+
+    alt_scale1_delta_y_new_ = 0.0f;
+    alt_scale1_delta_y_old_ = 0.0f;
+    alt_scale2_delta_y_new_ = 0.0f;
+    alt_scale2_delta_y_old_ = 0.0f;
+    alt_ground_delta_y_new_ = 0.0f;
+    alt_ground_delta_y_old_ = 0.0f;
+    alt_labels_delta_y_new_ = 0.0f;
+    alt_labels_delta_y_old_ = 0.0f;
+}
+
+void FCSInstrucmentPFD::PanelALT::updateALTAltitude(void)
+{
+    alt_item_altitude_->setPlainText(
+        QString("%1").arg(alt_altitude_, 5, 'f', 0, QChar('.')));
+
+    updateALTScale();
+    updateALTScaleLabels();
+}
+
+void FCSInstrucmentPFD::PanelALT::updateALTPressure(void)
+{
+    if (alt_pressure_unit_ == 0) {
+        alt_item_pressure_->setPlainText(QString("STD"));
+    }
+    else if (alt_pressure_unit_ == 1) {
+        alt_item_pressure_->setPlainText(
+            QString::number(alt_pressure_, 'f', 0) + QString(" MB"));
+    }
+    else if (alt_pressure_unit_ == 2) {
+        alt_item_pressure_->setPlainText(
+            QString::number(alt_pressure_, 'f', 2) + QString(" IN"));
+    }
+    else {
+        ;
+    }
+}
+
+void FCSInstrucmentPFD::PanelALT::updateALTScale(void)
+{
+    alt_scale1_delta_y_new_ = alt_scale_y_ * alt_original_pix_per_alt_ *
+        alt_altitude_;
+    alt_scale2_delta_y_new_ = alt_scale1_delta_y_new_;
+    alt_ground_delta_y_new_ = alt_scale1_delta_y_new_;
+
+    float scale_single_height = alt_scale_y_ * alt_original_scale_height_;
+    float scale_double_height = scale_single_height * 2.0f;
+
+    while (alt_scale1_delta_y_new_ >
+            scale_single_height + alt_scale_y_ * 74.5f) {
+        alt_scale1_delta_y_new_ = alt_scale1_delta_y_new_ -
+            scale_double_height;
+    }
+
+    while (alt_scale2_delta_y_new_ >
+            scale_double_height + alt_scale_y_ * 74.5f) {
+        alt_scale2_delta_y_new_ = alt_scale2_delta_y_new_ -
+            scale_double_height;
+    }
+
+    if (alt_ground_delta_y_new_ > alt_scale_y_ * 100.0f) {
+        alt_ground_delta_y_new_ = alt_scale_y_ * 100.0f;
+    }
+    else {
+        ;
+    }
+
+    alt_item_scale1_->moveBy(
+        0.0f,
+        alt_scale1_delta_y_new_ - alt_scale1_delta_y_old_);
+    alt_item_scale2_->moveBy(
+        0.0f,
+        alt_scale2_delta_y_new_ - alt_scale2_delta_y_old_);
+    alt_item_ground_->moveBy(
+        0.0f,
+        alt_ground_delta_y_new_ - alt_ground_delta_y_old_);
+}
+
+void FCSInstrucmentPFD::PanelALT::updateALTScaleLabels(void)
+{
+    int tmp = floor(alt_altitude_ + 0.5f);
+    int alt = tmp - (tmp % 500);
+
+    float alt1 = (float)alt + 500.0f;
+    float alt2 = (float)alt;
+    float alt3 = (float)alt - 500.0f;
+
+    alt_labels_delta_y_new_ = alt_scale_y_ * alt_original_pix_per_alt_ *
+        alt_altitude_;
+
+    while (alt_labels_delta_y_new_ > alt_scale_y_ * 37.5f) {
+        alt_labels_delta_y_new_ = alt_labels_delta_y_new_ - alt_scale_y_ *
+            75.0f;
+    }
+
+    if (alt_labels_delta_y_new_ < 0.0f && alt_altitude_ > alt2) {
+        alt1 += 500.0f;
+        alt2 += 500.0f;
+        alt3 += 500.0f;
+    }
+    else {
+        ;
+    }
+
+    alt_item_label1_->moveBy(
+        0.0f,
+        alt_labels_delta_y_new_ - alt_labels_delta_y_old_);
+    alt_item_label2_->moveBy(
+        0.0f,
+        alt_labels_delta_y_new_ - alt_labels_delta_y_old_);
+    alt_item_label3_->moveBy(
+        0.0f,
+        alt_labels_delta_y_new_ - alt_labels_delta_y_old_);
+
+    if (alt1 > 0.0f && alt1 <= 100000.0f) {
+        alt_item_label1_->setVisible(true);
+        alt_item_label1_->setPlainText(
+            QString("%1").arg(alt1, 5, 'f', 0, QChar(' ')));
+    }
+    else {
+        alt_item_label1_->setVisible(false);
+    }
+
+    if (alt2 > 0.0f && alt2 <= 100000.0f) {
+        alt_item_label2_->setVisible(true);
+        alt_item_label2_->setPlainText(
+            QString("%1").arg(alt2, 5, 'f', 0, QChar(' ')));
+    }
+    else {
+        alt_item_label2_->setVisible(false);
+    }
+
+    if (alt3 > 0.0f && alt3 <= 100000.0f) {
+        alt_item_label3_->setVisible(true);
+        alt_item_label3_->setPlainText(
+            QString("%1").arg(alt3, 5, 'f', 0, QChar(' ')));
+    }
+    else {
+        alt_item_label3_->setVisible(false);
+    }
+}
+
+/*****************************************************************************/
 
