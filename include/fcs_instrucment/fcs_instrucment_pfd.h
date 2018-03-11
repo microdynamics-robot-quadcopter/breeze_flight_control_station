@@ -45,6 +45,7 @@
 #include <QGraphicsView>
 #include <QGraphicsSvgItem>
 
+// Primary Flight Display Instrument Widget.
 class FCSInstrucmentPFD : public QGraphicsView
 {
     Q_OBJECT
@@ -60,66 +61,107 @@ class FCSInstrucmentPFD : public QGraphicsView
 public:
     explicit FCSInstrucmentPFD(QWidget *parent = 0);
     ~FCSInstrucmentPFD();
+    // Reinitates widget.
     void reinitPFD(void);
+    // Refreshes(redraws) widget.
     void updatePFD(void);
+    // Set roll angle.
+    // param1: roll angle [deg].
     inline void setPFDRollAngle(float roll_angle)
     {
         pfd_panel_adi_->setADIRollAngle(roll_angle);
     }
+    // Set pitch angle.
+    // param1: pitch angle [deg].
     inline void setPFDPitchAngle(float pitch_angle)
     {
         pfd_panel_adi_->setADIPitchAngle(pitch_angle);
     }
-    inline void setPFDPathMarker(float attack_angle, float sideslip_angle,
-                                 bool visible = true)
+    // Set flight path marker.
+    // param1: angle of attach [deg].
+    // param2: angle of sideslip [deg].
+    // param3: flight path marker visibility.
+    inline void setPFDFlightPathMarker(float attack_angle,
+                                       float sideslip_angle,
+                                       bool visible = true)
     {
         pfd_panel_adi_->setADIFlightPathMarker(attack_angle, sideslip_angle,
                                                visible);
     }
+    // Set slip or skid.
+    // param1: normalized slip or skid(range from -1.0 to 1.0).
     inline void setPFDSlipSkid(float slip_skid)
     {
         pfd_panel_adi_->setADISlipSkid(slip_skid);
     }
+    // Set turn rate.
+    // param1: normalized turn rate (range from -1.0 to 1.0), hash marks
+    // positions are set to be -0.5 and 0.5.
     inline void setPFDTurnRate(float turn_rate)
     {
         pfd_panel_adi_->setADITurnRate(turn_rate);
     }
+    // Set horizontal deviation bar position.
+    // param1: normalized horizontal deviation bar position (range from -1.0 to 1.0).
+    // param2: horizontal deviation bar visibility.
     inline void setPFDDeviateBarPositionH(float bar_pos, bool visible = true)
     {
         pfd_panel_adi_->setADIDeviateBarPositionH(bar_pos, visible);
     }
+    // Set vertical deviation bar position.
+    // param1: normalized vertical deviation bar position (range from -1.0 to 1.0).
+    // param2: vertical deviation bar visibility.
     inline void setPFDDeviateBarPositionV(float bar_pos, bool visible = true)
     {
         pfd_panel_adi_->setADIDeviateBarPositionV(bar_pos, visible);
     }
+    // Set horizontal deviation dot position.
+    // param1: normalized horizontal deviation dot position (range from -1.0 to 1.0).
+    // param2: horizontal deviation dot visibility.
     inline void setPFDDeviateDotPositionH(float dot_pos, bool visible = true)
     {
         pfd_panel_adi_->setADIDeviateDotPositionH(dot_pos, visible);
     }
+    // Set vertical deviation dot position.
+    // param1: normalized vertical deviation dot position (range from -1.0 to 1.0).
+    // param2: vertical deviation dot visibility.
     inline void setPFDDeviateDotPositionV(float dot_pos, book visible = true)
     {
         pfd_panel_adi_->setADIDeviateDotPositionV(dot_pos, visible);
     }
+    // Set Altitude.
+    // param1: altitude (dimensionless numeric value).
     inline void setPFDAltitude(float altitude)
     {
         pfd_panel_alt_->setALTAltitude(altitude);
     }
+    // Set pressure.
+    // param1: pressure (dimensionless numeric value).
+    // param2: pressure unit according to PressureUnit.
     inline void setPFDPressure(float pressure, PressureUnit unit)
     {
         pfd_panel_alt_->setALTPressure(pressure, unit);
     }
+    // Set airspeed.
+    // param1: airspeed (dimensionless numeric value).
     inline void setPFDAirspeed(float airspeed)
     {
         pfd_panel_asi_->setASIAirspeed(airspeed);
     }
+    // Set Mach number.
+    // param1: Mach number.
     inline void setPFDMachNumber(float mach_number)
     {
         pfd_panel_asi_->setASIMachNumber(mach_number);
     }
+    // Set heading.
+    // param1: heading [deg].
     inline void setPFDHeading(float heading)
     {
         pfd_panel_hsi_->setHSIHeading(heading);
     }
+    // Set climb rate.
+    // param1: climb rate (dimensionless numeric value).
     inline void setPFDClimbRate(float climb_rate)
     {
         pfd_panel_vsi_->setVSIClimbRate(climb_rate);
