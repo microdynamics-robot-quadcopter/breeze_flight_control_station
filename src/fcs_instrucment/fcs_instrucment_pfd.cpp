@@ -212,12 +212,12 @@ FCSInstrucmentPFD::PanelADI::PanelADI(QGraphicsScene *scene) :
     adi_dot_v_visible_(true),
     adi_ladd_delta_x_new_     (0.0f),
     adi_ladd_delta_x_old_     (0.0f),
+    adi_ladd_delta_y_new_     (0.0f),
+    adi_ladd_delta_y_old_     (0.0f),
     adi_ladd_back_delta_x_new_(0.0f),
     adi_ladd_back_delta_x_old_(0.0f),
     adi_ladd_back_delta_y_new_(0.0f),
     adi_ladd_back_delta_y_old_(0.0f),
-    adi_ladd_delta_y_new_     (0.0f),
-    adi_ladd_delta_y_old_     (0.0f),
     adi_slip_delta_x_new_     (0.0f),
     adi_slip_delta_x_old_     (0.0f),
     adi_slip_delta_y_new_     (0.0f),
@@ -274,6 +274,10 @@ FCSInstrucmentPFD::PanelADI::PanelADI(QGraphicsScene *scene) :
     adi_turn_z_  (70)
 {
     resetADI();
+}
+
+FCSInstrucmentPFD::PanelADI::~PanelADI()
+{
 }
 
 void FCSInstrucmentPFD::PanelADI::initADI(float scale_x, float scale_y)
@@ -929,6 +933,10 @@ FCSInstrucmentPFD::PanelALT::PanelALT(QGraphicsScene *scene) :
     resetALT();
 }
 
+FCSInstrucmentPFD::PanelALT::~PanelALT()
+{
+}
+
 void FCSInstrucmentPFD::PanelALT::initALT(float scale_x, float scale_y)
 {
     alt_scale_x_ = scale_x;
@@ -969,7 +977,7 @@ void FCSInstrucmentPFD::PanelALT::initALT(float scale_x, float scale_y)
                              alt_scale_y_ * alt_original_scale2_pos_.y());
     alt_scene_->addItem(alt_item_scale2_);
 
-    alt_item_label1_ = new QGraphicsTextItem(QString( "99999" ));
+    alt_item_label1_ = new QGraphicsTextItem(QString("99999"));
     alt_item_label1_->setCacheMode(QGraphicsItem::NoCache);
     alt_item_label1_->setZValue(alt_labels_z_);
     alt_item_label1_->setDefaultTextColor(alt_labels_color_);
@@ -984,7 +992,7 @@ void FCSInstrucmentPFD::PanelALT::initALT(float scale_x, float scale_y)
                         alt_item_label1_->boundingRect().height() / 2.0f));
     alt_scene_->addItem(alt_item_label1_);
 
-    alt_item_label2_ = new QGraphicsTextItem(QString( "99999" ));
+    alt_item_label2_ = new QGraphicsTextItem(QString("99999"));
     alt_item_label2_->setCacheMode(QGraphicsItem::NoCache);
     alt_item_label2_->setZValue(alt_labels_z_);
     alt_item_label2_->setDefaultTextColor(alt_labels_color_);
@@ -999,7 +1007,7 @@ void FCSInstrucmentPFD::PanelALT::initALT(float scale_x, float scale_y)
                         alt_item_label2_->boundingRect().height() / 2.0f));
     alt_scene_->addItem(alt_item_label2_);
 
-    alt_item_label3_ = new QGraphicsTextItem(QString( "99999" ));
+    alt_item_label3_ = new QGraphicsTextItem(QString("99999"));
     alt_item_label3_->setCacheMode(QGraphicsItem::NoCache);
     alt_item_label3_->setZValue(alt_labels_z_);
     alt_item_label3_->setDefaultTextColor(alt_labels_color_);
@@ -1287,3 +1295,755 @@ void FCSInstrucmentPFD::PanelALT::updateALTScaleLabels(void)
 
 /*****************************************************************************/
 
+FCSInstrucmentPFD::PanelASI::PanelASI(QGraphicsScene *scene) :
+    asi_scene_(scene),
+    asi_item_back_       (0),
+    asi_item_scale1_     (0),
+    asi_item_scale2_     (0),
+    asi_item_label1_     (0),
+    asi_item_label2_     (0),
+    asi_item_label3_     (0),
+    asi_item_label4_     (0),
+    asi_item_label5_     (0),
+    asi_item_label6_     (0),
+    asi_item_label7_     (0),
+    asi_item_frame_      (0),
+    asi_item_airspeed_   (0),
+    asi_item_mach_number_(0),
+    asi_frame_text_color_(255, 255, 255),
+    asi_labels_color_    (255, 255, 255),
+    asi_airspeed_   (0.0f),
+    asi_mach_number_(0.0f),
+    asi_scale1_delta_y_new_(0.0f),
+    asi_scale1_delta_y_old_(0.0f),
+    asi_scale2_delta_y_new_(0.0f),
+    asi_scale2_delta_y_old_(0.0f),
+    asi_labels_delta_y_new_(0.0f),
+    asi_labels_delta_y_old_(0.0f),
+    asi_scale_x_(1.0f),
+    asi_scale_y_(1.0f),
+    asi_original_pix_rer_spd_ (  1.5f),
+    asi_original_scale_height_(300.0f),
+    asi_original_labels_x_    ( 43.0f),
+    asi_original_label1_y_    ( 35.0f),
+    asi_original_label2_y_    ( 65.0f),
+    asi_original_label3_y_    ( 95.0f),
+    asi_original_label4_y_    (125.0f),
+    asi_original_label5_y_    (155.0f),
+    asi_original_label6_y_    (185.0f),
+    asi_original_label7_y_    (215.0f),
+    asi_original_back_pos_       (25.0f,   37.5f),
+    asi_original_scale1_pos_     (56.0f, -174.5f),
+    asi_original_scale2_pos_     (56.0f, -474.5f),
+    asi_original_frame_pos_      ( 0.0f,  110.0f),
+    asi_original_airspeed_ctr_   (40.0f,  126.0f),
+    asi_original_mach_number_ctr_(43.0f,  225.0f),
+    asi_back_z_      ( 70),
+    asi_scale_z_     ( 80),
+    asi_labels_z_    ( 90),
+    asi_frame_z_     (110),
+    asi_frame_text_z_(120)
+{
+    asi_frame_text_font_.setFamily("Courier");
+    asi_frame_text_font_.setPointSizeF(10.0f);
+    asi_frame_text_font_.setStretch(QFont::Condensed);
+    asi_frame_text_font_.setWeight(QFont::Bold);
+
+    asi_labels_font_.setFamily("Courier");
+    asi_labels_font_.setPointSizeF(8.0f);
+    asi_labels_font_.setStretch(QFont::Condensed);
+    asi_labels_font_.setWeight(QFont::Bold);
+
+    resetASI();
+}
+
+FCSInstrucmentPFD::PanelASI::~PanelASI()
+{
+}
+
+void FCSInstrucmentPFD::PanelASI::initASI(float scale_x, float scale_y)
+{
+    asi_scale_x_ = scale_x;
+    asi_scale_y_ = scale_y;
+
+    resetASI();
+
+    asi_item_back_ = new QGraphicsSvgItem(
+        ":/fcs_instrucment/res/fcs_instrucment_pfd/pfd_asi_back.svg");
+    asi_item_back_->setCacheMode(QGraphicsItem::NoCache);
+    asi_item_back_->setZValue(asi_back_z_);
+    asi_item_back_->setTransform(
+        QTransform::fromScale(asi_scale_x_, asi_scale_y_), true);
+    asi_item_back_->moveBy(asi_scale_x_ * asi_original_back_pos_.x(),
+                           asi_scale_y_ * asi_original_back_pos_.y());
+    asi_scene_->addItem(asi_item_back_);
+
+    asi_item_scale1_ = new QGraphicsSvgItem(
+        ":/fcs_instrucment/res/fcs_instrucment_pfd/pfd_asi_scale.svg");
+    asi_item_scale1_->setCacheMode(QGraphicsItem::NoCache);
+    asi_item_scale1_->setZValue(asi_scale_z_);
+    asi_item_scale1_->setTransform(
+        QTransform::fromScale(asi_scale_x_, asi_scale_y_), true);
+    asi_item_scale1_->moveBy(asi_scale_x_ * asi_original_scale1_pos_.x(),
+                             asi_scale_y_ * asi_original_scale1_pos_.y());
+    asi_scene_->addItem(asi_item_scale1_);
+
+    asi_item_scale2_ = new QGraphicsSvgItem(
+        ":/fcs_instrucment/res/fcs_instrucment_pfd/pfd_asi_scale.svg");
+    asi_item_scale2_->setCacheMode(QGraphicsItem::NoCache);
+    asi_item_scale2_->setZValue(asi_scale_z_);
+    asi_item_scale2_->setTransform(
+        QTransform::fromScale(asi_scale_x_, asi_scale_y_), true);
+    asi_item_scale1_->moveBy(asi_scale_x_ * asi_original_scale2_pos_.x(),
+                             asi_scale_y_ * asi_original_scale2_pos_.y());
+    asi_scene_->addItem(asi_item_scale2_);
+
+    asi_item_label1_ = new QGraphicsTextItem(QString("999"));
+    asi_item_label1_->setCacheMode(QGraphicsItem::NoCache);
+    asi_item_label1_->setZValue(asi_labels_z_);
+    asi_item_label1_->setDefaultTextColor(asi_labels_color_);
+    asi_item_label1_->setFont(asi_labels_font_);
+    asi_item_label1_->setTransform(
+        QTransform::fromScale(asi_scale_x_, asi_scale_y_),
+        true);
+    asi_item_label1_->moveBy(
+        asi_scale_x_ * (asi_original_labels_x_ -
+                        asi_item_label1_->boundingRect().width()  / 2.0f),
+        asi_scale_y_ * (asi_original_label1_y_ -
+                        asi_item_label1_->boundingRect().height() / 2.0f));
+    asi_scene_->addItem(asi_item_label1_);
+
+    asi_item_label2_ = new QGraphicsTextItem(QString("999"));
+    asi_item_label2_->setCacheMode(QGraphicsItem::NoCache);
+    asi_item_label2_->setZValue(asi_labels_z_);
+    asi_item_label2_->setDefaultTextColor(asi_labels_color_);
+    asi_item_label2_->setFont(asi_labels_font_);
+    asi_item_label2_->setTransform(
+        QTransform::fromScale(asi_scale_x_, asi_scale_y_),
+        true);
+    asi_item_label2_->moveBy(
+        asi_scale_x_ * (asi_original_labels_x_ -
+                        asi_item_label2_->boundingRect().width()  / 2.0f),
+        asi_scale_y_ * (asi_original_label2_y_ -
+                        asi_item_label2_->boundingRect().height() / 2.0f));
+    asi_scene_->addItem(asi_item_label2_);
+
+    asi_item_label3_ = new QGraphicsTextItem(QString("999"));
+    asi_item_label3_->setCacheMode(QGraphicsItem::NoCache);
+    asi_item_label3_->setZValue(asi_labels_z_);
+    asi_item_label3_->setDefaultTextColor(asi_labels_color_);
+    asi_item_label3_->setFont(asi_labels_font_);
+    asi_item_label3_->setTransform(
+        QTransform::fromScale(asi_scale_x_, asi_scale_y_),
+        true);
+    asi_item_label3_->moveBy(
+        asi_scale_x_ * (asi_original_labels_x_ -
+                        asi_item_label3_->boundingRect().width()  / 2.0f),
+        asi_scale_y_ * (asi_original_label3_y_ -
+                        asi_item_label3_->boundingRect().height() / 2.0f));
+    asi_scene_->addItem(asi_item_label3_);
+
+    asi_item_label4_ = new QGraphicsTextItem(QString("999"));
+    asi_item_label4_->setCacheMode(QGraphicsItem::NoCache);
+    asi_item_label4_->setZValue(asi_labels_z_);
+    asi_item_label4_->setDefaultTextColor(asi_labels_color_);
+    asi_item_label4_->setFont(asi_labels_font_);
+    asi_item_label4_->setTransform(
+        QTransform::fromScale(asi_scale_x_, asi_scale_y_),
+        true);
+    asi_item_label4_->moveBy(
+        asi_scale_x_ * (asi_original_labels_x_ -
+                        asi_item_label4_->boundingRect().width()  / 2.0f),
+        asi_scale_y_ * (asi_original_label4_y_ -
+                        asi_item_label4_->boundingRect().height() / 2.0f));
+    asi_scene_->addItem(asi_item_label4_);
+
+    asi_item_label5_ = new QGraphicsTextItem(QString("999"));
+    asi_item_label5_->setCacheMode(QGraphicsItem::NoCache);
+    asi_item_label5_->setZValue(asi_labels_z_);
+    asi_item_label5_->setDefaultTextColor(asi_labels_color_);
+    asi_item_label5_->setFont(asi_labels_font_);
+    asi_item_label5_->setTransform(
+        QTransform::fromScale(asi_scale_x_, asi_scale_y_),
+        true);
+    asi_item_label5_->moveBy(
+        asi_scale_x_ * (asi_original_labels_x_ -
+                        asi_item_label5_->boundingRect().width()  / 2.0f),
+        asi_scale_y_ * (asi_original_label5_y_ -
+                        asi_item_label5_->boundingRect().height() / 2.0f));
+    asi_scene_->addItem(asi_item_label5_);
+
+    asi_item_label6_ = new QGraphicsTextItem(QString("999"));
+    asi_item_label6_->setCacheMode(QGraphicsItem::NoCache);
+    asi_item_label6_->setZValue(asi_labels_z_);
+    asi_item_label6_->setDefaultTextColor(asi_labels_color_);
+    asi_item_label6_->setFont(asi_labels_font_);
+    asi_item_label6_->setTransform(
+        QTransform::fromScale(asi_scale_x_, asi_scale_y_),
+        true);
+    asi_item_label6_->moveBy(
+        asi_scale_x_ * (asi_original_labels_x_ -
+                        asi_item_label6_->boundingRect().width()  / 2.0f),
+        asi_scale_y_ * (asi_original_label6_y_ -
+                        asi_item_label6_->boundingRect().height() / 2.0f));
+    asi_scene_->addItem(asi_item_label6_);
+
+    asi_item_label7_ = new QGraphicsTextItem(QString("999"));
+    asi_item_label7_->setCacheMode(QGraphicsItem::NoCache);
+    asi_item_label7_->setZValue(asi_labels_z_);
+    asi_item_label7_->setDefaultTextColor(asi_labels_color_);
+    asi_item_label7_->setFont(asi_labels_font_);
+    asi_item_label7_->setTransform(
+        QTransform::fromScale(asi_scale_x_, asi_scale_y_),
+        true);
+    asi_item_label7_->moveBy(
+        asi_scale_x_ * (asi_original_labels_x_ -
+                        asi_item_label7_->boundingRect().width()  / 2.0f),
+        asi_scale_y_ * (asi_original_label7_y_ -
+                        asi_item_label7_->boundingRect().height() / 2.0f));
+    asi_scene_->addItem(asi_item_label7_);
+
+    asi_item_frame_ = new QGraphicsSvgItem(
+        ":/fcs_instrucment/res/fcs_instrucment_pfd/pfd_asi_frame.svg");
+    asi_item_frame_->setCacheMode(QGraphicsItem::NoCache);
+    asi_item_frame_->setZValue(asi_frame_z_);
+    asi_item_frame_->setTransform(
+        QTransform::fromScale(asi_scale_x_, asi_scale_y_),
+        true);
+    asi_item_frame_->moveBy(asi_scale_x_ * asi_original_frame_pos_.x(),
+                            asi_scale_y_ * asi_original_frame_pos_.y());
+    asi_scene_->addItem(asi_item_frame_);
+
+    asi_item_airspeed_ = new QGraphicsTextItem(QString("000"));
+    asi_item_airspeed_->setCacheMode(QGraphicsItem::NoCache);
+    asi_item_airspeed_->setZValue(asi_frame_text_z_);
+    asi_item_airspeed_->setTextInteractionFlags(Qt::NoTextInteraction);
+    asi_item_airspeed_->setDefaultTextColor(asi_frame_text_color_);
+    asi_item_airspeed_->setFont(asi_frame_text_font_);
+    asi_item_airspeed_->setTransform(
+        QTransform::fromScale(asi_scale_x_, asi_scale_y_),
+        true);
+    asi_item_airspeed_->moveBy(
+        asi_scale_x_ * (asi_original_airspeed_ctr_.x() -
+                        asi_item_airspeed_->boundingRect().width()  / 2.0f),
+        asi_scale_y_ * (asi_original_airspeed_ctr_.y() -
+                        asi_item_airspeed_->boundingRect().height() / 2.0f));
+    asi_scene_->addItem(asi_item_airspeed_);
+
+    asi_item_mach_number_ = new QGraphicsTextItem(QString("000"));
+    asi_item_mach_number_->setCacheMode(QGraphicsItem::NoCache);
+    asi_item_mach_number_->setZValue(asi_frame_text_z_);
+    asi_item_mach_number_->setTextInteractionFlags(Qt::NoTextInteraction);
+    asi_item_mach_number_->setDefaultTextColor(asi_frame_text_color_);
+    asi_item_mach_number_->setFont(asi_frame_text_font_);
+    asi_item_mach_number_->setTransform(
+        QTransform::fromScale(asi_scale_x_, asi_scale_y_),
+        true);
+    asi_item_mach_number_->moveBy(
+        asi_scale_x_ * (asi_original_mach_number_ctr_.x() -
+                        asi_item_mach_number_->boundingRect().width()  / 2.0f),
+        asi_scale_y_ * (asi_original_mach_number_ctr_.y() -
+                        asi_item_mach_number_->boundingRect().height() / 2.0f));
+    asi_scene_->addItem(asi_item_mach_number_);
+
+    updateASI(scale_x, scale_y);
+}
+
+void FCSInstrucmentPFD::PanelASI::updateASI(float scale_x, float scale_y)
+{
+    asi_scale_x_ = scale_x;
+    asi_scale_y_ = scale_y;
+
+    updateASIAirspeed();
+
+    asi_scale1_delta_y_old_ = asi_scale1_delta_y_new_;
+    asi_scale2_delta_y_old_ = asi_scale2_delta_y_new_;
+    asi_labels_delta_y_old_ = asi_labels_delta_y_new_;
+}
+
+void FCSInstrucmentPFD::PanelASI::setASIAirspeed(float airspeed)
+{
+    asi_airspeed_ = airspeed;
+
+    if (asi_airspeed_ < 0.0f) {
+        asi_airspeed_ = 0.0f;
+    }
+    else if (asi_airspeed_ > 9999.0f) {
+        asi_airspeed_ = 9999.0f;
+    }
+    else {
+        ;
+    }
+}
+
+void FCSInstrucmentPFD::PanelASI::setASIMachNumber(float mach_number)
+{
+    asi_mach_number_ = mach_number;
+
+    if (asi_mach_number_ < 0.0f) {
+        asi_mach_number_ = 0.0f;
+    }
+    else if (asi_mach_number_ > 99.9f) {
+        asi_mach_number_ = 99.9f;
+    }
+    else {
+        ;
+    }
+}
+
+void FCSInstrucmentPFD::PanelASI::resetASI(void)
+{
+    asi_item_back_        = 0;
+    asi_item_scale1_      = 0;
+    asi_item_scale2_      = 0;
+    asi_item_label1_      = 0;
+    asi_item_label2_      = 0;
+    asi_item_label3_      = 0;
+    asi_item_label4_      = 0;
+    asi_item_label5_      = 0;
+    asi_item_label6_      = 0;
+    asi_item_label7_      = 0;
+    asi_item_frame_       = 0;
+    asi_item_airspeed_    = 0;
+    asi_item_mach_number_ = 0;
+
+    asi_airspeed_    = 0.0f;
+    asi_mach_number_ = 0.0f;
+
+    asi_scale1_delta_y_new_ = 0.0f;
+    asi_scale1_delta_y_old_ = 0.0f;
+    asi_scale2_delta_y_new_ = 0.0f;
+    asi_scale2_delta_y_old_ = 0.0f;
+    asi_labels_delta_y_new_ = 0.0f;
+    asi_labels_delta_y_old_ = 0.0f;
+}
+
+void FCSInstrucmentPFD::PanelASI::updateASIAirspeed(void)
+{
+    asi_item_airspeed_->setPlainText(
+        QString("%1").arg(asi_airspeed_, 3, 'f', 0, QChar('0')));
+
+    if (asi_mach_number_ < 1.0f) {
+        float mach_number = 1000.0f * asi_mach_number_;
+        asi_item_mach_number_->setPlainText(
+            QString(".%1").arg(mach_number, 3, 'f', 0, QChar('0')));
+    }
+    else {
+        if (asi_mach_number_ < 10.0f) {
+            asi_item_mach_number_->setPlainText(
+                QString::number(asi_mach_number_, 'f', 2));
+        }
+        else {
+            asi_item_mach_number_->setPlainText(
+                QString::number(asi_mach_number_, 'f', 1));
+        }
+    }
+
+    updateASIScale();
+    updateASIScaleLabels();
+}
+
+void FCSInstrucmentPFD::PanelASI::updateASIScale(void)
+{
+    asi_scale1_delta_y_new_ = asi_scale_y_ * asi_original_pix_rer_spd_ *
+        asi_airspeed_;
+    asi_scale2_delta_y_new_ = asi_scale1_delta_y_new_;
+
+    float scale_single_height = asi_scale_y_ * asi_original_scale_height_;
+    float scale_double_height = scale_single_height * 2.0f;
+
+    while (asi_scale1_delta_y_new_ >
+            scale_single_height + asi_scale_y_ * 74.5f) {
+        asi_scale1_delta_y_new_ = asi_scale1_delta_y_new_ -
+            scale_double_height;
+    }
+
+    while (asi_scale2_delta_y_new_ >
+            scale_double_height + asi_scale_y_ * 74.5f) {
+        asi_scale2_delta_y_new_ = asi_scale2_delta_y_new_ -
+            scale_double_height;
+    }
+
+    asi_item_scale1_->moveBy(
+        0.0f,
+        asi_scale1_delta_y_new_ - asi_scale1_delta_y_old_);
+    asi_item_scale2_->moveBy(
+        0.0f,
+        asi_scale2_delta_y_new_ - asi_scale2_delta_y_old_);
+}
+
+void FCSInstrucmentPFD::PanelASI::updateASIScaleLabels(void)
+{
+    asi_labels_delta_y_new_ = asi_scale_y_ * asi_original_pix_rer_spd_ *
+        asi_airspeed_;
+
+    int tmp = floor(asi_airspeed_ + 0.5f);
+    int spd = tmp - (tmp % 20);
+
+    float spd1 = (float)spd + 60.0f;
+    float spd2 = (float)spd + 40.0f;
+    float spd3 = (float)spd + 20.0f;
+    float spd4 = (float)spd;
+    float spd5 = (float)spd - 20.0f;
+    float spd6 = (float)spd - 40.0f;
+    float spd7 = (float)spd - 60.0f;
+
+    while (asi_labels_delta_y_new_ > asi_scale_y_ * 15.0f) {
+        asi_labels_delta_y_new_ = asi_labels_delta_y_new_ - asi_scale_y_ *
+            30.0f;
+    }
+
+    if (asi_labels_delta_y_new_ < 0.0 && asi_airspeed_ > spd4) {
+        spd1 += 20.0f;
+        spd2 += 20.0f;
+        spd3 += 20.0f;
+        spd4 += 20.0f;
+        spd5 += 20.0f;
+        spd6 += 20.0f;
+        spd7 += 20.0f;
+    }
+    else {
+        ;
+    }
+
+    asi_item_label1_->moveBy(
+        0.0f,
+        asi_labels_delta_y_new_ - asi_labels_delta_y_old_);
+    asi_item_label2_->moveBy(
+        0.0f,
+        asi_labels_delta_y_new_ - asi_labels_delta_y_old_);
+    asi_item_label3_->moveBy(
+        0.0f,
+        asi_labels_delta_y_new_ - asi_labels_delta_y_old_);
+    asi_item_label4_->moveBy(
+        0.0f,
+        asi_labels_delta_y_new_ - asi_labels_delta_y_old_);
+    asi_item_label5_->moveBy(
+        0.0f,
+        asi_labels_delta_y_new_ - asi_labels_delta_y_old_);
+    asi_item_label6_->moveBy(
+        0.0f,
+        asi_labels_delta_y_new_ - asi_labels_delta_y_old_);
+    asi_item_label7_->moveBy(
+        0.0f,
+        asi_labels_delta_y_new_ - asi_labels_delta_y_old_);
+
+    if (spd1 >= 0.0f && spd1 <= 10000.0f) {
+        asi_item_label1_->setVisible(true);
+        asi_item_label1_->setPlainText(
+            QString("%1").arg(spd1, 3, 'f', 0, QChar('.')));
+    }
+    else {
+        asi_item_label1_->setVisible(false);
+    }
+
+    if (spd2 >= 0.0f && spd2 <= 10000.0f) {
+        asi_item_label2_->setVisible(true);
+        asi_item_label2_->setPlainText(
+            QString("%1").arg(spd2, 3, 'f', 0, QChar('.')));
+    }
+    else {
+        asi_item_label2_->setVisible(false);
+    }
+
+    if (spd3 >= 0.0f && spd3 <= 10000.0f) {
+        asi_item_label3_->setVisible(true);
+        asi_item_label3_->setPlainText(
+            QString("%1").arg(spd3, 3, 'f', 0, QChar('.')));
+    }
+    else {
+        asi_item_label3_->setVisible(false);
+    }
+
+    if (spd4 >= 0.0f && spd4 <= 10000.0f) {
+        asi_item_label4_->setVisible(true);
+        asi_item_label4_->setPlainText(
+            QString("%1").arg(spd4, 3, 'f', 0, QChar('.')));
+    }
+    else {
+        asi_item_label4_->setVisible(false);
+    }
+
+    if (spd5 >= 0.0f && spd5 <= 10000.0f) {
+        asi_item_label5_->setVisible(true);
+        asi_item_label5_->setPlainText(
+            QString("%1").arg(spd5, 3, 'f', 0, QChar('.')));
+    }
+    else {
+        asi_item_label5_->setVisible(false);
+    }
+
+    if (spd6 >= 0.0f && spd6 <= 10000.0f) {
+        asi_item_label6_->setVisible(true);
+        asi_item_label6_->setPlainText(
+            QString("%1").arg(spd6, 3, 'f', 0, QChar('.')));
+    }
+    else {
+        asi_item_label6_->setVisible(false);
+    }
+
+    if (spd7 >= 0.0f && spd7 <= 10000.0f) {
+        asi_item_label7_->setVisible(true);
+        asi_item_label7_->setPlainText(
+            QString("%1").arg(spd7, 3, 'f', 0, QChar('.')));
+    }
+    else {
+        asi_item_label7_->setVisible(false);
+    }
+}
+
+/*****************************************************************************/
+
+FCSInstrucmentPFD::PanelHSI::PanelHSI(QGraphicsScene *scene) :
+    hsi_scene_(scene),
+    hsi_item_back_      (0),
+    hsi_item_face_      (0),
+    hsi_item_marks_     (0),
+    hsi_item_frame_text_(0),
+    hsi_frame_text_color_(255, 255, 255),
+    hsi_heading_(0.0f),
+    hsi_scale_x_(1.0f),
+    hsi_scale_y_(1.0f),
+    hsi_original_hsi_ctr_       (150.0f, 345.0f),
+    hsi_original_back_pos_      ( 60.0f, 240.0f),
+    hsi_original_face_pos_      ( 45.0f, 240.0f),
+    hsi_original_marks_pos_     (134.0f, 219.0f),
+    hsi_original_frame_text_ctr_(149.5f, 227.5f),
+    hsi_back_z_      ( 80),
+    hsi_face_z_      ( 90),
+    hsi_marks_z_     (110),
+    hsi_frame_text_z_(120)
+{
+    hsi_frame_text_font_.setFamily("Courier");
+    hsi_frame_text_font_.setPointSizeF(10.0f);
+    hsi_frame_text_font_.setStretch(QFont::Condensed);
+    hsi_frame_text_font_.setWeight(QFont::Bold);
+
+    resetHSI();
+}
+
+FCSInstrucmentPFD::PanelHSI::~PanelHSI()
+{
+}
+
+void FCSInstrucmentPFD::PanelHSI::initHSI(float scale_x, float scale_y)
+{
+    hsi_scale_x_ = scale_x;
+    hsi_scale_y_ = scale_y;
+
+    resetHSI();
+
+    hsi_item_back_ = new QGraphicsSvgItem(
+        ":/fcs_instrucment/res/fcs_instrucment_pfd/pfd_hsi_back.svg");
+    hsi_item_back_->setCacheMode(QGraphicsItem::NoCache);
+    hsi_item_back_->setZValue(hsi_back_z_);
+    hsi_item_back_->setTransform(
+        QTransform::fromScale(hsi_scale_x_, hsi_scale_y_), true);
+    hsi_item_back_->moveBy(hsi_scale_x_ * hsi_original_back_pos_.x(),
+                           hsi_scale_y_ * hsi_original_back_pos_.y());
+    hsi_scene_->addItem(hsi_item_back_);
+
+    hsi_item_face_ = new QGraphicsSvgItem(
+        ":/fcs_instrucment/res/fcs_instrucment_pfd/pfd_hsi_face.svg");
+    hsi_item_face_->setCacheMode(QGraphicsItem::NoCache);
+    hsi_item_face_->setZValue(hsi_face_z_);
+    hsi_item_face_->setTransform(
+        QTransform::fromScale(hsi_scale_x_, hsi_scale_y_), true);
+    hsi_item_face_->setTransformOriginPoint(
+        hsi_original_hsi_ctr_ - hsi_original_face_pos_);
+    hsi_item_face_->moveBy(hsi_scale_x_ * hsi_original_face_pos_.x(),
+                           hsi_scale_y_ * hsi_original_face_pos_.y());
+    hsi_scene_->addItem(hsi_item_face_);
+
+    hsi_item_marks_ = new QGraphicsSvgItem(
+        ":/fcs_instrucment/res/fcs_instrucment_pfd/pfd_hsi_marks.svg");
+    hsi_item_marks_->setCacheMode(QGraphicsItem::NoCache);
+    hsi_item_marks_->setZValue(hsi_marks_z_);
+    hsi_item_marks_->setTransform(
+        QTransform::fromScale(hsi_scale_x_, hsi_scale_y_), true);
+    hsi_item_marks_->moveBy(hsi_scale_x_ * hsi_original_marks_pos_.x(),
+                            hsi_scale_y_ * hsi_original_marks_pos_.y());
+    hsi_scene_->addItem(hsi_item_marks_);
+
+    hsi_item_frame_text_ = new QGraphicsTextItem(QString("000"));
+    hsi_item_frame_text_->setCacheMode(QGraphicsItem::NoCache);
+    hsi_item_frame_text_->setZValue(hsi_frame_text_z_);
+    hsi_item_frame_text_->setTextInteractionFlags(Qt::NoTextInteraction);
+    hsi_item_frame_text_->setDefaultTextColor(hsi_frame_text_color_);
+    hsi_item_frame_text_->setFont(hsi_frame_text_font_);
+    hsi_item_frame_text_->setTransform(
+        QTransform::fromScale(hsi_scale_x_, hsi_scale_y_), true);
+    hsi_item_frame_text_->moveBy(
+        hsi_scale_x_ * (hsi_original_frame_text_ctr_.x() -
+                        hsi_item_frame_text_->boundingRect().width()  / 2.0f),
+        hsi_scale_y_ * (hsi_original_frame_text_ctr_.y() -
+                        hsi_item_frame_text_->boundingRect().height() / 2.0f));
+    hsi_scene_->addItem(hsi_item_frame_text_);
+
+    updateHSI(scale_x, scale_y);
+}
+
+void FCSInstrucmentPFD::PanelHSI::updateHSI(float scale_x, float scale_y)
+{
+    hsi_scale_x_ = scale_x;
+    hsi_scale_y_ = scale_y;
+
+    updateHSIHeading();
+}
+
+void FCSInstrucmentPFD::PanelHSI::setHSIHeading(float heading)
+{
+    hsi_heading_ = heading;
+
+    while (hsi_heading_ < 0.0f) {
+        hsi_heading_ += 360.0f;
+    }
+
+    while (hsi_heading_ > 360.0f) {
+        hsi_heading_ -= 360.0f;
+    }
+}
+
+void FCSInstrucmentPFD::PanelHSI::resetHSI(void)
+{
+    hsi_item_back_       = 0;
+    hsi_item_face_       = 0;
+    hsi_item_marks_      = 0;
+    hsi_item_frame_text_ = 0;
+
+    hsi_heading_ = 0.0f;
+}
+
+void FCSInstrucmentPFD::PanelHSI::updateHSIHeading(void)
+{
+    hsi_item_face_->setRotation(-hsi_heading_);
+
+    float heading = floor(hsi_heading_ + 0.5f);
+
+    hsi_item_frame_text_->setPlainText(
+        QString("%1").arg(heading, 3, 'f', 0, QChar('0')));
+}
+
+/*****************************************************************************/
+
+FCSInstrucmentPFD::PanelVSI::PanelVSI(QGraphicsScene *scene) :
+    vsi_scene_(scene),
+    vsi_item_scale_(0),
+    vsi_item_arrow_(0),
+    vsi_climb_rate_(0.0f),
+    vsi_arrow_delta_y_new_(0.0f),
+    vsi_arrow_delta_y_old_(0.0f),
+    vsi_scale_x_(1.0f),
+    vsi_scale_y_(1.0f),
+    vsi_original_marke_height_(75.0f),
+    vsi_original_pix_per_spd1_(30.0f),
+    vsi_original_pix_per_spd2_(20.0f),
+    vsi_original_pix_per_spd4_( 5.0f),
+    vsi_original_scale_pos_(275.0f,  50.0f),
+    vsi_original_arrow_pos_(284.0f, 124.0f),
+    vsi_scale_z_(70),
+    vsi_arrow_z_(80)
+{
+    resetVSI();
+}
+
+FCSInstrucmentPFD::PanelVSI::~PanelVSI()
+{
+}
+
+void FCSInstrucmentPFD::PanelVSI::initVSI(float scale_x, float scale_y)
+{
+    vsi_scale_x_ = scale_x;
+    vsi_scale_y_ = scale_y;
+
+    resetVSI();
+
+    vsi_item_scale_ = new QGraphicsSvgItem(
+        ":/fcs_instrucment/res/fcs_instrucment_pfd/pfd_vsi_scale.svg");
+    vsi_item_scale_->setCacheMode(QGraphicsItem::NoCache);
+    vsi_item_scale_->setZValue(vsi_scale_z_);
+    vsi_item_scale_->setTransform(
+        QTransform::fromScale(vsi_scale_x_, vsi_scale_y_), true);
+    vsi_item_scale_->moveBy(vsi_scale_x_ * vsi_original_scale_pos_.x(),
+                            vsi_scale_y_ * vsi_original_scale_pos_.y());
+    vsi_scene_->addItem(vsi_item_scale_);
+
+    vsi_item_arrow_ = new QGraphicsSvgItem(
+        ":/fcs_instrucment/res/fcs_instrucment_pfd/pfd_vsi_arrow.svg");
+    vsi_item_arrow_->setCacheMode(QGraphicsItem::NoCache);
+    vsi_item_arrow_->setZValue(vsi_arrow_z_);
+    vsi_item_arrow_->setTransform(
+        QTransform::fromScale(vsi_scale_x_, vsi_scale_y_), true);
+    vsi_item_arrow_->moveBy(vsi_scale_x_ * vsi_original_arrow_pos_.x(),
+                            vsi_scale_y_ * vsi_original_arrow_pos_.y());
+    vsi_scene_->addItem(vsi_item_arrow_);
+
+    updateVSI(scale_x, scale_y);
+}
+
+void FCSInstrucmentPFD::PanelVSI::updateVSI(float scale_x, float scale_y)
+{
+    vsi_scale_x_ = scale_x;
+    vsi_scale_y_ = scale_y;
+
+    updateVSIClimbRate();
+
+    vsi_arrow_delta_y_old_ = vsi_arrow_delta_y_new_;
+}
+
+void FCSInstrucmentPFD::PanelVSI::setVSIClimbRate(float climb_rate)
+{
+    vsi_climb_rate_ = climb_rate;
+
+    if (vsi_climb_rate_ > 6.3f) {
+        vsi_climb_rate_ = 6.3f;
+    }
+    else if (vsi_climb_rate_ < -6.3f) {
+        vsi_climb_rate_ = -6.3f;
+    }
+    else {
+        ;
+    }
+}
+
+void FCSInstrucmentPFD::PanelVSI::resetVSI(void)
+{
+    vsi_item_scale_ = 0;
+    vsi_item_arrow_ = 0;
+
+    vsi_climb_rate_ = 0.0f;
+
+    vsi_arrow_delta_y_new_ = 0.0f;
+    vsi_arrow_delta_y_old_ = 0.0f;
+}
+
+void FCSInstrucmentPFD::PanelVSI::updateVSIClimbRate(void)
+{
+    float climb_rate_abs = fabs(vsi_climb_rate_);
+    float arrow_delta_y  = 0.0f;
+
+    if (climb_rate_abs <= 1.0f) {
+        arrow_delta_y = vsi_original_pix_per_spd1_ * climb_rate_abs;
+    }
+    else if (climb_rate_abs <= 2.0f) {
+        arrow_delta_y = vsi_original_pix_per_spd1_ +
+            vsi_original_pix_per_spd2_ * (climb_rate_abs - 1.0f);
+    }
+    else {
+        arrow_delta_y = vsi_original_pix_per_spd1_ +
+            vsi_original_pix_per_spd2_ +
+            vsi_original_pix_per_spd4_ * (climb_rate_abs - 2.0f);
+    }
+
+    if (vsi_climb_rate_ < 0.0f) {
+        arrow_delta_y *= -1.0f;
+    }
+    else {
+        ;
+    }
+
+    vsi_arrow_delta_y_new_ = vsi_scale_y_ * arrow_delta_y;
+    vsi_item_arrow_->moveBy(
+        0.0f,
+        vsi_arrow_delta_y_old_ - vsi_arrow_delta_y_new_);
+}

@@ -123,7 +123,7 @@ public:
     // Set vertical deviation dot position.
     // param1: normalized vertical deviation dot position (range from -1.0 to 1.0).
     // param2: vertical deviation dot visibility.
-    inline void setPFDDeviateDotPositionV(float dot_pos, book visible = true)
+    inline void setPFDDeviateDotPositionV(float dot_pos, bool visible = true)
     {
         pfd_panel_adi_->setADIDeviateDotPositionV(dot_pos, visible);
     }
@@ -285,7 +285,7 @@ private:
         QPointF adi_original_dot_v_pos_;
         QPointF adi_original_scale_h_pos_;
         QPointF adi_original_scale_v_pos_;
-        // ADI z axis variables.
+        // ADI z variables.
         const int adi_back_z_;
         const int adi_ladd_z_;
         const int adi_roll_z_;
@@ -364,7 +364,7 @@ private:
         QPointF alt_original_frame_pos_;
         QPointF alt_original_altitude_ctr_;
         QPointF alt_original_pressure_ctr_;
-        // ALT z axis variables.
+        // ALT z variables.
         const int alt_back_z_;
         const int alt_scale_z_;
         const int alt_labels_z_;
@@ -378,7 +378,7 @@ private:
     public:
         PanelASI(QGraphicsScene *scene);
         ~PanelASI();
-        void intASI(float scale_x, float scale_y);
+        void initASI(float scale_x, float scale_y);
         void updateASI(float scale_x, float scale_y);
         void setASIAirspeed(float airspeed);
         void setASIMachNumber(float mach_number);
@@ -439,7 +439,7 @@ private:
         QPointF asi_original_frame_pos_;
         QPointF asi_original_airspeed_ctr_;
         QPointF asi_original_mach_number_ctr_;
-        // ASI z axis variables.
+        // ASI z variables.
         const int asi_back_z_;
         const int asi_scale_z_;
         const int asi_labels_z_;
@@ -453,11 +453,11 @@ private:
         PanelHSI(QGraphicsScene *scene);
         ~PanelHSI();
         void initHSI(float scale_x, float scale_y);
-        void updateHSI(float scale_x, flaot scale_y);
+        void updateHSI(float scale_x, float scale_y);
         void setHSIHeading(float heading);
     private:
         void resetHSI(void);
-        void updateHeading(void);
+        void updateHSIHeading(void);
     private:
         QGraphicsScene    *hsi_scene_;
         QGraphicsSvgItem  *hsi_item_back_;
@@ -474,16 +474,16 @@ private:
         float hsi_scale_x_;
         float hsi_scale_y_;
         // HSI original variables.
-        QPointF m_original_hsi_ctr_;
-        QPointF m_original_back_pos_;
-        QPointF m_original_face_pos_;
-        QPointF m_original_marks_pos_;
-        QPointF m_original_frame_text_ctr_;
-        // HSI z axis variables.
-        const int m_back_z_;
-        const int m_face_z_;
-        const int m_marks_z_;
-        const int m_frame_text_z_;
+        QPointF hsi_original_hsi_ctr_;
+        QPointF hsi_original_back_pos_;
+        QPointF hsi_original_face_pos_;
+        QPointF hsi_original_marks_pos_;
+        QPointF hsi_original_frame_text_ctr_;
+        // HSI z variables.
+        const int hsi_back_z_;
+        const int hsi_face_z_;
+        const int hsi_marks_z_;
+        const int hsi_frame_text_z_;
     };
     // Vertical Speed Indicator(VSI) Panel.
     class PanelVSI
@@ -496,7 +496,7 @@ private:
         void setVSIClimbRate(float climb_rate);
     private:
         void resetVSI(void);
-        void updateVSI(void);
+        void updateVSIClimbRate(void);
     private:
         QGraphicsScene    *vsi_scene_;
         QGraphicsSvgItem  *vsi_item_scale_;
@@ -517,7 +517,7 @@ private:
         // VSI original QPointF variables.
         QPointF vsi_original_scale_pos_;
         QPointF vsi_original_arrow_pos_;
-        // VSI z axis variables.
+        // VSI z variables.
         const int vsi_scale_z_;
         const int vsi_arrow_z_;
     };
@@ -541,7 +541,7 @@ private:
     // PFD original variables.
     const int pfd_original_height_;
     const int pfd_original_width_;
-    // PFD z axis variables.
+    // PFD z variables.
     const int pfd_back_z_;
     const int pfd_mask_z_;
 };
