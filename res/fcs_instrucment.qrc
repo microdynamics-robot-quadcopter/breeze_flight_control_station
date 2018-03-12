@@ -1,0 +1,33 @@
+<RCC>
+    <qresource prefix="/fcs_instrucment">
+        <file>res/fcs_instrucment_pfd/pfd.svg</file>
+        <file>res/fcs_instrucment_pfd/pfd_adi_back.svg</file>
+        <file>res/fcs_instrucment_pfd/pfd_adi_bar_h.svg</file>
+        <file>res/fcs_instrucment_pfd/pfd_adi_bar_v.svg</file>
+        <file>res/fcs_instrucment_pfd/pfd_adi_dot_h.svg</file>
+        <file>res/fcs_instrucment_pfd/pfd_adi_dot_v.svg</file>
+        <file>res/fcs_instrucment_pfd/pfd_adi_ladd.svg</file>
+        <file>res/fcs_instrucment_pfd/pfd_adi_mark.svg</file>
+        <file>res/fcs_instrucment_pfd/pfd_adi_mask.svg</file>
+        <file>res/fcs_instrucment_pfd/pfd_adi_path.svg</file>
+        <file>res/fcs_instrucment_pfd/pfd_adi_roll.svg</file>
+        <file>res/fcs_instrucment_pfd/pfd_adi_scale_h.svg</file>
+        <file>res/fcs_instrucment_pfd/pfd_adi_scale_v.svg</file>
+        <file>res/fcs_instrucment_pfd/pfd_adi_slip.svg</file>
+        <file>res/fcs_instrucment_pfd/pfd_adi_turn.svg</file>
+        <file>res/fcs_instrucment_pfd/pfd_alt_back.svg</file>
+        <file>res/fcs_instrucment_pfd/pfd_alt_frame.svg</file>
+        <file>res/fcs_instrucment_pfd/pfd_alt_ground.svg</file>
+        <file>res/fcs_instrucment_pfd/pfd_alt_scale.svg</file>
+        <file>res/fcs_instrucment_pfd/pfd_asi_back.svg</file>
+        <file>res/fcs_instrucment_pfd/pfd_asi_frame.svg</file>
+        <file>res/fcs_instrucment_pfd/pfd_asi_scale.svg</file>
+        <file>res/fcs_instrucment_pfd/pfd_back.svg</file>
+        <file>res/fcs_instrucment_pfd/pfd_hsi_back.svg</file>
+        <file>res/fcs_instrucment_pfd/pfd_hsi_face.svg</file>
+        <file>res/fcs_instrucment_pfd/pfd_hsi_marks.svg</file>
+        <file>res/fcs_instrucment_pfd/pfd_mask.svg</file>
+        <file>res/fcs_instrucment_pfd/pfd_vsi_arrow.svg</file>
+        <file>res/fcs_instrucment_pfd/pfd_vsi_scale.svg</file>
+    </qresource>
+</RCC>

@@ -18,6 +18,7 @@ INCLUDEPATH += \
     include \
     include/fcs_indicator \
     include/fcs_instrucment \
+    include/fcs_instrucment_widget \
     lib/communication_link/include \
     lib/communication_serial/include
 
@@ -33,7 +34,12 @@ HEADERS += \
     include/fcs_instrucment/fcs_instrucment_pfd.h \
     include/fcs_instrucment/fcs_instrucment_alt.h \
     include/fcs_instrucment/fcs_instrucment_hsi.h \
-    include/fcs_instrucment/fcs_instrucment_adi.h
+    include/fcs_instrucment/fcs_instrucment_adi.h \
+    include/fcs_instrucment_widget/fcs_instrucment_widget_pfd.h \
+    include/fcs_instrucment_widget/fcs_instrucment_widget_adi.h \
+    include/fcs_instrucment_widget/fcs_instrucment_widget_alt.h \
+    include/fcs_instrucment_widget/fcs_instrucment_widget_hsi.h \
+    include/fcs_instrucment_layout.h
 
 SOURCES += \
     src/flight_control_station.cpp \
@@ -44,7 +50,12 @@ SOURCES += \
     src/fcs_instrucment/fcs_instrucment_pfd.cpp \
     src/fcs_instrucment/fcs_instrucment_hsi.cpp \
     src/fcs_instrucment/fcs_instrucment_adi.cpp \
-    src/fcs_instrucment/fcs_instrucment_alt.cpp
+    src/fcs_instrucment/fcs_instrucment_alt.cpp \
+    src/fcs_instrucment_widget/fcs_instrucment_widget_pfd.cpp \
+    src/fcs_instrucment_widget/fcs_instrucment_widget_adi.cpp \
+    src/fcs_instrucment_widget/fcs_instrucment_widget_alt.cpp \
+    src/fcs_instrucment_widget/fcs_instrucment_widget_hsi.cpp \
+    src/fcs_instrucment_layout.cpp
 
 SOURCES += \
 #    lib/communication_serial/src/communication_port.cpp \
@@ -54,7 +65,11 @@ SOURCES += \
 #    lib/communication_link/src/communication_data_type.cpp
 
 FORMS += \
-    form/flight_control_station.ui
+    form/flight_control_station.ui \
+    form/fcs_instrucment_widget/fcs_instrucment_widget_pfd.ui \
+    form/fcs_instrucment_widget/fcs_instrucment_widget_adi.ui \
+    form/fcs_instrucment_widget/fcs_instrucment_widget_alt.ui \
+    form/fcs_instrucment_widget/fcs_instrucment_widget_hsi.ui
 
 RESOURCES += \
-    fcs_instrucment.qrc
+    breeze_flight_control_station.qrc
