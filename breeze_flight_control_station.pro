@@ -17,9 +17,7 @@ INCLUDEPATH += \
 INCLUDEPATH += \
     include \
     include/fcs_indicator \
-    include/fcs_instrucment
-
-INCLUDEPATH += \
+    include/fcs_instrucment \
     lib/communication_link/include \
     lib/communication_serial/include
 
@@ -49,11 +47,11 @@ SOURCES += \
     src/fcs_instrucment/fcs_instrucment_alt.cpp
 
 SOURCES += \
-    lib/communication_serial/src/communication_port.cpp \
-    lib/communication_serial/src/communication_serial_port.cpp \
-    lib/communication_serial/src/communication_serial_interface.cpp \
-    lib/communication_link/src/communication_link.cpp \
-    lib/communication_link/src/communication_data_type.cpp
+#    lib/communication_serial/src/communication_port.cpp \
+#    lib/communication_serial/src/communication_serial_port.cpp \
+#    lib/communication_serial/src/communication_serial_interface.cpp \
+#    lib/communication_link/src/communication_link.cpp \
+#    lib/communication_link/src/communication_data_type.cpp
 
 FORMS += \
     form/flight_control_station.ui

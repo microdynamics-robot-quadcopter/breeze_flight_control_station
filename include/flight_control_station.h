@@ -65,9 +65,9 @@ class FlightControlStation : public QMainWindow
 {
     Q_OBJECT
 public:
-    explicit FlightControlStation(QWidget *parent = 0,
+    explicit FlightControlStation(QWidget *parent = 0/*,
                                   std::string serial_url = "",
-                                  std::string config_addr = "");
+                                  std::string config_addr = ""*/);
     ~FlightControlStation();
 protected slots:
     void openAboutWidget(void);
@@ -104,7 +104,7 @@ private:
     FlightAltitudeIndicator      *flight_altitude_indicator_;
     FlightCompassIndicator       *flight_compass_indicator_;
     Ui::FlightControlStation     *ui;
-    CommunicationSerialInterface serial_interface_;
+//    CommunicationSerialInterface serial_interface_;
 };
 
 #endif // FLIGHT_CONTROL_STATION_H

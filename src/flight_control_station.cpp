@@ -46,12 +46,12 @@
 #include <flight_control_station.h>
 #include <ui_flight_control_station.h>
 
-FlightControlStation::FlightControlStation(QWidget *parent,
+FlightControlStation::FlightControlStation(QWidget *parent/*,
                                            std::string serial_url,
-                                           std::string config_addr) :
+                                           std::string config_addr*/) :
     QMainWindow(parent),
-    ui(new Ui::FlightControlStation),
-    serial_interface_(serial_url, config_addr)
+    ui(new Ui::FlightControlStation)/*,
+    serial_interface_(serial_url, config_addr)*/
 {
     ui->setupUi(this);
     this->setWindowTitle(tr("Flight Control Station V1"));
@@ -126,18 +126,18 @@ void FlightControlStation::openAboutWidget(void)
 
 void FlightControlStation::updateTimerOperation(void)
 {
-    serial_interface_.checkShakeHandState();
-    serial_interface_.updateCommandState(READ_ROBOT_IMU, count_);
-    serial_interface_.updateCommandState(READ_MOTOR_SPEED, count_);
-    serial_interface_.updateCommandState(READ_MOTOR_MILEAGE, count_);
-    serial_interface_.updateCommandState(READ_MOTOR_THRUST, count_);
-    serial_interface_.updateCommandState(READ_ROBOT_HEIGHT, count_);
-    serial_interface_.updateCommandState(READ_ROBOT_SYSTEM_INFO, count_);
+//    serial_interface_.checkShakeHandState();
+//    serial_interface_.updateCommandState(READ_ROBOT_IMU, count_);
+//    serial_interface_.updateCommandState(READ_MOTOR_SPEED, count_);
+//    serial_interface_.updateCommandState(READ_MOTOR_MILEAGE, count_);
+//    serial_interface_.updateCommandState(READ_MOTOR_THRUST, count_);
+//    serial_interface_.updateCommandState(READ_ROBOT_HEIGHT, count_);
+//    serial_interface_.updateCommandState(READ_ROBOT_SYSTEM_INFO, count_);
 
-    updateBufferRead();
-    updateUIFromRead();
+//    updateBufferRead();
+//    updateUIFromRead();
 
-    count_++;
+//    count_++;
 }
 
 void FlightControlStation::keyPressEvent(QKeyEvent *event)
@@ -190,82 +190,82 @@ void FlightControlStation::resizeEvent(QResizeEvent *event)
 
 void FlightControlStation::updateBufferRead(void)
 {
-    acc_x_actual_ =
-        serial_interface_.getDataType()->robot_imu_actual_.acc.acc_x;
-    acc_y_actual_ =
-        serial_interface_.getDataType()->robot_imu_actual_.acc.acc_y;
-    acc_z_actual_ =
-        serial_interface_.getDataType()->robot_imu_actual_.acc.acc_z;
+//    acc_x_actual_ =
+//        serial_interface_.getDataType()->robot_imu_actual_.acc.acc_x;
+//    acc_y_actual_ =
+//        serial_interface_.getDataType()->robot_imu_actual_.acc.acc_y;
+//    acc_z_actual_ =
+//        serial_interface_.getDataType()->robot_imu_actual_.acc.acc_z;
 
-    att_r_actual_ =
-        serial_interface_.getDataType()->robot_imu_actual_.att.att_r;
-    att_p_actual_ =
-        serial_interface_.getDataType()->robot_imu_actual_.att.att_p;
-    att_y_actual_ =
-        serial_interface_.getDataType()->robot_imu_actual_.att.att_y;
+//    att_r_actual_ =
+//        serial_interface_.getDataType()->robot_imu_actual_.att.att_r;
+//    att_p_actual_ =
+//        serial_interface_.getDataType()->robot_imu_actual_.att.att_p;
+//    att_y_actual_ =
+//        serial_interface_.getDataType()->robot_imu_actual_.att.att_y;
 
-    motor_speed_actual_[0] =
-        serial_interface_.getDataType()->motor_speed_actual_.motor_a;
-    motor_speed_actual_[1] =
-        serial_interface_.getDataType()->motor_speed_actual_.motor_b;
-    motor_speed_actual_[2] =
-        serial_interface_.getDataType()->motor_speed_actual_.motor_c;
-    motor_speed_actual_[3] =
-        serial_interface_.getDataType()->motor_speed_actual_.motor_d;
+//    motor_speed_actual_[0] =
+//        serial_interface_.getDataType()->motor_speed_actual_.motor_a;
+//    motor_speed_actual_[1] =
+//        serial_interface_.getDataType()->motor_speed_actual_.motor_b;
+//    motor_speed_actual_[2] =
+//        serial_interface_.getDataType()->motor_speed_actual_.motor_c;
+//    motor_speed_actual_[3] =
+//        serial_interface_.getDataType()->motor_speed_actual_.motor_d;
 
-    motor_mileage_actual_[0] =
-        serial_interface_.getDataType()->motor_mileage_actual_.motor_a;
-    motor_mileage_actual_[1] =
-        serial_interface_.getDataType()->motor_mileage_actual_.motor_b;
-    motor_mileage_actual_[2] =
-        serial_interface_.getDataType()->motor_mileage_actual_.motor_c;
-    motor_mileage_actual_[3] =
-        serial_interface_.getDataType()->motor_mileage_actual_.motor_d;
+//    motor_mileage_actual_[0] =
+//        serial_interface_.getDataType()->motor_mileage_actual_.motor_a;
+//    motor_mileage_actual_[1] =
+//        serial_interface_.getDataType()->motor_mileage_actual_.motor_b;
+//    motor_mileage_actual_[2] =
+//        serial_interface_.getDataType()->motor_mileage_actual_.motor_c;
+//    motor_mileage_actual_[3] =
+//        serial_interface_.getDataType()->motor_mileage_actual_.motor_d;
 
-    motor_thrust_acutal_ =
-        serial_interface_.getDataType()->motor_thrust_actual_.thrust;
+//    motor_thrust_acutal_ =
+//        serial_interface_.getDataType()->motor_thrust_actual_.thrust;
 
-    robot_alt_actual_ =
-        serial_interface_.getDataType()->robot_height_actual_.alt;
-    robot_hei_actual_ =
-        serial_interface_.getDataType()->robot_height_actual_.hei;
+//    robot_alt_actual_ =
+//        serial_interface_.getDataType()->robot_height_actual_.alt;
+//    robot_hei_actual_ =
+//        serial_interface_.getDataType()->robot_height_actual_.hei;
 
-    battery_capacity_ =
-    serial_interface_.getDataType()->robot_system_info_actual_.battery_capacity;
+//    battery_capacity_ =
+//    serial_interface_.getDataType()->robot_system_info_actual_.battery_capacity;
 }
 
 void FlightControlStation::updateBufferWrite(void)
 {
-    serial_interface_.getDataType()->robot_imu_target_.acc.acc_x =
-        acc_x_target_;
-    serial_interface_.getDataType()->robot_imu_target_.acc.acc_y =
-        acc_y_target_;
-    serial_interface_.getDataType()->robot_imu_target_.acc.acc_z =
-        acc_z_target_;
+//    serial_interface_.getDataType()->robot_imu_target_.acc.acc_x =
+//        acc_x_target_;
+//    serial_interface_.getDataType()->robot_imu_target_.acc.acc_y =
+//        acc_y_target_;
+//    serial_interface_.getDataType()->robot_imu_target_.acc.acc_z =
+//        acc_z_target_;
 
-    serial_interface_.getDataType()->robot_imu_target_.att.att_r =
-        att_r_target_;
-    serial_interface_.getDataType()->robot_imu_target_.att.att_p =
-        att_p_target_;
-    serial_interface_.getDataType()->robot_imu_target_.att.att_y =
-        att_y_target_;
+//    serial_interface_.getDataType()->robot_imu_target_.att.att_r =
+//        att_r_target_;
+//    serial_interface_.getDataType()->robot_imu_target_.att.att_p =
+//        att_p_target_;
+//    serial_interface_.getDataType()->robot_imu_target_.att.att_y =
+//        att_y_target_;
 
-    serial_interface_.getDataType()->motor_speed_target_.motor_a =
-        motor_speed_target_[0];
-    serial_interface_.getDataType()->motor_speed_target_.motor_b=
-        motor_speed_target_[1];
-    serial_interface_.getDataType()->motor_speed_target_.motor_c =
-        motor_speed_target_[2];
-    serial_interface_.getDataType()->motor_speed_target_.motor_d =
-        motor_speed_target_[3];
+//    serial_interface_.getDataType()->motor_speed_target_.motor_a =
+//        motor_speed_target_[0];
+//    serial_interface_.getDataType()->motor_speed_target_.motor_b=
+//        motor_speed_target_[1];
+//    serial_interface_.getDataType()->motor_speed_target_.motor_c =
+//        motor_speed_target_[2];
+//    serial_interface_.getDataType()->motor_speed_target_.motor_d =
+//        motor_speed_target_[3];
 
-    serial_interface_.getDataType()->motor_thrust_target_.thrust =
-        motor_thrust_target_;
+//    serial_interface_.getDataType()->motor_thrust_target_.thrust =
+//        motor_thrust_target_;
 
-    serial_interface_.getDataType()->robot_height_target_.alt =
-        robot_alt_target_;
-    serial_interface_.getDataType()->robot_height_target_.hei =
-        robot_hei_target_;
+//    serial_interface_.getDataType()->robot_height_target_.alt =
+//        robot_alt_target_;
+//    serial_interface_.getDataType()->robot_height_target_.hei =
+//        robot_hei_target_;
 }
 
 void FlightControlStation::updateUIFromRead(void)

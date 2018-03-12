@@ -48,8 +48,8 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    FlightControlStation flight_control_station(0, "serial:///dev/ttyUSB0",
-                                                "/home/ubuntu/Desktop/breeze_flight_control_station/config/config.txt");
+    FlightControlStation flight_control_station(0/*, "serial:///dev/ttyUSB0",
+                                                "/home/ubuntu/Desktop/breeze_flight_control_station/config/config.txt"*/);
 
     flight_control_station.move(
         (QApplication::desktop()->width() -
