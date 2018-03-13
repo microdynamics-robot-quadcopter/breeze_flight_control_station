@@ -49,6 +49,8 @@
 class FCSInstrucmentPFD : public QGraphicsView
 {
     Q_OBJECT
+
+public:
     // Altimeter pressure units.
     enum PressureUnit
     {

@@ -54,9 +54,9 @@ FlightControlStation::FlightControlStation(QWidget *parent/*,
     serial_interface_(serial_url, config_addr)*/
 {
     ui->setupUi(this);
-    this->setWindowTitle(tr("Flight Control Station V1"));
+    this->setWindowTitle(tr("Breeze Flight Control Station"));
 
-    this->setFixedSize(width(), height());
+//    this->setFixedSize(width(), height());
     this->setFocus();
 
 //    timer_ = new QTimer(this);
@@ -288,11 +288,11 @@ void FlightControlStation::updateUIFromRead(void)
     alt.sprintf("%.2f", robot_alt_actual_);
     hei.sprintf("%.2f", robot_hei_actual_);
 
-    ui->lineEditDataRoll->setText(att_r);
-    ui->lineEditDataPitch->setText(att_p);
-    ui->lineEditDataYaw->setText(att_y);
-    ui->lineEditDataAltitude->setText(alt);
-    ui->lineEditDataHeight->setText(hei);
+//    ui->lineEditDataRoll->setText(att_r);
+//    ui->lineEditDataPitch->setText(att_p);
+//    ui->lineEditDataYaw->setText(att_y);
+//    ui->lineEditDataAltitude->setText(alt);
+//    ui->lineEditDataHeight->setText(hei);
 
     value_roll  = flight_attitude_indicator_->getRoll();
     value_pitch = flight_attitude_indicator_->getPitch();
