@@ -42,4 +42,48 @@
 #ifndef FCS_INSTRUCMENT_ATTITUDE_H
 #define FCS_INSTRUCMENT_ATTITUDE_H
 
+#include <QGraphicsView>
+#include <QGraphicsSvgItem>
+
+class FCSInstrucmentADI : public QGraphicsView
+{
+    Q_OBJECT
+
+public:
+    FCSInstrucmentADI(QWidget *parent = 0);
+    virtual ~FCSInstrucmentADI();
+    void reinitADI(void);
+    void updateADI(void);
+    void setADIAngleRoll(float angle_roll);
+    void setADIAnglePitch(float angle_pitch);
+protected:
+    void resizeEvent(QResizeEvent *event);
+private:
+    void initADI(void);
+    void resetADI(void);
+    void updateADIView(void);
+private:
+    QGraphicsScene   *adi_scene_;
+    QGraphicsSvgItem *adi_item_back_;
+    QGraphicsSvgItem *adi_item_face_;
+    QGraphicsSvgItem *adi_item_ring_;
+    QGraphicsSvgItem *adi_item_case_;
+    float adi_angle_roll_;
+    float adi_angle_pitch_;
+    float adi_face_delta_x_new_;
+    float adi_face_delta_x_old_;
+    float adi_face_delta_y_new_;
+    float adi_face_delta_y_old_;
+    float adi_scale_x_;
+    float adi_scale_y_;
+    const int adi_original_height_;
+    const int adi_original_width_;
+    const float adi_original_pix_per_deg_;
+    QPointF adi_original_adi_ctr_;
+    const int adi_back_z_;
+    const int adi_face_z_;
+    const int adi_ring_z_;
+    const int adi_case_z_;
+};
+
 #endif // FCS_INSTRUCMENT_ATTITUDE_H
