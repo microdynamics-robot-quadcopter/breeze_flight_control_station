@@ -42,4 +42,47 @@
 #ifndef FCS_INSTRUCMENT_ALTITUDE_H
 #define FCS_INSTRUCMENT_ALTITUDE_H
 
+#include <QGraphicsView>
+#include <QGraphicsSvgItem>
+
+class FCSInstrucmentALT : public QGraphicsView
+{
+    Q_OBJECT
+
+public:
+    FCSInstrucmentALT(QWidget *parent = 0);
+    virtual ~FCSInstrucmentALT();
+    void reinitALT(void);
+    void updateALT(void);
+    void setALTAltitude(float altitude);
+    void setALTPressure(float pressure);
+protected:
+    void resizeEvent(QResizeEvent *event);
+private:
+    void initALT(void);
+    void resetALT(void);
+    void updateALTView(void);
+private:
+    QGraphicsScene   *alt_scene_;
+    QGraphicsSvgItem *alt_item_face_1_;
+    QGraphicsSvgItem *alt_item_face_2_;
+    QGraphicsSvgItem *alt_item_face_3_;
+    QGraphicsSvgItem *alt_item_hand_1_;
+    QGraphicsSvgItem *alt_item_hand_2_;
+    QGraphicsSvgItem *alt_item_case_;
+    float alt_altitude_;
+    float alt_pressure_;
+    float alt_scale_x_;
+    float alt_scale_y_;
+    const int alt_original_height_;
+    const int alt_original_width_;
+    QPointF alt_original_alt_ctr_;
+    const int alt_face_1_z_;
+    const int alt_face_2_z_;
+    const int alt_face_3_z_;
+    const int alt_hand_1_z_;
+    const int alt_hand_2_z_;
+    const int alt_case_z_;
+};
+
 #endif // FCS_INSTRUCMENT_ALTITUDE_H
