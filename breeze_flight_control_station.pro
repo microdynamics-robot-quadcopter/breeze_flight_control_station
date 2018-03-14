@@ -39,7 +39,9 @@ HEADERS += \
     include/fcs_instrucment_widget/fcs_instrucment_widget_adi.h \
     include/fcs_instrucment_widget/fcs_instrucment_widget_alt.h \
     include/fcs_instrucment_widget/fcs_instrucment_widget_hsi.h \
-    include/fcs_instrucment_layout.h
+    include/fcs_instrucment_layout.h \
+    include/fcs_custom_tab_style.h \
+    include/fcs_custom_tab_widget.h
 
 SOURCES += \
     src/flight_control_station.cpp \
@@ -55,7 +57,8 @@ SOURCES += \
     src/fcs_instrucment_widget/fcs_instrucment_widget_adi.cpp \
     src/fcs_instrucment_widget/fcs_instrucment_widget_alt.cpp \
     src/fcs_instrucment_widget/fcs_instrucment_widget_hsi.cpp \
-    src/fcs_instrucment_layout.cpp
+    src/fcs_instrucment_layout.cpp \
+    src/fcs_custom_tab_widget.cpp
 
 SOURCES += \
 #    lib/communication_serial/src/communication_port.cpp \

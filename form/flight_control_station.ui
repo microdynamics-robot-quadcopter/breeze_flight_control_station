@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1200</width>
-    <height>600</height>
+    <width>1274</width>
+    <height>574</height>
    </rect>
   </property>
   <property name="font">
@@ -16,15 +16,38 @@
    </font>
   </property>
   <property name="windowTitle">
-   <string>FlightControlStation</string>
+   <string>Breeze Flight Control Station</string>
   </property>
-  <widget class="QWidget" name="central_widget"/>
+  <widget class="QWidget" name="central_widget">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <widget class="FCSCustomTabWidget" name="tab_widget">
+      <property name="tabPosition">
+       <enum>QTabWidget::West</enum>
+      </property>
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="tab_flight_status">
+       <attribute name="title">
+        <string>Flight Status</string>
+       </attribute>
+      </widget>
+      <widget class="QWidget" name="tab_serial_debug">
+       <attribute name="title">
+        <string>Serial Debug</string>
+       </attribute>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
   <widget class="QMenuBar" name="menu_bar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1200</width>
+     <width>1274</width>
      <height>28</height>
     </rect>
    </property>
@@ -49,7 +72,7 @@
      <string>&amp;Edit</string>
     </property>
    </widget>
-   <widget class="QMenu" name="menuHelp">
+   <widget class="QMenu" name="menu_help">
     <property name="font">
      <font>
       <pointsize>12</pointsize>
@@ -61,9 +84,9 @@
    </widget>
    <addaction name="menu_file"/>
    <addaction name="menu_edit"/>
-   <addaction name="menuHelp"/>
+   <addaction name="menu_help"/>
   </widget>
-  <widget class="QToolBar" name="toolBar">
+  <widget class="QToolBar" name="tool_bar">
    <property name="windowTitle">
     <string>toolBar</string>
    </property>
@@ -74,6 +97,7 @@
     <bool>false</bool>
    </attribute>
   </widget>
+  <widget class="QStatusBar" name="status_bar"/>
   <action name="action_exit">
    <property name="text">
     <string>E&amp;xit</string>
@@ -89,6 +113,14 @@
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>FCSCustomTabWidget</class>
+   <extends>QTabWidget</extends>
+   <header>fcs_custom_tab_widget.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

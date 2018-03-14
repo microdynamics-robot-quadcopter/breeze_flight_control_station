@@ -45,6 +45,7 @@
 #include <QKeyEvent>
 #include <flight_control_station.h>
 #include <ui_flight_control_station.h>
+#include <fcs_custom_tab_style.h>
 
 FlightControlStation::FlightControlStation(QWidget *parent/*,
                                            std::string serial_url,
@@ -54,9 +55,7 @@ FlightControlStation::FlightControlStation(QWidget *parent/*,
     serial_interface_(serial_url, config_addr)*/
 {
     ui->setupUi(this);
-    this->setWindowTitle(tr("Breeze Flight Control Station"));
 
-//    this->setFixedSize(width(), height());
     this->setFocus();
 
 //    timer_ = new QTimer(this);
