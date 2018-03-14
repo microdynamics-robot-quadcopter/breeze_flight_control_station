@@ -40,3 +40,113 @@
  *****************************************************************************/
 
 #include <fcs_instrucment_hsi.h>
+
+FCSInstrucmentHSI::FCSInstrucmentHSI(QWidget *parent) :
+    QGraphicsView(parent),
+    hsi_scene_(0),
+    hsi_item_face_(0),
+    hsi_item_case_(0),
+    hsi_heading_(0.0f),
+    hsi_scale_x_(1.0f),
+    hsi_scale_y_(1.0f),
+    hsi_original_height_(240),
+    hsi_original_width_ (240),
+    hsi_original_hsi_ctr_(120.0f, 120.0f),
+    hsi_face_z_(-20),
+    hsi_case_z_( 10)
+{
+    resetHSI();
+
+    hsi_scene_ = new QGraphicsScene(this);
+
+    setScene(hsi_scene_);
+
+    hsi_scene_->clear();
+
+    initHSI();
+}
+
+FCSInstrucmentHSI::~FCSInstrucmentHSI()
+{
+    if (hsi_scene_) {
+        hsi_scene_->clear();
+        delete hsi_scene_;
+        hsi_scene_ = 0;
+    }
+    else {
+        ;
+    }
+
+    resetHSI();
+}
+
+void FCSInstrucmentHSI::reinitHSI(void)
+{
+    if (hsi_scene_) {
+        hsi_scene_->clear();
+        initHSI();
+    }
+    else {
+        ;
+    }
+}
+
+void FCSInstrucmentHSI::updateHSI(void)
+{
+    updateHSIView();
+}
+
+void FCSInstrucmentHSI::setHSIHeading(float heading)
+{
+    hsi_heading_ = heading;
+}
+
+void FCSInstrucmentHSI::resizeEvent(QResizeEvent *event)
+{
+    QGraphicsView::resizeEvent(event);
+    reinitHSI();
+}
+
+void FCSInstrucmentHSI::initHSI(void)
+{
+    hsi_scale_x_ = (float)width()  / (float)hsi_original_width_;
+    hsi_scale_y_ = (float)height() / (float)hsi_original_height_;
+
+    resetHSI();
+
+    hsi_item_face_ = new QGraphicsSvgItem(
+        ":/fcs_instrucment/res/fcs_instrucment_hsi/hsi_face.svg");
+    hsi_item_face_->setCacheMode(QGraphicsItem::NoCache);
+    hsi_item_face_->setZValue(hsi_face_z_);
+    hsi_item_face_->setTransform(
+        QTransform::fromScale(hsi_scale_x_, hsi_scale_y_), true);
+    hsi_item_face_->setTransformOriginPoint(hsi_original_hsi_ctr_);
+    hsi_scene_->addItem(hsi_item_face_);
+
+    hsi_item_case_ = new QGraphicsSvgItem(
+        ":/fcs_instrucment/res/fcs_instrucment_hsi/hsi_case.svg");
+    hsi_item_case_->setCacheMode(QGraphicsItem::NoCache);
+    hsi_item_case_->setZValue(hsi_case_z_);
+    hsi_item_case_->setTransform(
+        QTransform::fromScale(hsi_scale_x_, hsi_scale_y_), true);
+    hsi_scene_->addItem(hsi_item_case_);
+
+    centerOn(width() / 2.0f, height() / 2.0f);
+
+    updateHSIView();
+}
+
+void FCSInstrucmentHSI::resetHSI(void)
+{
+    hsi_item_face_ = 0;
+    hsi_item_case_ = 0;
+
+    hsi_heading_ = 0.0f;
+}
+
+void FCSInstrucmentHSI::updateHSIView(void)
+{
+    hsi_item_face_->setRotation(-hsi_heading_);
+    hsi_scene_->update();
+}
+
