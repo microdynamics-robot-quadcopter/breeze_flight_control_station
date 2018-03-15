@@ -39,8 +39,8 @@
  * according to QFlightInstruments project.
  *****************************************************************************/
 
-#include "fcs_instrucment_widget_pfd.h"
-#include "ui_fcs_instrucment_widget_pfd.h"
+#include <fcs_instrucment_widget_pfd.h>
+#include <ui_fcs_instrucment_widget_pfd.h>
 
 FCSInstrucmentWidgetPFD::FCSInstrucmentWidgetPFD(QWidget *parent) :
     QWidget(parent),

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1274</width>
-    <height>574</height>
+    <width>1200</width>
+    <height>700</height>
    </rect>
   </property>
   <property name="font">
@@ -19,7 +19,7 @@
    <string>Breeze Flight Control Station</string>
   </property>
   <widget class="QWidget" name="central_widget">
-   <layout class="QGridLayout" name="gridLayout">
+   <layout class="QGridLayout" name="grid_layout_central_widget">
     <item row="0" column="0">
      <widget class="FCSCustomTabWidget" name="tab_widget">
       <property name="tabPosition">
@@ -32,6 +32,160 @@
        <attribute name="title">
         <string>Flight Status</string>
        </attribute>
+       <layout class="QGridLayout" name="gridLayout_2">
+        <item row="1" column="0">
+         <widget class="QGroupBox" name="groupBox">
+          <property name="title">
+           <string>GroupBox</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_5">
+           <item row="0" column="0">
+            <layout class="QGridLayout" name="gridLayout_4">
+             <item row="0" column="0">
+              <widget class="QLabel" name="label">
+               <property name="text">
+                <string>TextLabel</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QPushButton" name="pushButton">
+               <property name="text">
+                <string>PushButton</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="2">
+              <widget class="QLabel" name="label_6">
+               <property name="text">
+                <string>TextLabel</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="3">
+              <widget class="QPushButton" name="pushButton_4">
+               <property name="text">
+                <string>PushButton</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="0">
+              <widget class="QLabel" name="label_2">
+               <property name="text">
+                <string>TextLabel</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="1">
+              <widget class="QPushButton" name="pushButton_2">
+               <property name="text">
+                <string>PushButton</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="2">
+              <widget class="QLabel" name="label_5">
+               <property name="text">
+                <string>TextLabel</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="3">
+              <widget class="QPushButton" name="pushButton_6">
+               <property name="text">
+                <string>PushButton</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="0">
+              <widget class="QLabel" name="label_3">
+               <property name="text">
+                <string>TextLabel</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="1">
+              <widget class="QPushButton" name="pushButton_3">
+               <property name="text">
+                <string>PushButton</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="2">
+              <widget class="QLabel" name="label_7">
+               <property name="text">
+                <string>TextLabel</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="3">
+              <widget class="QPushButton" name="pushButton_5">
+               <property name="text">
+                <string>PushButton</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="0">
+              <widget class="QLabel" name="label_4">
+               <property name="text">
+                <string>TextLabel</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="1">
+              <widget class="QPushButton" name="pushButton_7">
+               <property name="text">
+                <string>PushButton</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="2">
+              <widget class="QLabel" name="label_8">
+               <property name="text">
+                <string>TextLabel</string>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="3">
+              <widget class="QPushButton" name="pushButton_8">
+               <property name="text">
+                <string>PushButton</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="0" column="0">
+         <widget class="QGroupBox" name="groupBox_2">
+          <property name="title">
+           <string>GroupBox</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_3">
+           <item row="0" column="0">
+            <layout class="QGridLayout" name="gridLayout">
+             <item row="0" column="3">
+              <widget class="FCSInstrucmentWidgetHSI" name="widget_4" native="true"/>
+             </item>
+             <item row="0" column="0">
+              <widget class="FCSInstrucmentWidgetPFD" name="widget" native="true"/>
+             </item>
+             <item row="0" column="1">
+              <widget class="FCSInstrucmentWidgetADI" name="widget_2" native="true"/>
+             </item>
+             <item row="0" column="2">
+              <widget class="FCSInstrucmentWidgetALT" name="widget_3" native="true">
+               <zorder>widget_4</zorder>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </widget>
+        </item>
+       </layout>
       </widget>
       <widget class="QWidget" name="tab_serial_debug">
        <attribute name="title">
@@ -47,7 +201,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1274</width>
+     <width>1200</width>
      <height>28</height>
     </rect>
    </property>
@@ -118,6 +272,30 @@
    <class>FCSCustomTabWidget</class>
    <extends>QTabWidget</extends>
    <header>fcs_custom_tab_widget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>FCSInstrucmentWidgetPFD</class>
+   <extends>QWidget</extends>
+   <header>fcs_instrucment_widget_pfd.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>FCSInstrucmentWidgetADI</class>
+   <extends>QWidget</extends>
+   <header>fcs_instrucment_widget_adi.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>FCSInstrucmentWidgetALT</class>
+   <extends>QWidget</extends>
+   <header>fcs_instrucment_widget_alt.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>FCSInstrucmentWidgetHSI</class>
+   <extends>QWidget</extends>
+   <header>fcs_instrucment_widget_hsi.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>
