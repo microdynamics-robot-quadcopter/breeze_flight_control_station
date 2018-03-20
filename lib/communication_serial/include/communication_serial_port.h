@@ -49,35 +49,35 @@
 
 #define COMMUNICATION_SERIAL_PORT_LIB 1
 
-namespace communication_serial {
+//namespace communication_serial {
 
-typedef boost::shared_ptr<boost::asio::serial_port> SerialPort;
+//typedef boost::shared_ptr<boost::asio::serial_port> SerialPort;
 
-class CommunicationSerialPort : public CommunicationPort
-{
-public:
-    CommunicationSerialPort(void);
-    CommunicationSerialPort(std::string serial_url);
-    Buffer readBuffer(void);
-    void writeBuffer(Buffer &data);
-private:
-    void startOneRead(void);
-    void startOneWrite(void);
-    void runMainThread(void);
-    void runReadHandler(const boost::system::error_code &error_code,
-                        u_int32_t trans_bytes);
-    void runWriteHandler(const boost::system::error_code &error_code);
-    bool initializeSerialPort(void);
-private:
-    Buffer                   buffer_temp_;
-    boost::thread            thread_;
-    boost::mutex             mutex_port_;
-    boost::mutex             mutex_read_;
-    boost::mutex             mutex_write_;
-    CommunicationSerialParam serial_param_;
-    SerialPort               serial_port_;
-};
+//class CommunicationSerialPort : public CommunicationPort
+//{
+//public:
+//    CommunicationSerialPort(void);
+//    CommunicationSerialPort(std::string serial_url);
+//    Buffer readBuffer(void);
+//    void writeBuffer(Buffer &data);
+//private:
+//    void startOneRead(void);
+//    void startOneWrite(void);
+//    void runMainThread(void);
+//    void runReadHandler(const boost::system::error_code &error_code,
+//                        u_int32_t trans_bytes);
+//    void runWriteHandler(const boost::system::error_code &error_code);
+//    bool initializeSerialPort(void);
+//private:
+//    Buffer                   buffer_temp_;
+//    boost::thread            thread_;
+//    boost::mutex             mutex_port_;
+//    boost::mutex             mutex_read_;
+//    boost::mutex             mutex_write_;
+//    CommunicationSerialParam serial_param_;
+//    SerialPort               serial_port_;
+//};
 
-}
+//}
 
 #endif // COMMUNICATION_SERIAL_PORT_H
