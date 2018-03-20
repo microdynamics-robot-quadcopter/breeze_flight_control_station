@@ -41,7 +41,6 @@
         <file>res/fcs_instrucment_alt/alt_face_3.svg</file>
         <file>res/fcs_instrucment_alt/alt_hand_1.svg</file>
         <file>res/fcs_instrucment_alt/alt_hand_2.svg</file>
-        <file>res/fcs_instrucment_hsi/hsi.svg</file>
         <file>res/fcs_instrucment_hsi/hsi_case.svg</file>
         <file>res/fcs_instrucment_hsi/hsi_face.svg</file>
     </qresource>

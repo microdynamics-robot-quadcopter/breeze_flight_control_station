@@ -36,7 +36,7 @@
         <item row="1" column="0">
          <widget class="QGroupBox" name="groupBox">
           <property name="title">
-           <string>GroupBox</string>
+           <string>Flight Data</string>
           </property>
           <layout class="QGridLayout" name="gridLayout_5">
            <item row="0" column="0">
@@ -161,7 +161,7 @@
         <item row="0" column="0">
          <widget class="QGroupBox" name="groupBox_2">
           <property name="title">
-           <string>GroupBox</string>
+           <string>Flight Panel</string>
           </property>
           <layout class="QGridLayout" name="gridLayout_3">
            <item row="0" column="0">
@@ -176,9 +176,7 @@
               <widget class="FCSInstrucmentWidgetADI" name="widget_2" native="true"/>
              </item>
              <item row="0" column="2">
-              <widget class="FCSInstrucmentWidgetALT" name="widget_3" native="true">
-               <zorder>widget_4</zorder>
-              </widget>
+              <widget class="FCSInstrucmentWidgetALT" name="widget_3" native="true"/>
              </item>
             </layout>
            </item>
