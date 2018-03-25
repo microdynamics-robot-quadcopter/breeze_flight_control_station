@@ -176,7 +176,7 @@
               <widget class="FCSInstrucmentWidgetADI" name="widget_2" native="true"/>
              </item>
              <item row="0" column="2">
-              <widget class="FCSInstrucmentWidgetALT" name="widget_3" native="true"/>
+              <widget class="QWidget" name="widget_3" native="true"/>
              </item>
             </layout>
            </item>
@@ -282,12 +282,6 @@
    <class>FCSInstrucmentWidgetADI</class>
    <extends>QWidget</extends>
    <header>fcs_instrucment_widget_adi.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>FCSInstrucmentWidgetALT</class>
-   <extends>QWidget</extends>
-   <header>fcs_instrucment_widget_alt.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>
