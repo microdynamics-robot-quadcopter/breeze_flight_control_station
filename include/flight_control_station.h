@@ -48,6 +48,9 @@
 #include <QTimer>
 #include <QMessageBox>
 #include <QMainWindow>
+#include <QCamera>
+#include <QCameraInfo>
+#include <QCameraViewfinder>
 #include <communication_serial_interface.h>
 #include "fcs_indicator_attitude.h"
 #include "fcs_indicator_altitude.h"
@@ -64,6 +67,7 @@ class FlightControlStation;
 class FlightControlStation : public QMainWindow
 {
     Q_OBJECT
+
 public:
     explicit FlightControlStation(QWidget *parent = 0/*,
                                   std::string serial_url = "",
@@ -82,24 +86,27 @@ private:
     void updateUIFromRead(void);
     void updateUIFromWrite(void);
 private:
-    int                          count_;
-    float                        acc_x_actual_, acc_y_actual_, acc_z_actual_;
-    float                        att_r_actual_, att_p_actual_, att_y_actual_;
-    float                        acc_x_target_, acc_y_target_, acc_z_target_;
-    float                        att_r_target_, att_p_target_, att_y_target_;
-    float                        motor_thrust_acutal_;
-    float                        motor_thrust_target_;
-    float                        robot_alt_actual_;
-    float                        robot_alt_target_;
-    float                        robot_hei_actual_;
-    float                        robot_hei_target_;
-    float                        battery_capacity_;
-    std::vector<float>           motor_speed_actual_;
-    std::vector<float>           motor_speed_target_;
-    std::vector<float>           motor_mileage_actual_;
-    std::vector<float>           motor_mileage_target_;
+    int                           count_;
+    float                         acc_x_actual_, acc_y_actual_, acc_z_actual_;
+    float                         att_r_actual_, att_p_actual_, att_y_actual_;
+    float                         acc_x_target_, acc_y_target_, acc_z_target_;
+    float                         att_r_target_, att_p_target_, att_y_target_;
+    float                         motor_thrust_acutal_;
+    float                         motor_thrust_target_;
+    float                         robot_alt_actual_;
+    float                         robot_alt_target_;
+    float                         robot_hei_actual_;
+    float                         robot_hei_target_;
+    float                         battery_capacity_;
+    std::vector<float>            motor_speed_actual_;
+    std::vector<float>            motor_speed_target_;
+    std::vector<float>            motor_mileage_actual_;
+    std::vector<float>            motor_mileage_target_;
     QMessageBox                  *about_widget_;
     QTimer                       *timer_;
+    QCamera                      *camera_;
+    QList<QCameraInfo>            cameras_info_;
+    QCameraViewfinder            *camera_view_finder_;
     FlightAttitudeIndicator      *flight_attitude_indicator_;
     FlightAltitudeIndicator      *flight_altitude_indicator_;
     FlightCompassIndicator       *flight_compass_indicator_;
