@@ -2,4 +2,4 @@
 
 ## Description
 
-Breeze quadcopter flight control station can implement the real-time monitoring and control on the computer client.
+Breeze flight control station can implement the real-time monitoring and control on the computer client.
