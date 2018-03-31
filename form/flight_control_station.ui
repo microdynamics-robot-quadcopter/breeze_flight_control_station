@@ -21,9 +21,9 @@
   <widget class="QWidget" name="central_widget">
    <layout class="QGridLayout" name="grid_layout_central_widget">
     <item row="0" column="0">
-     <widget class="FCSCustomTabWidget" name="tab_widget">
+     <widget class="QTabWidget" name="tab_widget">
       <property name="tabPosition">
-       <enum>QTabWidget::West</enum>
+       <enum>QTabWidget::North</enum>
       </property>
       <property name="currentIndex">
        <number>0</number>
@@ -37,8 +37,8 @@
          <rect>
           <x>11</x>
           <y>11</y>
-          <width>911</width>
-          <height>351</height>
+          <width>331</width>
+          <height>611</height>
          </rect>
         </property>
         <property name="title">
@@ -62,10 +62,10 @@
        <widget class="QGroupBox" name="group_box_flight_data">
         <property name="geometry">
          <rect>
-          <x>330</x>
-          <y>390</y>
-          <width>441</width>
-          <height>231</height>
+          <x>360</x>
+          <y>10</y>
+          <width>751</width>
+          <height>611</height>
          </rect>
         </property>
         <property name="title">
@@ -126,6 +126,7 @@
    <addaction name="menu_edit"/>
    <addaction name="menu_help"/>
   </widget>
+  <widget class="QStatusBar" name="status_bar"/>
   <widget class="QToolBar" name="tool_bar">
    <property name="windowTitle">
     <string>toolBar</string>
@@ -137,7 +138,6 @@
     <bool>false</bool>
    </attribute>
   </widget>
-  <widget class="QStatusBar" name="status_bar"/>
   <action name="action_exit">
    <property name="text">
     <string>E&amp;xit</string>
@@ -154,12 +154,6 @@
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <customwidgets>
-  <customwidget>
-   <class>FCSCustomTabWidget</class>
-   <extends>QTabWidget</extends>
-   <header>fcs_custom_tab_widget.h</header>
-   <container>1</container>
-  </customwidget>
   <customwidget>
    <class>FCSInstrucmentWidgetPFD</class>
    <extends>QWidget</extends>
