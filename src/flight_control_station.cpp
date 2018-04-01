@@ -103,6 +103,25 @@ FlightControlStation::FlightControlStation(QWidget *parent/*,
 //        std::cerr << "Failed to initialized system, check the hardware!"
 //                  << std::endl;
 //    }
+
+    cameras_info_ = QCameraInfo::availableCameras();
+
+    foreach (const QCameraInfo &camera_info, cameras_info_) {
+        if (camera_info.deviceName() != ui->combo_box_camera->currentText()) {
+            ui->combo_box_camera->addItem(camera_info.deviceName());
+        }
+        else {
+            continue;
+        }
+    }
+
+//    camera_             = new QCamera(this);
+    camera_view_finder_ = new QCameraViewfinder(this);
+
+    ui->horizontal_layout_camera->addWidget(camera_view_finder_);
+
+//    camera_->setViewfinder(camera_view_finder_);
+//    camera_->start();
 }
 
 FlightControlStation::~FlightControlStation()

@@ -13,7 +13,7 @@
   <property name="minimumSize">
    <size>
     <width>1350</width>
-    <height>0</height>
+    <height>760</height>
    </size>
   </property>
   <property name="font">
@@ -466,89 +466,14 @@
                 <string>Sensor Data</string>
                </property>
                <layout class="QGridLayout" name="gridLayout_8">
-                <item row="0" column="4">
-                 <widget class="QLabel" name="label_mag_x">
+                <item row="0" column="2">
+                 <widget class="QLabel" name="label_gyr_x">
                   <property name="text">
-                   <string>MAG-X</string>
+                   <string>GYR-X</string>
                   </property>
                  </widget>
                 </item>
-                <item row="1" column="3">
-                 <widget class="QLineEdit" name="line_edit_gyr_y">
-                  <property name="text">
-                   <string>00.0</string>
-                  </property>
-                  <property name="readOnly">
-                   <bool>true</bool>
-                  </property>
-                 </widget>
-                </item>
-                <item row="2" column="4">
-                 <widget class="QLabel" name="label_mag_z">
-                  <property name="text">
-                   <string>MAG-Z</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="2" column="3">
-                 <widget class="QLineEdit" name="line_edit_gyr_z">
-                  <property name="text">
-                   <string>00.0</string>
-                  </property>
-                  <property name="readOnly">
-                   <bool>true</bool>
-                  </property>
-                 </widget>
-                </item>
-                <item row="3" column="0">
-                 <widget class="QLabel" name="label_speed_x">
-                  <property name="text">
-                   <string>SP-X</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="2" column="2">
-                 <widget class="QLabel" name="label_gyr_z">
-                  <property name="text">
-                   <string>GYR-Z</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="1" column="5">
-                 <widget class="QLineEdit" name="line_edit_mag_y">
-                  <property name="text">
-                   <string>00.0</string>
-                  </property>
-                  <property name="readOnly">
-                   <bool>true</bool>
-                  </property>
-                 </widget>
-                </item>
-                <item row="3" column="2">
-                 <widget class="QLabel" name="label_speed_y">
-                  <property name="text">
-                   <string>SP-Y</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="4" column="0" colspan="2">
-                 <widget class="QLabel" name="label_height_pressure">
-                  <property name="text">
-                   <string>Height-Press</string>
-                  </property>
-                  <property name="wordWrap">
-                   <bool>true</bool>
-                  </property>
-                 </widget>
-                </item>
-                <item row="1" column="4">
-                 <widget class="QLabel" name="label_mag_y">
-                  <property name="text">
-                   <string>MAG-Y</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="3" column="1">
+                <item row="4" column="1">
                  <widget class="QLineEdit" name="line_edit_speed_x">
                   <property name="text">
                    <string>00.0</string>
@@ -558,8 +483,39 @@
                   </property>
                  </widget>
                 </item>
-                <item row="3" column="3">
-                 <widget class="QLineEdit" name="line_edit_speed_y">
+                <item row="7" column="0" colspan="2">
+                 <widget class="QLabel" name="label_optical_flow_x">
+                  <property name="text">
+                   <string>Optical Flow-X</string>
+                  </property>
+                  <property name="wordWrap">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="3" column="5">
+                 <widget class="QLabel" name="label_mag_z">
+                  <property name="text">
+                   <string>MAG-Z</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="2">
+                 <widget class="QLabel" name="label_gyr_y">
+                  <property name="text">
+                   <string>GYR-Y</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="5">
+                 <widget class="QLabel" name="label_mag_y">
+                  <property name="text">
+                   <string>MAG-Y</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="6" column="2">
+                 <widget class="QLineEdit" name="line_edit_height_pressure">
                   <property name="text">
                    <string>00.0</string>
                   </property>
@@ -568,22 +524,8 @@
                   </property>
                  </widget>
                 </item>
-                <item row="3" column="4">
-                 <widget class="QLabel" name="label_speed_z">
-                  <property name="text">
-                   <string>SP-Z</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="1" column="2">
-                 <widget class="QLabel" name="label_gyr_y">
-                  <property name="text">
-                   <string>GYR-Y</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="4" column="2">
-                 <widget class="QLineEdit" name="line_edit_height_pressure">
+                <item row="3" column="6">
+                 <widget class="QLineEdit" name="line_edit_mag_z">
                   <property name="text">
                    <string>00.0</string>
                   </property>
@@ -599,52 +541,25 @@
                   </property>
                  </widget>
                 </item>
-                <item row="2" column="0">
-                 <widget class="QLabel" name="label_acc_z">
+                <item row="4" column="0">
+                 <widget class="QLabel" name="label_speed_x">
                   <property name="text">
-                   <string>ACC-Z</string>
+                   <string>SP-X</string>
                   </property>
                  </widget>
                 </item>
-                <item row="4" column="5">
+                <item row="4" column="6">
+                 <widget class="QLineEdit" name="line_edit_speed_z">
+                  <property name="text">
+                   <string>00.0</string>
+                  </property>
+                  <property name="readOnly">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="6" column="6">
                  <widget class="QLineEdit" name="line_edit_height_ultrasonic">
-                  <property name="text">
-                   <string>00.0</string>
-                  </property>
-                  <property name="readOnly">
-                   <bool>true</bool>
-                  </property>
-                 </widget>
-                </item>
-                <item row="2" column="1">
-                 <widget class="QLineEdit" name="line_edit_acc_z">
-                  <property name="text">
-                   <string>00.0</string>
-                  </property>
-                  <property name="readOnly">
-                   <bool>true</bool>
-                  </property>
-                 </widget>
-                </item>
-                <item row="1" column="0">
-                 <widget class="QLabel" name="label_acc_y">
-                  <property name="text">
-                   <string>ACC-Y</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="0" column="3">
-                 <widget class="QLineEdit" name="line_edit_gyr_x">
-                  <property name="text">
-                   <string>00.0</string>
-                  </property>
-                  <property name="readOnly">
-                   <bool>true</bool>
-                  </property>
-                 </widget>
-                </item>
-                <item row="2" column="5">
-                 <widget class="QLineEdit" name="line_edit_mag_z">
                   <property name="text">
                    <string>00.0</string>
                   </property>
@@ -663,7 +578,7 @@
                   </property>
                  </widget>
                 </item>
-                <item row="0" column="5">
+                <item row="0" column="6">
                  <widget class="QLineEdit" name="line_edit_mag_x">
                   <property name="text">
                    <string>00.0</string>
@@ -673,24 +588,7 @@
                   </property>
                  </widget>
                 </item>
-                <item row="4" column="3" colspan="2">
-                 <widget class="QLabel" name="label_height_ultrasonic">
-                  <property name="text">
-                   <string>Height-Sonic</string>
-                  </property>
-                  <property name="wordWrap">
-                   <bool>true</bool>
-                  </property>
-                 </widget>
-                </item>
-                <item row="0" column="2">
-                 <widget class="QLabel" name="label_gyr_x">
-                  <property name="text">
-                   <string>GYR-X</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="1" column="1">
+                <item row="2" column="1">
                  <widget class="QLineEdit" name="line_edit_acc_y">
                   <property name="text">
                    <string>00.0</string>
@@ -700,8 +598,32 @@
                   </property>
                  </widget>
                 </item>
-                <item row="3" column="5">
-                 <widget class="QLineEdit" name="line_edit_speed_z">
+                <item row="6" column="0" colspan="2">
+                 <widget class="QLabel" name="label_height_pressure">
+                  <property name="text">
+                   <string>Height-Press</string>
+                  </property>
+                  <property name="wordWrap">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="5">
+                 <widget class="QLabel" name="label_mag_x">
+                  <property name="text">
+                   <string>MAG-X</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="0">
+                 <widget class="QLabel" name="label_acc_y">
+                  <property name="text">
+                   <string>ACC-Y</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="6">
+                 <widget class="QLineEdit" name="line_edit_mag_y">
                   <property name="text">
                    <string>00.0</string>
                   </property>
@@ -710,17 +632,38 @@
                   </property>
                  </widget>
                 </item>
-                <item row="5" column="0" colspan="2">
-                 <widget class="QLabel" name="label_optical_flow_x">
+                <item row="4" column="5">
+                 <widget class="QLabel" name="label_speed_z">
                   <property name="text">
-                   <string>Optical Flow-X</string>
+                   <string>SP-Z</string>
                   </property>
-                  <property name="wordWrap">
+                 </widget>
+                </item>
+                <item row="3" column="2">
+                 <widget class="QLabel" name="label_gyr_z">
+                  <property name="text">
+                   <string>GYR-Z</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="3" column="1">
+                 <widget class="QLineEdit" name="line_edit_acc_z">
+                  <property name="text">
+                   <string>00.0</string>
+                  </property>
+                  <property name="readOnly">
                    <bool>true</bool>
                   </property>
                  </widget>
                 </item>
-                <item row="5" column="2">
+                <item row="3" column="0">
+                 <widget class="QLabel" name="label_acc_z">
+                  <property name="text">
+                   <string>ACC-Z</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="7" column="2">
                  <widget class="QLineEdit" name="line_edit_optical_flow_x">
                   <property name="text">
                    <string>00.0</string>
@@ -730,22 +673,79 @@
                   </property>
                  </widget>
                 </item>
-                <item row="5" column="3" colspan="2">
-                 <widget class="QLabel" name="label_optical_flow_y">
+                <item row="7" column="6">
+                 <widget class="QLineEdit" name="line_edit_optical_flow_y">
                   <property name="text">
-                   <string>Optical Flow-Y</string>
+                   <string>00.0</string>
+                  </property>
+                  <property name="readOnly">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="4" column="2">
+                 <widget class="QLabel" name="label_speed_y">
+                  <property name="text">
+                   <string>SP-Y</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="3">
+                 <widget class="QLineEdit" name="line_edit_gyr_x">
+                  <property name="text">
+                   <string>00.0</string>
+                  </property>
+                  <property name="readOnly">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="3">
+                 <widget class="QLineEdit" name="line_edit_gyr_y">
+                  <property name="text">
+                   <string>00.0</string>
+                  </property>
+                  <property name="readOnly">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="3" column="3">
+                 <widget class="QLineEdit" name="line_edit_gyr_z">
+                  <property name="text">
+                   <string>00.0</string>
+                  </property>
+                  <property name="readOnly">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="4" column="3">
+                 <widget class="QLineEdit" name="line_edit_speed_y">
+                  <property name="text">
+                   <string>00.0</string>
+                  </property>
+                  <property name="readOnly">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="6" column="3" colspan="3">
+                 <widget class="QLabel" name="label_height_ultrasonic">
+                  <property name="text">
+                   <string>Height-Sonic</string>
                   </property>
                   <property name="wordWrap">
                    <bool>true</bool>
                   </property>
                  </widget>
                 </item>
-                <item row="5" column="5">
-                 <widget class="QLineEdit" name="line_edit_optical_flow_y">
+                <item row="7" column="3" colspan="3">
+                 <widget class="QLabel" name="label_optical_flow_y">
                   <property name="text">
-                   <string>00.0</string>
+                   <string>Optical Flow-Y</string>
                   </property>
-                  <property name="readOnly">
+                  <property name="wordWrap">
                    <bool>true</bool>
                   </property>
                  </widget>
@@ -1163,14 +1163,7 @@
                  <layout class="QHBoxLayout" name="horizontal_layout_camera"/>
                 </item>
                 <item row="0" column="0">
-                 <widget class="QComboBox" name="combo_box_camera">
-                  <property name="minimumSize">
-                   <size>
-                    <width>150</width>
-                    <height>0</height>
-                   </size>
-                  </property>
-                 </widget>
+                 <widget class="QComboBox" name="combo_box_camera"/>
                 </item>
                </layout>
               </widget>
@@ -1178,11 +1171,6 @@
             </layout>
            </item>
           </layout>
-          <zorder>group_box_flight_control_data</zorder>
-          <zorder>group_box_sensor_data</zorder>
-          <zorder>group_box_diagnostic_data</zorder>
-          <zorder>group_box_camera_data</zorder>
-          <zorder>group_box_remote_date</zorder>
          </widget>
         </item>
         <item row="1" column="0">
@@ -1199,7 +1187,7 @@
             </widget>
            </item>
            <item row="3" column="2">
-            <widget class="QDoubleSpinBox" name="doubleSpinBox">
+            <widget class="QDoubleSpinBox" name="double_spin_box_trim_roll">
              <property name="enabled">
               <bool>false</bool>
              </property>
@@ -1241,7 +1229,7 @@
             </widget>
            </item>
            <item row="3" column="1">
-            <widget class="QLabel" name="label">
+            <widget class="QLabel" name="label_trim_roll">
              <property name="text">
               <string>Trim Roll(deg)</string>
              </property>
@@ -1255,14 +1243,14 @@
             </widget>
            </item>
            <item row="4" column="1">
-            <widget class="QLabel" name="label_2">
+            <widget class="QLabel" name="label_trim_pitch">
              <property name="text">
               <string>Trim Pitch(deg)</string>
              </property>
             </widget>
            </item>
            <item row="4" column="2">
-            <widget class="QDoubleSpinBox" name="doubleSpinBox_2">
+            <widget class="QDoubleSpinBox" name="double_spin_box_trim_pitch">
              <property name="enabled">
               <bool>false</bool>
              </property>
@@ -1273,9 +1261,29 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="tab_serial_debug">
+      <widget class="QWidget" name="tab_serial_console">
        <attribute name="title">
-        <string>Serial Debug</string>
+        <string>Serial Console</string>
+       </attribute>
+      </widget>
+      <widget class="QWidget" name="tab_data_plotter">
+       <attribute name="title">
+        <string>Data Plotter</string>
+       </attribute>
+      </widget>
+      <widget class="QWidget" name="tab_params_setting">
+       <attribute name="title">
+        <string>Params Setting</string>
+       </attribute>
+      </widget>
+      <widget class="QWidget" name="tab_log_blocks">
+       <attribute name="title">
+        <string>Log Blocks</string>
+       </attribute>
+      </widget>
+      <widget class="QWidget" name="tab">
+       <attribute name="title">
+        <string>Extension Modules</string>
        </attribute>
       </widget>
      </widget>

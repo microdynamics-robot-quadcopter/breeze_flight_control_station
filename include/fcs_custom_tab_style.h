@@ -59,7 +59,7 @@ public:
         if (type == QStyle::CT_TabBarTab) {
             s.transpose();
             s.rheight() = 50;
-            s.rwidth()  = 70;
+            s.rwidth()  = 100;
         }
 
         return s;
