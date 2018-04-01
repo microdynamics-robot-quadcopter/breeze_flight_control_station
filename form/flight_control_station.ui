@@ -6,13 +6,13 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1300</width>
-    <height>750</height>
+    <width>1350</width>
+    <height>760</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>0</width>
+    <width>1350</width>
     <height>0</height>
    </size>
   </property>
@@ -25,1171 +25,1269 @@
    <string>Breeze Flight Control Station</string>
   </property>
   <widget class="QWidget" name="central_widget">
-   <widget class="FCSCustomTabWidget" name="tab_widget">
-    <property name="geometry">
-     <rect>
-      <x>11</x>
-      <y>104</y>
-      <width>1278</width>
-      <height>579</height>
-     </rect>
-    </property>
-    <property name="tabPosition">
-     <enum>QTabWidget::West</enum>
-    </property>
-    <property name="currentIndex">
-     <number>0</number>
-    </property>
-    <widget class="QWidget" name="tab_flight_status">
-     <attribute name="title">
-      <string>Flight Status</string>
-     </attribute>
-     <layout class="QGridLayout" name="gridLayout">
-      <item row="0" column="0">
-       <widget class="QGroupBox" name="group_box_flight_panel">
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>0</height>
-         </size>
-        </property>
-        <property name="title">
-         <string>Flight Panel</string>
-        </property>
-        <layout class="QGridLayout" name="gridLayout_2">
-         <item row="0" column="0">
-          <widget class="QGroupBox" name="group_box_pfd">
-           <property name="title">
-            <string>PFD(Primary Flight Display)</string>
-           </property>
-           <layout class="QGridLayout" name="gridLayout_3">
-            <item row="0" column="0">
-             <widget class="FCSInstrucmentWidgetPFD" name="widget_pfd" native="true"/>
-            </item>
-           </layout>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-      </item>
-      <item row="0" column="1" rowspan="2">
-       <widget class="QGroupBox" name="group_box_flight_data">
-        <property name="title">
-         <string>Flight Data</string>
-        </property>
-        <layout class="QGridLayout" name="gridLayout_6">
-         <item row="1" column="1">
-          <widget class="QGroupBox" name="groupBox">
-           <property name="title">
-            <string>Remote Data</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="2">
-          <widget class="QGroupBox" name="group_box_camera_data">
-           <property name="title">
-            <string>Camera Data</string>
-           </property>
-           <layout class="QGridLayout" name="gridLayout_12">
-            <item row="0" column="1">
-             <widget class="QPushButton" name="push_button_open">
-              <property name="text">
-               <string>open</string>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="2">
-             <widget class="QPushButton" name="push_button_close">
-              <property name="text">
-               <string>close</string>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="0" colspan="3">
-             <layout class="QHBoxLayout" name="horizontal_layout_camera"/>
-            </item>
-            <item row="0" column="0">
-             <widget class="QComboBox" name="combo_box_camera">
-              <property name="minimumSize">
-               <size>
-                <width>150</width>
-                <height>0</height>
-               </size>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </widget>
-         </item>
-         <item row="1" column="0">
-          <widget class="QGroupBox" name="group_box_diagnostic_data">
-           <property name="title">
-            <string>Diagnostic Data</string>
-           </property>
-           <layout class="QGridLayout" name="gridLayout_11">
-            <item row="0" column="0">
-             <layout class="QGridLayout" name="gridLayout_10">
-              <item row="1" column="1">
-               <widget class="QProgressBar" name="progress_bar_link_quality">
-                <property name="styleSheet">
-                 <string notr="true">selection-background-color: rgb(115, 210, 22);</string>
-                </property>
-                <property name="value">
-                 <number>50</number>
-                </property>
-               </widget>
-              </item>
+   <layout class="QGridLayout" name="gridLayout_5">
+    <item row="0" column="0">
+     <widget class="QGroupBox" name="group_box_serial_connect">
+      <property name="title">
+       <string>Serial Connect</string>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_7">
+       <item row="0" column="3">
+        <widget class="QPushButton" name="push_button_disconnect">
+         <property name="minimumSize">
+          <size>
+           <width>120</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Disconnect</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QComboBox" name="combo_box_serial">
+         <property name="minimumSize">
+          <size>
+           <width>200</width>
+           <height>0</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QPushButton" name="push_button_scan">
+         <property name="minimumSize">
+          <size>
+           <width>120</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Scan</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="2">
+        <widget class="QPushButton" name="push_button_connect">
+         <property name="minimumSize">
+          <size>
+           <width>120</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Connect</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="4">
+        <spacer name="horizontal_spacer_serial">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="FCSCustomTabWidget" name="tab_widget">
+      <property name="tabPosition">
+       <enum>QTabWidget::West</enum>
+      </property>
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="tab_flight_status">
+       <attribute name="title">
+        <string>Flight Status</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout">
+        <item row="0" column="0">
+         <widget class="QGroupBox" name="group_box_flight_panel">
+          <property name="minimumSize">
+           <size>
+            <width>345</width>
+            <height>0</height>
+           </size>
+          </property>
+          <property name="title">
+           <string>Flight Panel</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_2">
+           <item row="0" column="0">
+            <widget class="QGroupBox" name="group_box_pfd">
+             <property name="title">
+              <string>PFD(Primary Flight Display)</string>
+             </property>
+             <layout class="QGridLayout" name="gridLayout_3">
               <item row="0" column="0">
-               <widget class="QLabel" name="label_battery_capacity">
-                <property name="text">
-                 <string>Battery Capacity(%)</string>
-                </property>
-                <property name="wordWrap">
-                 <bool>true</bool>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="0">
-               <widget class="QLabel" name="label_link_quality">
-                <property name="text">
-                 <string>Link Quality(%)</string>
-                </property>
-                <property name="wordWrap">
-                 <bool>true</bool>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="1">
-               <widget class="QProgressBar" name="progress_bar_battery_capacity">
-                <property name="styleSheet">
-                 <string notr="true">selection-background-color: rgb(115, 210, 22);</string>
-                </property>
-                <property name="value">
-                 <number>50</number>
-                </property>
-               </widget>
+               <widget class="FCSInstrucmentWidgetPFD" name="widget_pfd" native="true"/>
               </item>
              </layout>
-            </item>
-            <item row="1" column="0">
-             <widget class="Line" name="line_hardware_data_1">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="0">
-             <layout class="QGridLayout" name="gridLayout_9">
-              <item row="1" column="3">
-               <widget class="QProgressBar" name="progress_bar_motor_2">
-                <property name="styleSheet">
-                 <string notr="true">selection-background-color: rgb(245, 121, 0);</string>
-                </property>
-                <property name="value">
-                 <number>50</number>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
-                </property>
-                <property name="textVisible">
-                 <bool>false</bool>
-                </property>
-                <property name="orientation">
-                 <enum>Qt::Vertical</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="4">
-               <widget class="QLabel" name="label_motor_3">
-                <property name="text">
-                 <string>M3</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="2">
-               <widget class="QLabel" name="label_motor_1">
-                <property name="text">
-                 <string>M1</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="3">
-               <widget class="QLabel" name="label_motor_2">
-                <property name="text">
-                 <string>M2</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="4">
-               <widget class="QProgressBar" name="progress_bar_motor_3">
-                <property name="styleSheet">
-                 <string notr="true">selection-background-color: rgb(245, 121, 0);</string>
-                </property>
-                <property name="value">
-                 <number>50</number>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
-                </property>
-                <property name="textVisible">
-                 <bool>false</bool>
-                </property>
-                <property name="orientation">
-                 <enum>Qt::Vertical</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="5">
-               <widget class="QProgressBar" name="progress_bar_motor_4">
-                <property name="styleSheet">
-                 <string notr="true">selection-background-color: rgb(245, 121, 0);</string>
-                </property>
-                <property name="value">
-                 <number>50</number>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
-                </property>
-                <property name="textVisible">
-                 <bool>false</bool>
-                </property>
-                <property name="orientation">
-                 <enum>Qt::Vertical</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="5">
-               <widget class="QLabel" name="label_motor_4">
-                <property name="text">
-                 <string>M4</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="2">
-               <widget class="QProgressBar" name="progress_bar_motor_1">
-                <property name="styleSheet">
-                 <string notr="true">selection-background-color: rgb(245, 121, 0);</string>
-                </property>
-                <property name="value">
-                 <number>50</number>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
-                </property>
-                <property name="textVisible">
-                 <bool>false</bool>
-                </property>
-                <property name="orientation">
-                 <enum>Qt::Vertical</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="1" rowspan="3">
-               <widget class="Line" name="line_hardware_data_2">
-                <property name="orientation">
-                 <enum>Qt::Vertical</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="0">
-               <widget class="QLabel" name="label_thrust">
-                <property name="text">
-                 <string>Thr</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="0">
-               <widget class="QProgressBar" name="progress_bar_thrust">
-                <property name="styleSheet">
-                 <string notr="true">selection-background-color: rgb(245, 121, 0);</string>
-                </property>
-                <property name="value">
-                 <number>50</number>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
-                </property>
-                <property name="textVisible">
-                 <bool>false</bool>
-                </property>
-                <property name="orientation">
-                 <enum>Qt::Vertical</enum>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="0">
-               <widget class="QLabel" name="label_thrust_value">
-                <property name="font">
-                 <font>
-                  <pointsize>10</pointsize>
-                 </font>
-                </property>
-                <property name="text">
-                 <string>50%</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="2">
-               <widget class="QLabel" name="label_motor_1_value">
-                <property name="font">
-                 <font>
-                  <pointsize>10</pointsize>
-                 </font>
-                </property>
-                <property name="text">
-                 <string>50%</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="3">
-               <widget class="QLabel" name="label_motor_2_value">
-                <property name="font">
-                 <font>
-                  <pointsize>10</pointsize>
-                 </font>
-                </property>
-                <property name="text">
-                 <string>50%</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="4">
-               <widget class="QLabel" name="label_motor_3_value">
-                <property name="font">
-                 <font>
-                  <pointsize>10</pointsize>
-                 </font>
-                </property>
-                <property name="text">
-                 <string>50%</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="5">
-               <widget class="QLabel" name="label_motor_4_value">
-                <property name="font">
-                 <font>
-                  <pointsize>10</pointsize>
-                 </font>
-                </property>
-                <property name="text">
-                 <string>50%</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </item>
-           </layout>
-          </widget>
-         </item>
-         <item row="0" column="2">
-          <widget class="QGroupBox" name="group_box_sensor_data">
-           <property name="title">
-            <string>Sensor Data</string>
-           </property>
-           <layout class="QGridLayout" name="gridLayout_8">
-            <item row="0" column="5">
-             <widget class="QLineEdit" name="line_edit_mag_x">
-              <property name="text">
-               <string>00.0</string>
-              </property>
-              <property name="readOnly">
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-            <item row="4" column="3" colspan="2">
-             <widget class="QLabel" name="label_height_ultrasonic">
-              <property name="text">
-               <string>Ultrasonic Height(cm)</string>
-              </property>
-              <property name="wordWrap">
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-            <item row="3" column="0">
-             <widget class="QLabel" name="label_speed_x">
-              <property name="text">
-               <string>SP-X</string>
-              </property>
-             </widget>
-            </item>
-            <item row="4" column="0" colspan="2">
-             <widget class="QLabel" name="label_height_pressure">
-              <property name="text">
-               <string>Pressure Height(cm)</string>
-              </property>
-              <property name="wordWrap">
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="1">
-             <widget class="QLineEdit" name="line_edit_acc_x">
-              <property name="text">
-               <string>00.0</string>
-              </property>
-              <property name="readOnly">
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="5">
-             <widget class="QLineEdit" name="line_edit_mag_z">
-              <property name="text">
-               <string>00.0</string>
-              </property>
-              <property name="readOnly">
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="1">
-             <widget class="QLineEdit" name="line_edit_acc_z">
-              <property name="text">
-               <string>00.0</string>
-              </property>
-              <property name="readOnly">
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-            <item row="3" column="3">
-             <widget class="QLineEdit" name="line_edit_speed_y">
-              <property name="text">
-               <string>00.0</string>
-              </property>
-              <property name="readOnly">
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="4">
-             <widget class="QLabel" name="label_mag_x">
-              <property name="text">
-               <string>MAG-X</string>
-              </property>
-             </widget>
-            </item>
-            <item row="4" column="2">
-             <widget class="QLineEdit" name="line_edit_height_pressure">
-              <property name="text">
-               <string>00.0</string>
-              </property>
-              <property name="readOnly">
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="4">
-             <widget class="QLabel" name="label_mag_z">
-              <property name="text">
-               <string>MAG-Z</string>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="2">
-             <widget class="QLabel" name="label_gyr_z">
-              <property name="text">
-               <string>GYR-Z</string>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="0">
-             <widget class="QLabel" name="label_acc_z">
-              <property name="text">
-               <string>ACC-Z</string>
-              </property>
-             </widget>
-            </item>
-            <item row="3" column="5">
-             <widget class="QLineEdit" name="line_edit_speed_z">
-              <property name="text">
-               <string>00.0</string>
-              </property>
-              <property name="readOnly">
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="3">
-             <widget class="QLineEdit" name="line_edit_gyr_y">
-              <property name="text">
-               <string>00.0</string>
-              </property>
-              <property name="readOnly">
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="2">
-             <widget class="QLabel" name="label_gyr_y">
-              <property name="text">
-               <string>GYR-Y</string>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="2">
-             <widget class="QLabel" name="label_gyr_x">
-              <property name="text">
-               <string>GYR-X</string>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="3">
-             <widget class="QLineEdit" name="line_edit_gyr_z">
-              <property name="text">
-               <string>00.0</string>
-              </property>
-              <property name="readOnly">
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-            <item row="4" column="5">
-             <widget class="QLineEdit" name="line_edit_height_ultrasonic">
-              <property name="text">
-               <string>00.0</string>
-              </property>
-              <property name="readOnly">
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="4">
-             <widget class="QLabel" name="label_mag_y">
-              <property name="text">
-               <string>MAG-Y</string>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="0">
-             <widget class="QLabel" name="label_acc_y">
-              <property name="text">
-               <string>ACC-Y</string>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="0">
-             <widget class="QLabel" name="label_acc_x">
-              <property name="text">
-               <string>ACC-X</string>
-              </property>
-             </widget>
-            </item>
-            <item row="3" column="4">
-             <widget class="QLabel" name="label_speed_z">
-              <property name="text">
-               <string>SP-Z</string>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="5">
-             <widget class="QLineEdit" name="line_edit_mag_y">
-              <property name="text">
-               <string>00.0</string>
-              </property>
-              <property name="readOnly">
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-            <item row="3" column="1">
-             <widget class="QLineEdit" name="line_edit_speed_x">
-              <property name="text">
-               <string>00.0</string>
-              </property>
-              <property name="readOnly">
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="3">
-             <widget class="QLineEdit" name="line_edit_gyr_x">
-              <property name="text">
-               <string>00.0</string>
-              </property>
-              <property name="readOnly">
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-            <item row="3" column="2">
-             <widget class="QLabel" name="label_speed_y">
-              <property name="text">
-               <string>SP-Y</string>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="1">
-             <widget class="QLineEdit" name="line_edit_acc_y">
-              <property name="text">
-               <string>00.0</string>
-              </property>
-              <property name="readOnly">
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </widget>
-         </item>
-         <item row="0" column="0" colspan="2">
-          <widget class="QGroupBox" name="group_box_flight_control_data">
-           <property name="minimumSize">
-            <size>
-             <width>0</width>
-             <height>0</height>
-            </size>
-           </property>
-           <property name="title">
-            <string>Flight Control Data</string>
-           </property>
-           <layout class="QGridLayout" name="gridLayout_4">
-            <item row="1" column="1">
-             <widget class="QLabel" name="label_lock_status_value">
-              <property name="font">
-               <font>
-                <pointsize>12</pointsize>
-               </font>
-              </property>
-              <property name="text">
-               <string>Lock</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-             </widget>
-            </item>
-            <item row="3" column="0">
-             <widget class="QLabel" name="label_height_out_value">
-              <property name="font">
-               <font>
-                <pointsize>12</pointsize>
-               </font>
-              </property>
-              <property name="text">
-               <string>00.0</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="1">
-             <widget class="QLabel" name="label_lock_status">
-              <property name="font">
-               <font>
-                <weight>75</weight>
-                <bold>true</bold>
-               </font>
-              </property>
-              <property name="text">
-               <string>Lock Status</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-              <property name="wordWrap">
-               <bool>false</bool>
-              </property>
-             </widget>
-            </item>
-            <item row="4" column="1">
-             <widget class="QLabel" name="label_angle_pitch">
-              <property name="font">
-               <font>
-                <weight>75</weight>
-                <bold>true</bold>
-               </font>
-              </property>
-              <property name="text">
-               <string>Pitch Angle(deg)</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-              <property name="wordWrap">
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="0">
-             <widget class="QLabel" name="label_flight_mode_out">
-              <property name="font">
-               <font>
-                <weight>75</weight>
-                <bold>true</bold>
-               </font>
-              </property>
-              <property name="text">
-               <string>Flight Mode</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-              <property name="wordWrap">
-               <bool>false</bool>
-              </property>
-             </widget>
-            </item>
-            <item row="4" column="0">
-             <widget class="QLabel" name="label_angle_roll">
-              <property name="font">
-               <font>
-                <weight>75</weight>
-                <bold>true</bold>
-               </font>
-              </property>
-              <property name="text">
-               <string>Roll Angle(deg)</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-              <property name="wordWrap">
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-            <item row="5" column="2">
-             <widget class="QLabel" name="label_angle_yaw_value">
-              <property name="font">
-               <font>
-                <pointsize>12</pointsize>
-               </font>
-              </property>
-              <property name="text">
-               <string>00.0</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-             </widget>
-            </item>
-            <item row="4" column="2">
-             <widget class="QLabel" name="label_angle_yaw">
-              <property name="font">
-               <font>
-                <weight>75</weight>
-                <bold>true</bold>
-               </font>
-              </property>
-              <property name="text">
-               <string>Yaw Angle(deg)</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-              <property name="wordWrap">
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="0">
-             <widget class="QLabel" name="label_flight_mode_out_value">
-              <property name="font">
-               <font>
-                <pointsize>12</pointsize>
-               </font>
-              </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="0" column="1" rowspan="2">
+         <widget class="QGroupBox" name="group_box_flight_data">
+          <property name="title">
+           <string>Flight Data</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_6">
+           <item row="0" column="0">
+            <layout class="QHBoxLayout" name="horizontalLayout">
+             <item>
+              <widget class="QGroupBox" name="group_box_flight_control_data">
+               <property name="title">
+                <string>Flight Control Data</string>
+               </property>
+               <layout class="QGridLayout" name="gridLayout_4">
+                <item row="1" column="1">
+                 <widget class="QLabel" name="label_lock_status_value">
+                  <property name="font">
+                   <font>
+                    <pointsize>12</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Lock</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item row="3" column="0">
+                 <widget class="QLabel" name="label_height_out_value">
+                  <property name="font">
+                   <font>
+                    <pointsize>12</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>00.0</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="1">
+                 <widget class="QLabel" name="label_lock_status">
+                  <property name="font">
+                   <font>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Lock Status</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                  <property name="wordWrap">
+                   <bool>false</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="4" column="1">
+                 <widget class="QLabel" name="label_angle_pitch_out">
+                  <property name="font">
+                   <font>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Pitch Angle(deg)</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                  <property name="wordWrap">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="0">
+                 <widget class="QLabel" name="label_flight_mode_out">
+                  <property name="font">
+                   <font>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Flight Mode</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                  <property name="wordWrap">
+                   <bool>false</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="4" column="0">
+                 <widget class="QLabel" name="label_angle_roll_out">
+                  <property name="font">
+                   <font>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Roll Angle(deg)</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                  <property name="wordWrap">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="5" column="2">
+                 <widget class="QLabel" name="label_angle_yaw_out_value">
+                  <property name="font">
+                   <font>
+                    <pointsize>12</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>00.0</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item row="4" column="2">
+                 <widget class="QLabel" name="label_angle_yaw_out">
+                  <property name="font">
+                   <font>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Yaw Angle(deg)</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                  <property name="wordWrap">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="0">
+                 <widget class="QLabel" name="label_flight_mode_out_value">
+                  <property name="font">
+                   <font>
+                    <pointsize>12</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Normal</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item row="3" column="1">
+                 <widget class="QLabel" name="label_speed_horizontal_value">
+                  <property name="font">
+                   <font>
+                    <pointsize>12</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>00.0</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="1">
+                 <widget class="QLabel" name="label_speed_horizontal">
+                  <property name="font">
+                   <font>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Horizontal Speed(m/s)</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                  <property name="wordWrap">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="2">
+                 <widget class="QLabel" name="label_alarm_status">
+                  <property name="font">
+                   <font>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Alarm Status</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                  <property name="wordWrap">
+                   <bool>false</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="2">
+                 <widget class="QLabel" name="label_alarm_status_value">
+                  <property name="font">
+                   <font>
+                    <pointsize>12</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>No</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item row="5" column="0">
+                 <widget class="QLabel" name="label_angle_roll_out_value">
+                  <property name="font">
+                   <font>
+                    <pointsize>12</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>00.0</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item row="3" column="2">
+                 <widget class="QLabel" name="label_speed_vertical_value">
+                  <property name="font">
+                   <font>
+                    <pointsize>12</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>00.0</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="0">
+                 <widget class="QLabel" name="label_height_out">
+                  <property name="font">
+                   <font>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Height(cm)</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                  <property name="wordWrap">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="5" column="1">
+                 <widget class="QLabel" name="label_angle_pitch_out_value">
+                  <property name="font">
+                   <font>
+                    <pointsize>12</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>00.0</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="2">
+                 <widget class="QLabel" name="label_speed_vertical">
+                  <property name="font">
+                   <font>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Vertical Speed(m/s)</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                  <property name="wordWrap">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <widget class="QGroupBox" name="group_box_sensor_data">
+               <property name="title">
+                <string>Sensor Data</string>
+               </property>
+               <layout class="QGridLayout" name="gridLayout_8">
+                <item row="0" column="4">
+                 <widget class="QLabel" name="label_mag_x">
+                  <property name="text">
+                   <string>MAG-X</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="3">
+                 <widget class="QLineEdit" name="line_edit_gyr_y">
+                  <property name="text">
+                   <string>00.0</string>
+                  </property>
+                  <property name="readOnly">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="4">
+                 <widget class="QLabel" name="label_mag_z">
+                  <property name="text">
+                   <string>MAG-Z</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="3">
+                 <widget class="QLineEdit" name="line_edit_gyr_z">
+                  <property name="text">
+                   <string>00.0</string>
+                  </property>
+                  <property name="readOnly">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="3" column="0">
+                 <widget class="QLabel" name="label_speed_x">
+                  <property name="text">
+                   <string>SP-X</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="2">
+                 <widget class="QLabel" name="label_gyr_z">
+                  <property name="text">
+                   <string>GYR-Z</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="5">
+                 <widget class="QLineEdit" name="line_edit_mag_y">
+                  <property name="text">
+                   <string>00.0</string>
+                  </property>
+                  <property name="readOnly">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="3" column="2">
+                 <widget class="QLabel" name="label_speed_y">
+                  <property name="text">
+                   <string>SP-Y</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="4" column="0" colspan="2">
+                 <widget class="QLabel" name="label_height_pressure">
+                  <property name="text">
+                   <string>Height-Press</string>
+                  </property>
+                  <property name="wordWrap">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="4">
+                 <widget class="QLabel" name="label_mag_y">
+                  <property name="text">
+                   <string>MAG-Y</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="3" column="1">
+                 <widget class="QLineEdit" name="line_edit_speed_x">
+                  <property name="text">
+                   <string>00.0</string>
+                  </property>
+                  <property name="readOnly">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="3" column="3">
+                 <widget class="QLineEdit" name="line_edit_speed_y">
+                  <property name="text">
+                   <string>00.0</string>
+                  </property>
+                  <property name="readOnly">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="3" column="4">
+                 <widget class="QLabel" name="label_speed_z">
+                  <property name="text">
+                   <string>SP-Z</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="2">
+                 <widget class="QLabel" name="label_gyr_y">
+                  <property name="text">
+                   <string>GYR-Y</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="4" column="2">
+                 <widget class="QLineEdit" name="line_edit_height_pressure">
+                  <property name="text">
+                   <string>00.0</string>
+                  </property>
+                  <property name="readOnly">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="0">
+                 <widget class="QLabel" name="label_acc_x">
+                  <property name="text">
+                   <string>ACC-X</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="0">
+                 <widget class="QLabel" name="label_acc_z">
+                  <property name="text">
+                   <string>ACC-Z</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="4" column="5">
+                 <widget class="QLineEdit" name="line_edit_height_ultrasonic">
+                  <property name="text">
+                   <string>00.0</string>
+                  </property>
+                  <property name="readOnly">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="1">
+                 <widget class="QLineEdit" name="line_edit_acc_z">
+                  <property name="text">
+                   <string>00.0</string>
+                  </property>
+                  <property name="readOnly">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="0">
+                 <widget class="QLabel" name="label_acc_y">
+                  <property name="text">
+                   <string>ACC-Y</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="3">
+                 <widget class="QLineEdit" name="line_edit_gyr_x">
+                  <property name="text">
+                   <string>00.0</string>
+                  </property>
+                  <property name="readOnly">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="5">
+                 <widget class="QLineEdit" name="line_edit_mag_z">
+                  <property name="text">
+                   <string>00.0</string>
+                  </property>
+                  <property name="readOnly">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="1">
+                 <widget class="QLineEdit" name="line_edit_acc_x">
+                  <property name="text">
+                   <string>00.0</string>
+                  </property>
+                  <property name="readOnly">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="5">
+                 <widget class="QLineEdit" name="line_edit_mag_x">
+                  <property name="text">
+                   <string>00.0</string>
+                  </property>
+                  <property name="readOnly">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="4" column="3" colspan="2">
+                 <widget class="QLabel" name="label_height_ultrasonic">
+                  <property name="text">
+                   <string>Height-Sonic</string>
+                  </property>
+                  <property name="wordWrap">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="2">
+                 <widget class="QLabel" name="label_gyr_x">
+                  <property name="text">
+                   <string>GYR-X</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="1">
+                 <widget class="QLineEdit" name="line_edit_acc_y">
+                  <property name="text">
+                   <string>00.0</string>
+                  </property>
+                  <property name="readOnly">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="3" column="5">
+                 <widget class="QLineEdit" name="line_edit_speed_z">
+                  <property name="text">
+                   <string>00.0</string>
+                  </property>
+                  <property name="readOnly">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="5" column="0" colspan="2">
+                 <widget class="QLabel" name="label_optical_flow_x">
+                  <property name="text">
+                   <string>Optical Flow-X</string>
+                  </property>
+                  <property name="wordWrap">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="5" column="2">
+                 <widget class="QLineEdit" name="line_edit_optical_flow_x">
+                  <property name="text">
+                   <string>00.0</string>
+                  </property>
+                  <property name="readOnly">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="5" column="3" colspan="2">
+                 <widget class="QLabel" name="label_optical_flow_y">
+                  <property name="text">
+                   <string>Optical Flow-Y</string>
+                  </property>
+                  <property name="wordWrap">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="5" column="5">
+                 <widget class="QLineEdit" name="line_edit_optical_flow_y">
+                  <property name="text">
+                   <string>00.0</string>
+                  </property>
+                  <property name="readOnly">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item row="1" column="0">
+            <layout class="QHBoxLayout" name="horizontalLayout_2">
+             <item>
+              <widget class="QGroupBox" name="group_box_diagnostic_data">
+               <property name="title">
+                <string>Diagnostic Data</string>
+               </property>
+               <layout class="QGridLayout" name="gridLayout_11">
+                <item row="0" column="0">
+                 <layout class="QGridLayout" name="gridLayout_10">
+                  <item row="1" column="1">
+                   <widget class="QProgressBar" name="progress_bar_link_quality">
+                    <property name="styleSheet">
+                     <string notr="true">selection-background-color: rgb(115, 210, 22);</string>
+                    </property>
+                    <property name="value">
+                     <number>50</number>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="0">
+                   <widget class="QLabel" name="label_battery_capacity">
+                    <property name="text">
+                     <string>Battery Capacity(%)</string>
+                    </property>
+                    <property name="wordWrap">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="0">
+                   <widget class="QLabel" name="label_link_quality">
+                    <property name="text">
+                     <string>Link Quality(%)</string>
+                    </property>
+                    <property name="wordWrap">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="1">
+                   <widget class="QProgressBar" name="progress_bar_battery_capacity">
+                    <property name="styleSheet">
+                     <string notr="true">selection-background-color: rgb(115, 210, 22);</string>
+                    </property>
+                    <property name="value">
+                     <number>50</number>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item row="1" column="0">
+                 <widget class="Line" name="line_diagnostic_data">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="0">
+                 <layout class="QGridLayout" name="gridLayout_9">
+                  <item row="2" column="2">
+                   <widget class="QLabel" name="label_motor_1_value">
+                    <property name="font">
+                     <font>
+                      <pointsize>10</pointsize>
+                     </font>
+                    </property>
+                    <property name="text">
+                     <string>50%</string>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignCenter</set>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="4">
+                   <widget class="QLabel" name="label_motor_3">
+                    <property name="text">
+                     <string>M3</string>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignCenter</set>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="2" column="0">
+                   <widget class="QLabel" name="label_thrust_out_value">
+                    <property name="font">
+                     <font>
+                      <pointsize>10</pointsize>
+                     </font>
+                    </property>
+                    <property name="text">
+                     <string>50%</string>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignCenter</set>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="5">
+                   <widget class="QProgressBar" name="progress_bar_motor_4">
+                    <property name="styleSheet">
+                     <string notr="true">selection-background-color: rgb(245, 121, 0);</string>
+                    </property>
+                    <property name="value">
+                     <number>50</number>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignCenter</set>
+                    </property>
+                    <property name="textVisible">
+                     <bool>false</bool>
+                    </property>
+                    <property name="orientation">
+                     <enum>Qt::Vertical</enum>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="2" column="4">
+                   <widget class="QLabel" name="label_motor_3_value">
+                    <property name="font">
+                     <font>
+                      <pointsize>10</pointsize>
+                     </font>
+                    </property>
+                    <property name="text">
+                     <string>50%</string>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignCenter</set>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="2" column="3">
+                   <widget class="QLabel" name="label_motor_2_value">
+                    <property name="font">
+                     <font>
+                      <pointsize>10</pointsize>
+                     </font>
+                    </property>
+                    <property name="text">
+                     <string>50%</string>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignCenter</set>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="5">
+                   <widget class="QLabel" name="label_motor_4">
+                    <property name="text">
+                     <string>M4</string>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignCenter</set>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="0">
+                   <widget class="QLabel" name="label_thrust_out">
+                    <property name="text">
+                     <string>Thr</string>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignCenter</set>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="0">
+                   <widget class="QProgressBar" name="progress_bar_thrust_out">
+                    <property name="styleSheet">
+                     <string notr="true">selection-background-color: rgb(245, 121, 0);</string>
+                    </property>
+                    <property name="value">
+                     <number>50</number>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignCenter</set>
+                    </property>
+                    <property name="textVisible">
+                     <bool>false</bool>
+                    </property>
+                    <property name="orientation">
+                     <enum>Qt::Vertical</enum>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="4">
+                   <widget class="QProgressBar" name="progress_bar_motor_3">
+                    <property name="styleSheet">
+                     <string notr="true">selection-background-color: rgb(245, 121, 0);</string>
+                    </property>
+                    <property name="value">
+                     <number>50</number>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignCenter</set>
+                    </property>
+                    <property name="textVisible">
+                     <bool>false</bool>
+                    </property>
+                    <property name="orientation">
+                     <enum>Qt::Vertical</enum>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="2">
+                   <widget class="QProgressBar" name="progress_bar_motor_1">
+                    <property name="styleSheet">
+                     <string notr="true">selection-background-color: rgb(245, 121, 0);</string>
+                    </property>
+                    <property name="value">
+                     <number>50</number>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignCenter</set>
+                    </property>
+                    <property name="textVisible">
+                     <bool>false</bool>
+                    </property>
+                    <property name="orientation">
+                     <enum>Qt::Vertical</enum>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="1" rowspan="3">
+                   <widget class="Line" name="line_hardware_data_2">
+                    <property name="orientation">
+                     <enum>Qt::Vertical</enum>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="3">
+                   <widget class="QProgressBar" name="progress_bar_motor_2">
+                    <property name="styleSheet">
+                     <string notr="true">selection-background-color: rgb(245, 121, 0);</string>
+                    </property>
+                    <property name="value">
+                     <number>50</number>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignCenter</set>
+                    </property>
+                    <property name="textVisible">
+                     <bool>false</bool>
+                    </property>
+                    <property name="orientation">
+                     <enum>Qt::Vertical</enum>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="3">
+                   <widget class="QLabel" name="label_motor_2">
+                    <property name="text">
+                     <string>M2</string>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignCenter</set>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="2" column="5">
+                   <widget class="QLabel" name="label_motor_4_value">
+                    <property name="font">
+                     <font>
+                      <pointsize>10</pointsize>
+                     </font>
+                    </property>
+                    <property name="text">
+                     <string>50%</string>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignCenter</set>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="0" column="2">
+                   <widget class="QLabel" name="label_motor_1">
+                    <property name="text">
+                     <string>M1</string>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignCenter</set>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <widget class="QGroupBox" name="group_box_remote_date">
+               <property name="title">
+                <string>Remote Data</string>
+               </property>
+               <layout class="QGridLayout" name="gridLayout_14">
+                <item row="0" column="0" colspan="3">
+                 <widget class="QLabel" name="label_angle_roll_in">
+                  <property name="text">
+                   <string>Roll(deg)</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="3">
+                 <widget class="QLineEdit" name="line_edit_angle_roll">
+                  <property name="text">
+                   <string>00.0</string>
+                  </property>
+                  <property name="readOnly">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="0" colspan="3">
+                 <widget class="QLabel" name="label_angle_pitch_in">
+                  <property name="text">
+                   <string>Pitch(deg)</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="3">
+                 <widget class="QLineEdit" name="line_edit_angle_pitch">
+                  <property name="text">
+                   <string>00.0</string>
+                  </property>
+                  <property name="readOnly">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="0" colspan="3">
+                 <widget class="QLabel" name="label_angle_yaw_in">
+                  <property name="text">
+                   <string>Yaw(deg)</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="3">
+                 <widget class="QLineEdit" name="line_edit_angle_yaw">
+                  <property name="text">
+                   <string>00.0</string>
+                  </property>
+                  <property name="readOnly">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="3" column="0" colspan="2">
+                 <widget class="QLabel" name="label_height_in">
+                  <property name="text">
+                   <string>Height(cm)</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="4" column="0">
+                 <widget class="QLabel" name="label_thrust_in">
+                  <property name="text">
+                   <string>Thrust</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="3" column="3">
+                 <widget class="QLineEdit" name="line_edit_height">
+                  <property name="text">
+                   <string>00.0</string>
+                  </property>
+                  <property name="readOnly">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="4" column="3">
+                 <widget class="QProgressBar" name="progress_bar_thrust_in">
+                  <property name="value">
+                   <number>50</number>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <widget class="QGroupBox" name="group_box_camera_data">
+               <property name="title">
+                <string>Camera Data</string>
+               </property>
+               <layout class="QGridLayout" name="gridLayout_12">
+                <item row="0" column="1">
+                 <widget class="QPushButton" name="push_button_open">
+                  <property name="text">
+                   <string>open</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="2">
+                 <widget class="QPushButton" name="push_button_close">
+                  <property name="text">
+                   <string>close</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="1" column="0" colspan="3">
+                 <layout class="QHBoxLayout" name="horizontal_layout_camera"/>
+                </item>
+                <item row="0" column="0">
+                 <widget class="QComboBox" name="combo_box_camera">
+                  <property name="minimumSize">
+                   <size>
+                    <width>150</width>
+                    <height>0</height>
+                   </size>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+          <zorder>group_box_flight_control_data</zorder>
+          <zorder>group_box_sensor_data</zorder>
+          <zorder>group_box_diagnostic_data</zorder>
+          <zorder>group_box_camera_data</zorder>
+          <zorder>group_box_remote_date</zorder>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QGroupBox" name="group_box_flight_control">
+          <property name="title">
+           <string>Flight Control</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_13">
+           <item row="0" column="1">
+            <widget class="QLabel" name="label_flight_mode_in">
+             <property name="text">
+              <string>Flight Mode</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="2">
+            <widget class="QDoubleSpinBox" name="doubleSpinBox">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="2">
+            <widget class="QComboBox" name="combo_box_flight_mode">
+             <item>
               <property name="text">
                <string>Normal</string>
               </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-             </widget>
-            </item>
-            <item row="3" column="1">
-             <widget class="QLabel" name="label_speed_horizontal_value">
-              <property name="font">
-               <font>
-                <pointsize>12</pointsize>
-               </font>
-              </property>
+             </item>
+             <item>
               <property name="text">
-               <string>00.0</string>
+               <string>Advanced</string>
               </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="1">
-             <widget class="QLabel" name="label_speed_horizontal">
-              <property name="font">
-               <font>
-                <weight>75</weight>
-                <bold>true</bold>
-               </font>
-              </property>
-              <property name="text">
-               <string>Horizontal Speed(m/s)</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-              <property name="wordWrap">
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="2">
-             <widget class="QLabel" name="label_alarm_status">
-              <property name="font">
-               <font>
-                <weight>75</weight>
-                <bold>true</bold>
-               </font>
-              </property>
-              <property name="text">
-               <string>Alarm Status</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-              <property name="wordWrap">
-               <bool>false</bool>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="2">
-             <widget class="QLabel" name="label_alarm_status_value">
-              <property name="font">
-               <font>
-                <pointsize>12</pointsize>
-               </font>
-              </property>
-              <property name="text">
-               <string>No</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-             </widget>
-            </item>
-            <item row="5" column="0">
-             <widget class="QLabel" name="label_angle_roll_value">
-              <property name="font">
-               <font>
-                <pointsize>12</pointsize>
-               </font>
-              </property>
-              <property name="text">
-               <string>00.0</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-             </widget>
-            </item>
-            <item row="3" column="2">
-             <widget class="QLabel" name="label_speed_vertical_value">
-              <property name="font">
-               <font>
-                <pointsize>12</pointsize>
-               </font>
-              </property>
-              <property name="text">
-               <string>00.0</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="0">
-             <widget class="QLabel" name="label_height_out">
-              <property name="font">
-               <font>
-                <weight>75</weight>
-                <bold>true</bold>
-               </font>
-              </property>
-              <property name="text">
-               <string>Height(cm)</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-              <property name="wordWrap">
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-            <item row="5" column="1">
-             <widget class="QLabel" name="label_angle_pitch_value">
-              <property name="font">
-               <font>
-                <pointsize>12</pointsize>
-               </font>
-              </property>
-              <property name="text">
-               <string>00.0</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="2">
-             <widget class="QLabel" name="label_speed_vertical">
-              <property name="font">
-               <font>
-                <weight>75</weight>
-                <bold>true</bold>
-               </font>
-              </property>
-              <property name="text">
-               <string>Vertical Speed(m/s)</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-              <property name="wordWrap">
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </widget>
-         </item>
-        </layout>
-        <zorder>widget_pfd</zorder>
-        <zorder>group_box_flight_control_data</zorder>
-        <zorder>group_box_sensor_data</zorder>
-        <zorder>group_box_diagnostic_data</zorder>
-        <zorder>group_box_camera_data</zorder>
-        <zorder>groupBox</zorder>
-       </widget>
-      </item>
-      <item row="1" column="0">
-       <widget class="QGroupBox" name="group_box_flight_control">
-        <property name="title">
-         <string>Flight Control</string>
-        </property>
-        <layout class="QGridLayout" name="gridLayout_13">
-         <item row="0" column="0">
-          <widget class="QLabel" name="label_flight_mode_in">
-           <property name="text">
-            <string>Flight Mode</string>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="1">
-          <widget class="QComboBox" name="combo_box_flight_mode">
-           <item>
-            <property name="text">
-             <string>Normal</string>
-            </property>
+             </item>
+            </widget>
            </item>
-           <item>
-            <property name="text">
-             <string>Advanced</string>
-            </property>
+           <item row="1" column="2">
+            <widget class="QComboBox" name="combo_box_assist_mode">
+             <item>
+              <property name="text">
+               <string>Altitude Hover</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Height Hover</string>
+              </property>
+             </item>
+            </widget>
            </item>
-          </widget>
-         </item>
-         <item row="1" column="0">
-          <widget class="QLabel" name="label_assist_mode">
-           <property name="text">
-            <string>Assist Mode</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="1">
-          <widget class="QComboBox" name="combo_box_assist_mode">
-           <item>
-            <property name="text">
-             <string>Altitude Hover</string>
-            </property>
+           <item row="2" column="1" colspan="2">
+            <widget class="Line" name="line_flight_status">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+            </widget>
            </item>
-           <item>
-            <property name="text">
-             <string>Height Hover</string>
-            </property>
+           <item row="3" column="1">
+            <widget class="QLabel" name="label">
+             <property name="text">
+              <string>Trim Roll(deg)</string>
+             </property>
+            </widget>
            </item>
-          </widget>
-         </item>
-         <item row="2" column="0">
-          <widget class="QLabel" name="label_head_mode">
-           <property name="text">
-            <string>Head Mode</string>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="1">
-          <widget class="QComboBox" name="combo_box_head_mode">
-           <item>
-            <property name="text">
-             <string>Head Free</string>
-            </property>
+           <item row="1" column="1">
+            <widget class="QLabel" name="label_assist_mode">
+             <property name="text">
+              <string>Assist Mode</string>
+             </property>
+            </widget>
            </item>
-           <item>
-            <property name="text">
-             <string>Head Have</string>
-            </property>
+           <item row="4" column="1">
+            <widget class="QLabel" name="label_2">
+             <property name="text">
+              <string>Trim Pitch(deg)</string>
+             </property>
+            </widget>
            </item>
-          </widget>
-         </item>
-         <item row="3" column="0" colspan="2">
-          <widget class="Line" name="line">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-          </widget>
-         </item>
-         <item row="4" column="0" colspan="2">
-          <widget class="QRadioButton" name="radioButton">
-           <property name="text">
-            <string>Hardware Lock</string>
-           </property>
-          </widget>
-         </item>
-         <item row="5" column="0">
-          <widget class="QLabel" name="label_height_in">
-           <property name="text">
-            <string>Height(cm)</string>
-           </property>
-          </widget>
-         </item>
-         <item row="5" column="1">
-          <widget class="QDoubleSpinBox" name="double_spin_box_height">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-           <property name="value">
-            <double>50.000000000000000</double>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-    <widget class="QWidget" name="tab_serial_debug">
-     <attribute name="title">
-      <string>Serial Debug</string>
-     </attribute>
-    </widget>
-   </widget>
-   <widget class="QGroupBox" name="group_box_serial_connect">
-    <property name="geometry">
-     <rect>
-      <x>11</x>
-      <y>11</y>
-      <width>656</width>
-      <height>86</height>
-     </rect>
-    </property>
-    <property name="title">
-     <string>Serial Connect</string>
-    </property>
-    <layout class="QGridLayout" name="gridLayout_7">
-     <item row="0" column="3">
-      <widget class="QPushButton" name="push_button_disconnect">
-       <property name="minimumSize">
-        <size>
-         <width>120</width>
-         <height>0</height>
-        </size>
-       </property>
-       <property name="text">
-        <string>Disconnect</string>
-       </property>
+           <item row="4" column="2">
+            <widget class="QDoubleSpinBox" name="doubleSpinBox_2">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+       </layout>
       </widget>
-     </item>
-     <item row="0" column="0">
-      <widget class="QComboBox" name="combo_box_serial">
-       <property name="minimumSize">
-        <size>
-         <width>200</width>
-         <height>0</height>
-        </size>
-       </property>
+      <widget class="QWidget" name="tab_serial_debug">
+       <attribute name="title">
+        <string>Serial Debug</string>
+       </attribute>
       </widget>
-     </item>
-     <item row="0" column="1">
-      <widget class="QPushButton" name="push_button_scan">
-       <property name="minimumSize">
-        <size>
-         <width>120</width>
-         <height>0</height>
-        </size>
-       </property>
-       <property name="text">
-        <string>Scan</string>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="2">
-      <widget class="QPushButton" name="push_button_connect">
-       <property name="minimumSize">
-        <size>
-         <width>120</width>
-         <height>0</height>
-        </size>
-       </property>
-       <property name="text">
-        <string>Connect</string>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="4">
-      <spacer name="horizontal_spacer_serial">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-    </layout>
-   </widget>
+     </widget>
+    </item>
+   </layout>
   </widget>
   <widget class="QMenuBar" name="menu_bar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1300</width>
+     <width>1350</width>
      <height>28</height>
     </rect>
    </property>
