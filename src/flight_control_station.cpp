@@ -115,12 +115,12 @@ FlightControlStation::FlightControlStation(QWidget *parent/*,
         }
     }
 
-//    camera_             = new QCamera(this);
+    camera_             = new QCamera(this);
     camera_view_finder_ = new QCameraViewfinder(this);
 
     ui->horizontal_layout_camera->addWidget(camera_view_finder_);
 
-//    camera_->setViewfinder(camera_view_finder_);
+    camera_->setViewfinder(camera_view_finder_);
 //    camera_->start();
 }
 

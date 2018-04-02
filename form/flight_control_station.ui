@@ -7,13 +7,13 @@
     <x>0</x>
     <y>0</y>
     <width>1350</width>
-    <height>760</height>
+    <height>750</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
     <width>1350</width>
-    <height>760</height>
+    <height>750</height>
    </size>
   </property>
   <property name="font">
@@ -27,83 +27,12 @@
   <widget class="QWidget" name="central_widget">
    <layout class="QGridLayout" name="gridLayout_5">
     <item row="0" column="0">
-     <widget class="QGroupBox" name="group_box_serial_connect">
-      <property name="title">
-       <string>Serial Connect</string>
-      </property>
-      <layout class="QGridLayout" name="gridLayout_7">
-       <item row="0" column="3">
-        <widget class="QPushButton" name="push_button_disconnect">
-         <property name="minimumSize">
-          <size>
-           <width>120</width>
-           <height>0</height>
-          </size>
-         </property>
-         <property name="text">
-          <string>Disconnect</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="0">
-        <widget class="QComboBox" name="combo_box_serial">
-         <property name="minimumSize">
-          <size>
-           <width>200</width>
-           <height>0</height>
-          </size>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="1">
-        <widget class="QPushButton" name="push_button_scan">
-         <property name="minimumSize">
-          <size>
-           <width>120</width>
-           <height>0</height>
-          </size>
-         </property>
-         <property name="text">
-          <string>Scan</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="2">
-        <widget class="QPushButton" name="push_button_connect">
-         <property name="minimumSize">
-          <size>
-           <width>120</width>
-           <height>0</height>
-          </size>
-         </property>
-         <property name="text">
-          <string>Connect</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="4">
-        <spacer name="horizontal_spacer_serial">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>40</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-      </layout>
-     </widget>
-    </item>
-    <item row="1" column="0">
      <widget class="FCSCustomTabWidget" name="tab_widget">
       <property name="tabPosition">
        <enum>QTabWidget::West</enum>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="tab_flight_status">
        <attribute name="title">
@@ -114,7 +43,7 @@
          <widget class="QGroupBox" name="group_box_flight_panel">
           <property name="minimumSize">
            <size>
-            <width>345</width>
+            <width>340</width>
             <height>0</height>
            </size>
           </property>
@@ -144,7 +73,7 @@
           </property>
           <layout class="QGridLayout" name="gridLayout_6">
            <item row="0" column="0">
-            <layout class="QHBoxLayout" name="horizontalLayout">
+            <layout class="QHBoxLayout" name="horizontal_layout_1">
              <item>
               <widget class="QGroupBox" name="group_box_flight_control_data">
                <property name="title">
@@ -466,10 +395,20 @@
                 <string>Sensor Data</string>
                </property>
                <layout class="QGridLayout" name="gridLayout_8">
-                <item row="0" column="2">
+                <item row="0" column="3">
                  <widget class="QLabel" name="label_gyr_x">
                   <property name="text">
                    <string>GYR-X</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="4">
+                 <widget class="QLineEdit" name="line_edit_gyr_y">
+                  <property name="text">
+                   <string>00.0</string>
+                  </property>
+                  <property name="readOnly">
+                   <bool>true</bool>
                   </property>
                  </widget>
                 </item>
@@ -483,48 +422,28 @@
                   </property>
                  </widget>
                 </item>
-                <item row="7" column="0" colspan="2">
-                 <widget class="QLabel" name="label_optical_flow_x">
-                  <property name="text">
-                   <string>Optical Flow-X</string>
-                  </property>
-                  <property name="wordWrap">
-                   <bool>true</bool>
-                  </property>
-                 </widget>
-                </item>
-                <item row="3" column="5">
+                <item row="3" column="6">
                  <widget class="QLabel" name="label_mag_z">
                   <property name="text">
                    <string>MAG-Z</string>
                   </property>
                  </widget>
                 </item>
-                <item row="2" column="2">
+                <item row="2" column="3">
                  <widget class="QLabel" name="label_gyr_y">
                   <property name="text">
                    <string>GYR-Y</string>
                   </property>
                  </widget>
                 </item>
-                <item row="2" column="5">
+                <item row="2" column="6">
                  <widget class="QLabel" name="label_mag_y">
                   <property name="text">
                    <string>MAG-Y</string>
                   </property>
                  </widget>
                 </item>
-                <item row="6" column="2">
-                 <widget class="QLineEdit" name="line_edit_height_pressure">
-                  <property name="text">
-                   <string>00.0</string>
-                  </property>
-                  <property name="readOnly">
-                   <bool>true</bool>
-                  </property>
-                 </widget>
-                </item>
-                <item row="3" column="6">
+                <item row="3" column="7">
                  <widget class="QLineEdit" name="line_edit_mag_z">
                   <property name="text">
                    <string>00.0</string>
@@ -541,15 +460,8 @@
                   </property>
                  </widget>
                 </item>
-                <item row="4" column="0">
-                 <widget class="QLabel" name="label_speed_x">
-                  <property name="text">
-                   <string>SP-X</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="4" column="6">
-                 <widget class="QLineEdit" name="line_edit_speed_z">
+                <item row="6" column="3">
+                 <widget class="QLineEdit" name="line_edit_height_pressure">
                   <property name="text">
                    <string>00.0</string>
                   </property>
@@ -558,8 +470,15 @@
                   </property>
                  </widget>
                 </item>
-                <item row="6" column="6">
-                 <widget class="QLineEdit" name="line_edit_height_ultrasonic">
+                <item row="4" column="0">
+                 <widget class="QLabel" name="label_speed_x">
+                  <property name="text">
+                   <string>SP-X</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="4" column="7">
+                 <widget class="QLineEdit" name="line_edit_speed_z">
                   <property name="text">
                    <string>00.0</string>
                   </property>
@@ -578,7 +497,17 @@
                   </property>
                  </widget>
                 </item>
-                <item row="0" column="6">
+                <item row="3" column="4">
+                 <widget class="QLineEdit" name="line_edit_gyr_z">
+                  <property name="text">
+                   <string>00.0</string>
+                  </property>
+                  <property name="readOnly">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="7">
                  <widget class="QLineEdit" name="line_edit_mag_x">
                   <property name="text">
                    <string>00.0</string>
@@ -601,14 +530,24 @@
                 <item row="6" column="0" colspan="2">
                  <widget class="QLabel" name="label_height_pressure">
                   <property name="text">
-                   <string>Height-Press</string>
+                   <string>Height Press</string>
                   </property>
                   <property name="wordWrap">
                    <bool>true</bool>
                   </property>
                  </widget>
                 </item>
-                <item row="0" column="5">
+                <item row="0" column="4">
+                 <widget class="QLineEdit" name="line_edit_gyr_x">
+                  <property name="text">
+                   <string>00.0</string>
+                  </property>
+                  <property name="readOnly">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="6">
                  <widget class="QLabel" name="label_mag_x">
                   <property name="text">
                    <string>MAG-X</string>
@@ -622,7 +561,7 @@
                   </property>
                  </widget>
                 </item>
-                <item row="2" column="6">
+                <item row="2" column="7">
                  <widget class="QLineEdit" name="line_edit_mag_y">
                   <property name="text">
                    <string>00.0</string>
@@ -632,14 +571,14 @@
                   </property>
                  </widget>
                 </item>
-                <item row="4" column="5">
+                <item row="4" column="6">
                  <widget class="QLabel" name="label_speed_z">
                   <property name="text">
                    <string>SP-Z</string>
                   </property>
                  </widget>
                 </item>
-                <item row="3" column="2">
+                <item row="3" column="3">
                  <widget class="QLabel" name="label_gyr_z">
                   <property name="text">
                    <string>GYR-Z</string>
@@ -663,17 +602,17 @@
                   </property>
                  </widget>
                 </item>
-                <item row="7" column="2">
-                 <widget class="QLineEdit" name="line_edit_optical_flow_x">
+                <item row="7" column="4" colspan="3">
+                 <widget class="QLabel" name="label_optical_flow_y">
                   <property name="text">
-                   <string>00.0</string>
+                   <string>Optical Flow-Y</string>
                   </property>
-                  <property name="readOnly">
+                  <property name="wordWrap">
                    <bool>true</bool>
                   </property>
                  </widget>
                 </item>
-                <item row="7" column="6">
+                <item row="7" column="7">
                  <widget class="QLineEdit" name="line_edit_optical_flow_y">
                   <property name="text">
                    <string>00.0</string>
@@ -683,44 +622,14 @@
                   </property>
                  </widget>
                 </item>
-                <item row="4" column="2">
+                <item row="4" column="3">
                  <widget class="QLabel" name="label_speed_y">
                   <property name="text">
                    <string>SP-Y</string>
                   </property>
                  </widget>
                 </item>
-                <item row="0" column="3">
-                 <widget class="QLineEdit" name="line_edit_gyr_x">
-                  <property name="text">
-                   <string>00.0</string>
-                  </property>
-                  <property name="readOnly">
-                   <bool>true</bool>
-                  </property>
-                 </widget>
-                </item>
-                <item row="2" column="3">
-                 <widget class="QLineEdit" name="line_edit_gyr_y">
-                  <property name="text">
-                   <string>00.0</string>
-                  </property>
-                  <property name="readOnly">
-                   <bool>true</bool>
-                  </property>
-                 </widget>
-                </item>
-                <item row="3" column="3">
-                 <widget class="QLineEdit" name="line_edit_gyr_z">
-                  <property name="text">
-                   <string>00.0</string>
-                  </property>
-                  <property name="readOnly">
-                   <bool>true</bool>
-                  </property>
-                 </widget>
-                </item>
-                <item row="4" column="3">
+                <item row="4" column="4">
                  <widget class="QLineEdit" name="line_edit_speed_y">
                   <property name="text">
                    <string>00.0</string>
@@ -730,22 +639,55 @@
                   </property>
                  </widget>
                 </item>
-                <item row="6" column="3" colspan="3">
-                 <widget class="QLabel" name="label_height_ultrasonic">
+                <item row="7" column="2">
+                 <spacer name="horizontalSpacer">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item row="6" column="4" colspan="3">
+                 <widget class="QLabel" name="label_optical_flow_x">
                   <property name="text">
-                   <string>Height-Sonic</string>
+                   <string>Optical Flow-X</string>
                   </property>
                   <property name="wordWrap">
                    <bool>true</bool>
                   </property>
                  </widget>
                 </item>
-                <item row="7" column="3" colspan="3">
-                 <widget class="QLabel" name="label_optical_flow_y">
+                <item row="6" column="7">
+                 <widget class="QLineEdit" name="line_edit_optical_flow_x">
                   <property name="text">
-                   <string>Optical Flow-Y</string>
+                   <string>00.0</string>
+                  </property>
+                  <property name="readOnly">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="7" column="0" colspan="2">
+                 <widget class="QLabel" name="label_height_ultrasonic">
+                  <property name="text">
+                   <string>Height Sonic</string>
                   </property>
                   <property name="wordWrap">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="7" column="3">
+                 <widget class="QLineEdit" name="line_edit_height_ultrasonic">
+                  <property name="text">
+                   <string>00.0</string>
+                  </property>
+                  <property name="readOnly">
                    <bool>true</bool>
                   </property>
                  </widget>
@@ -756,7 +698,7 @@
             </layout>
            </item>
            <item row="1" column="0">
-            <layout class="QHBoxLayout" name="horizontalLayout_2">
+            <layout class="QHBoxLayout" name="horizontal_layout_2">
              <item>
               <widget class="QGroupBox" name="group_box_diagnostic_data">
                <property name="title">
@@ -1145,12 +1087,8 @@
                 <string>Camera Data</string>
                </property>
                <layout class="QGridLayout" name="gridLayout_12">
-                <item row="0" column="1">
-                 <widget class="QPushButton" name="push_button_open">
-                  <property name="text">
-                   <string>open</string>
-                  </property>
-                 </widget>
+                <item row="1" column="0" colspan="3">
+                 <layout class="QHBoxLayout" name="horizontal_layout_camera"/>
                 </item>
                 <item row="0" column="2">
                  <widget class="QPushButton" name="push_button_close">
@@ -1159,11 +1097,15 @@
                   </property>
                  </widget>
                 </item>
-                <item row="1" column="0" colspan="3">
-                 <layout class="QHBoxLayout" name="horizontal_layout_camera"/>
-                </item>
                 <item row="0" column="0">
                  <widget class="QComboBox" name="combo_box_camera"/>
+                </item>
+                <item row="0" column="1">
+                 <widget class="QPushButton" name="push_button_open">
+                  <property name="text">
+                   <string>open</string>
+                  </property>
+                 </widget>
                 </item>
                </layout>
               </widget>
@@ -1265,6 +1207,24 @@
        <attribute name="title">
         <string>Serial Console</string>
        </attribute>
+       <widget class="QGroupBox" name="group_box_receive_window">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>0</y>
+          <width>631</width>
+          <height>661</height>
+         </rect>
+        </property>
+        <property name="title">
+         <string>Receive Window</string>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_15">
+         <item row="0" column="0">
+          <widget class="QTextEdit" name="text_edit_receive_window"/>
+         </item>
+        </layout>
+       </widget>
       </widget>
       <widget class="QWidget" name="tab_data_plotter">
        <attribute name="title">
@@ -1281,10 +1241,92 @@
         <string>Log Blocks</string>
        </attribute>
       </widget>
-      <widget class="QWidget" name="tab">
+      <widget class="QWidget" name="tab_extension_modules">
        <attribute name="title">
         <string>Extension Modules</string>
        </attribute>
+      </widget>
+      <widget class="QWidget" name="tab_program_setting">
+       <attribute name="title">
+        <string>Program Setting</string>
+       </attribute>
+       <widget class="QGroupBox" name="group_box_serial_connect">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>30</y>
+          <width>911</width>
+          <height>86</height>
+         </rect>
+        </property>
+        <property name="title">
+         <string>Serial Connect</string>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_7">
+         <item row="0" column="3">
+          <widget class="QPushButton" name="push_button_disconnect">
+           <property name="minimumSize">
+            <size>
+             <width>120</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Disconnect</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0">
+          <widget class="QComboBox" name="combo_box_serial">
+           <property name="minimumSize">
+            <size>
+             <width>200</width>
+             <height>0</height>
+            </size>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QPushButton" name="push_button_scan">
+           <property name="minimumSize">
+            <size>
+             <width>120</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Scan</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="2">
+          <widget class="QPushButton" name="push_button_connect">
+           <property name="minimumSize">
+            <size>
+             <width>120</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Connect</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="4">
+          <spacer name="horizontal_spacer_serial">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </widget>
       </widget>
      </widget>
     </item>
