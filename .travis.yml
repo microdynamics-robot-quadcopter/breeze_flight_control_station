@@ -7,9 +7,10 @@ compiler:
 before_install:
   - sudo apt-get update -qq
   - sudo apt-get install -y qtbase5-dev qtmultimedia5-dev libqt5serialport5-dev
+  - qmake -v
 script:
   - mkdir build && cd build
-  - qmake ../breeze_flight_control_station.pro && make
+  - qmake ../breeze_flight_control_station.pro && cat MakeFile && make
 branches:
   only:
     - master
