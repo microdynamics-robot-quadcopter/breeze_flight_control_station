@@ -1207,37 +1207,247 @@
        <attribute name="title">
         <string>Serial Console</string>
        </attribute>
-       <widget class="QGroupBox" name="group_box_receive_window">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>0</y>
-          <width>631</width>
-          <height>661</height>
-         </rect>
-        </property>
-        <property name="title">
-         <string>Receive Window</string>
-        </property>
-        <layout class="QGridLayout" name="gridLayout_15">
-         <item row="0" column="0">
-          <widget class="QTextEdit" name="text_edit_receive_window"/>
-         </item>
-        </layout>
-       </widget>
-       <widget class="QGroupBox" name="groupBox">
-        <property name="geometry">
-         <rect>
-          <x>650</x>
-          <y>30</y>
-          <width>611</width>
-          <height>231</height>
-         </rect>
-        </property>
-        <property name="title">
-         <string>GroupBox</string>
-        </property>
-       </widget>
+       <layout class="QGridLayout" name="gridLayout_19">
+        <item row="0" column="0" rowspan="3">
+         <widget class="QGroupBox" name="group_box_recv_window">
+          <property name="title">
+           <string>Recv Window</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_15">
+           <item row="0" column="0">
+            <widget class="QTextEdit" name="text_edit_recv_window">
+             <property name="readOnly">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QGroupBox" name="group_box_send_window">
+          <property name="title">
+           <string>Send Window</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_16">
+           <item row="0" column="0">
+            <widget class="QTextEdit" name="text_edit_send_window"/>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QGroupBox" name="group_box_send_configuration">
+          <property name="title">
+           <string>Send Configuration</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_17">
+           <item row="0" column="0">
+            <widget class="QRadioButton" name="radio_button_dec">
+             <property name="text">
+              <string>DEC</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QRadioButton" name="radio_button_hex">
+             <property name="text">
+              <string>Hex</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="2">
+            <widget class="QRadioButton" name="radio_button_chr">
+             <property name="text">
+              <string>CHR</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="3">
+            <widget class="QCheckBox" name="check_box_new_line">
+             <property name="text">
+              <string>New Line</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0" colspan="4">
+            <layout class="QHBoxLayout" name="horizontal_layout_send_1">
+             <item>
+              <widget class="QCheckBox" name="check_box_timing_send">
+               <property name="text">
+                <string>Timing Send</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_interval">
+               <property name="text">
+                <string>Interval</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="line_edit_interval">
+               <property name="text">
+                <string>100</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_ms">
+               <property name="text">
+                <string>ms</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item row="2" column="0" colspan="6">
+            <widget class="Line" name="line_send_configuration">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="0" colspan="6">
+            <layout class="QHBoxLayout" name="horizontal_layout_send_2">
+             <item>
+              <widget class="QLabel" name="label_file">
+               <property name="text">
+                <string>File</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="line_edit_file"/>
+             </item>
+             <item>
+              <widget class="QPushButton" name="push_button_browse_file">
+               <property name="text">
+                <string>Browse</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="push_button_send_file">
+               <property name="text">
+                <string>Send File</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="push_button_stop_send">
+               <property name="text">
+                <string>Stop Send</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item row="0" column="4" colspan="2">
+            <widget class="QPushButton" name="push_button_send">
+             <property name="text">
+              <string>Send</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="4" colspan="2">
+            <widget class="QPushButton" name="push_button_clear">
+             <property name="text">
+              <string>Clear</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <widget class="QGroupBox" name="group_box_firmware_update">
+          <property name="title">
+           <string>Firmware Update</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout_18">
+           <item row="0" column="0" colspan="2">
+            <layout class="QHBoxLayout" name="horizontal_layout_firmware_1">
+             <item>
+              <widget class="QPushButton" name="push_button_initiate_bootloader">
+               <property name="text">
+                <string>Initiate Bootloader</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="push_button_restart_bootloader">
+               <property name="text">
+                <string>Restart Bootloader</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="push_button_restart_firmware">
+               <property name="text">
+                <string>Restart Firmware</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item row="1" column="0" colspan="2">
+            <layout class="QHBoxLayout" name="horizontal_layout_firmware_2">
+             <item>
+              <widget class="QLabel" name="label_firmware">
+               <property name="text">
+                <string>Firmware</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="line_edit_firmware"/>
+             </item>
+             <item>
+              <widget class="QPushButton" name="push_button_browse_firmware">
+               <property name="text">
+                <string>Browse</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="push_button_verify">
+               <property name="text">
+                <string>Verify</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="push_button_program">
+               <property name="text">
+                <string>Program</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item row="2" column="0">
+            <widget class="QLabel" name="label_uploading">
+             <property name="text">
+              <string>Uploading</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1">
+            <widget class="QProgressBar" name="progress_bar_uploading">
+             <property name="value">
+              <number>0</number>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+       </layout>
       </widget>
       <widget class="QWidget" name="tab_data_plotter">
        <attribute name="title">
