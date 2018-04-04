@@ -1,0 +1,16 @@
+language:
+  - cpp
+compiler:
+  - gcc
+before_install:
+  - sudo apt-get update -qq
+  - sudo apt-get install -y qtcreator
+branches:
+  only:
+    - master
+notifications:
+  email:
+    recipients:
+      - myyerrol@126.com
+    on_success: change
+    on_failure: always
