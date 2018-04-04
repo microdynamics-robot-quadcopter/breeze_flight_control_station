@@ -1,10 +1,15 @@
 language:
   - cpp
+os:
+  - linux
 compiler:
   - gcc
 before_install:
   - sudo apt-get update -qq
-  - sudo apt-get install -y qtcreator
+  - sudo apt-get install -y qmake
+script:
+  - mkdir build && cd build
+  - qmake ../breeze_flight_control_station.pro
 branches:
   only:
     - master
