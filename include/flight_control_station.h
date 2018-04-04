@@ -51,14 +51,14 @@
 #include <QCamera>
 #include <QCameraInfo>
 #include <QCameraViewfinder>
-#include <communication_serial_interface.h>
-#include "fcs_indicator_attitude.h"
-#include "fcs_indicator_altitude.h"
-#include "fcs_indicator_compass.h"
+//#include <communication_serial_interface.h>
+//#include "fcs_indicator_attitude.h"
+//#include "fcs_indicator_altitude.h"
+//#include "fcs_indicator_compass.h"
 
 #define KEYBOARD_CONTROL 0
 
-using namespace communication_serial;
+//using namespace communication_serial;
 
 namespace Ui {
 class FlightControlStation;
@@ -107,9 +107,9 @@ private:
     QCamera                      *camera_;
     QList<QCameraInfo>            cameras_info_;
     QCameraViewfinder            *camera_view_finder_;
-    FlightAttitudeIndicator      *flight_attitude_indicator_;
-    FlightAltitudeIndicator      *flight_altitude_indicator_;
-    FlightCompassIndicator       *flight_compass_indicator_;
+//    FlightAttitudeIndicator      *flight_attitude_indicator_;
+//    FlightAltitudeIndicator      *flight_altitude_indicator_;
+//    FlightCompassIndicator       *flight_compass_indicator_;
     Ui::FlightControlStation     *ui;
 //    CommunicationSerialInterface serial_interface_;
 };

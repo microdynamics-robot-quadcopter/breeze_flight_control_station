@@ -288,11 +288,11 @@ void FlightControlStation::updateBufferWrite(void)
 
 void FlightControlStation::updateUIFromRead(void)
 {
-    float value_roll;
-    float value_pitch;
-    float value_yaw;
-    float value_alt;
-    float value_hei;
+//    float value_roll;
+//    float value_pitch;
+//    float value_yaw;
+//    float value_alt;
+//    float value_hei;
 
     QString att_r, att_p, att_y;
     QString alt, hei;
@@ -312,17 +312,17 @@ void FlightControlStation::updateUIFromRead(void)
 //    ui->lineEditDataAltitude->setText(alt);
 //    ui->lineEditDataHeight->setText(hei);
 
-    value_roll  = flight_attitude_indicator_->getRoll();
-    value_pitch = flight_attitude_indicator_->getPitch();
-    value_yaw   = flight_compass_indicator_->getYaw();
-    value_alt   = flight_altitude_indicator_->getAltitude();
-    value_hei   = flight_altitude_indicator_->getHeight();
+//    value_roll  = flight_attitude_indicator_->getRoll();
+//    value_pitch = flight_attitude_indicator_->getPitch();
+//    value_yaw   = flight_compass_indicator_->getYaw();
+//    value_alt   = flight_altitude_indicator_->getAltitude();
+//    value_hei   = flight_altitude_indicator_->getHeight();
 
-    flight_attitude_indicator_->setRoll(value_roll + att_r_actual_);
-    flight_attitude_indicator_->setPitch(value_pitch + att_p_actual_);
-    flight_compass_indicator_->setYaw(value_yaw + att_y_actual_);
-    flight_altitude_indicator_->setAltitude(value_alt + robot_alt_actual_);
-    flight_altitude_indicator_->setHeight(value_hei + robot_hei_actual_);
+//    flight_attitude_indicator_->setRoll(value_roll + att_r_actual_);
+//    flight_attitude_indicator_->setPitch(value_pitch + att_p_actual_);
+//    flight_compass_indicator_->setYaw(value_yaw + att_y_actual_);
+//    flight_altitude_indicator_->setAltitude(value_alt + robot_alt_actual_);
+//    flight_altitude_indicator_->setHeight(value_hei + robot_hei_actual_);
 }
 
 void FlightControlStation::updateUIFromWrite(void)

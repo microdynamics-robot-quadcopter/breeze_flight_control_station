@@ -1225,6 +1225,19 @@
          </item>
         </layout>
        </widget>
+       <widget class="QGroupBox" name="groupBox">
+        <property name="geometry">
+         <rect>
+          <x>650</x>
+          <y>30</y>
+          <width>611</width>
+          <height>231</height>
+         </rect>
+        </property>
+        <property name="title">
+         <string>GroupBox</string>
+        </property>
+       </widget>
       </widget>
       <widget class="QWidget" name="tab_data_plotter">
        <attribute name="title">
