@@ -104,29 +104,62 @@ FlightControlStation::FlightControlStation(QWidget *parent/*,
 //                  << std::endl;
 //    }
 
+    serial_ports_info_ = QSerialPortInfo::availablePorts();
+
+    foreach (const QSerialPortInfo &serial_port_info, serial_ports_info_) {
+        if (serial_port_info.portName() !=
+            ui->combo_box_port_name->currentText()) {
+            ui->combo_box_port_name->addItem(serial_port_info.portName());
+        }
+    }
+
     cameras_info_ = QCameraInfo::availableCameras();
 
     foreach (const QCameraInfo &camera_info, cameras_info_) {
-        if (camera_info.deviceName() != ui->combo_box_camera->currentText()) {
-            ui->combo_box_camera->addItem(camera_info.deviceName());
+        if (camera_info.deviceName() !=
+            ui->combo_box_camera_name->currentText()) {
+            ui->combo_box_camera_name->addItem(camera_info.deviceName());
         }
         else {
             continue;
         }
     }
 
-    camera_             = new QCamera(this);
     camera_view_finder_ = new QCameraViewfinder(this);
 
     ui->horizontal_layout_camera->addWidget(camera_view_finder_);
 
-    camera_->setViewfinder(camera_view_finder_);
-//    camera_->start();
+    connect(ui->push_button_open, SIGNAL(clicked(bool)), this,
+            SLOT(openCameraViewFinder()));
+    connect(ui->push_button_close, SIGNAL(clicked(bool)), this,
+            SLOT(closeCameraViewFinder()));
 }
 
 FlightControlStation::~FlightControlStation()
 {
     delete ui;
+}
+
+void FlightControlStation::openCameraViewFinder(void)
+{
+    std::string camera_name =
+        ui->combo_box_camera_name->currentText().toStdString();
+
+    if (camera_name != "") {
+    const QByteArray &camera_string(camera_name.c_str());
+        camera_ = new QCamera(camera_string);
+    }
+    else {
+        camera_ = new QCamera(this);
+    }
+
+    camera_->setViewfinder(camera_view_finder_);
+    camera_->start();
+}
+
+void FlightControlStation::closeCameraViewFinder(void)
+{
+    camera_->stop();
 }
 
 void FlightControlStation::openAboutWidget(void)

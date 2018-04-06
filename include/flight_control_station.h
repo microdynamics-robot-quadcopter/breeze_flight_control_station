@@ -45,12 +45,14 @@
 #ifndef FLIGHT_CONTROL_STATION_H
 #define FLIGHT_CONTROL_STATION_H
 
-#include <QTimer>
-#include <QMessageBox>
-#include <QMainWindow>
 #include <QCamera>
 #include <QCameraInfo>
 #include <QCameraViewfinder>
+#include <QMessageBox>
+#include <QMainWindow>
+#include <QSerialPortInfo>
+#include <QTimer>
+
 //#include <communication_serial_interface.h>
 //#include "fcs_indicator_attitude.h"
 //#include "fcs_indicator_altitude.h"
@@ -76,6 +78,8 @@ public:
 protected slots:
     void openAboutWidget(void);
     void updateTimerOperation(void);
+    void openCameraViewFinder(void);
+    void closeCameraViewFinder(void);
 protected:
     void keyPressEvent(QKeyEvent *event);
     void mousePressEvent(QMouseEvent *event);
@@ -104,6 +108,8 @@ private:
     std::vector<float>            motor_mileage_target_;
     QMessageBox                  *about_widget_;
     QTimer                       *timer_;
+    QString                       serial_name_;
+    QList<QSerialPortInfo>        serial_ports_info_;
     QCamera                      *camera_;
     QList<QCameraInfo>            cameras_info_;
     QCameraViewfinder            *camera_view_finder_;

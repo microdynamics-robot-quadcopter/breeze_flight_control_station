@@ -47,16 +47,18 @@
 
 int main(int argc, char *argv[])
 {
-    QApplication a(argc, argv);
+    QApplication application(argc, argv);
+
     FlightControlStation flight_control_station(0/*, "serial:///dev/ttyUSB0",
                                                 "/home/ubuntu/Desktop/breeze_flight_control_station/config/config.txt"*/);
 
     flight_control_station.move(
-        (QApplication::desktop()->width() -
+        (QApplication::desktop()->width()  -
          flight_control_station.width()) / 2,
         (QApplication::desktop()->height() -
          flight_control_station.height()) / 2);
+
     flight_control_station.show();
 
-    return a.exec();
+    return application.exec();
 }

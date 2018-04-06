@@ -32,7 +32,7 @@
        <enum>QTabWidget::West</enum>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="tab_flight_status">
        <attribute name="title">
@@ -996,15 +996,8 @@
                 <string>Remote Data</string>
                </property>
                <layout class="QGridLayout" name="gridLayout_14">
-                <item row="0" column="0" colspan="3">
-                 <widget class="QLabel" name="label_angle_roll_in">
-                  <property name="text">
-                   <string>Roll(deg)</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="0" column="3">
-                 <widget class="QLineEdit" name="line_edit_angle_roll">
+                <item row="3" column="3">
+                 <widget class="QLineEdit" name="line_edit_height">
                   <property name="text">
                    <string>00.0</string>
                   </property>
@@ -1013,15 +1006,25 @@
                   </property>
                  </widget>
                 </item>
-                <item row="1" column="0" colspan="3">
-                 <widget class="QLabel" name="label_angle_pitch_in">
+                <item row="4" column="0">
+                 <widget class="QLabel" name="label_thrust_in">
                   <property name="text">
-                   <string>Pitch(deg)</string>
+                   <string>Thrust</string>
                   </property>
                  </widget>
                 </item>
                 <item row="1" column="3">
                  <widget class="QLineEdit" name="line_edit_angle_pitch">
+                  <property name="text">
+                   <string>00.0</string>
+                  </property>
+                  <property name="readOnly">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="3">
+                 <widget class="QLineEdit" name="line_edit_angle_yaw">
                   <property name="text">
                    <string>00.0</string>
                   </property>
@@ -1037,37 +1040,10 @@
                   </property>
                  </widget>
                 </item>
-                <item row="2" column="3">
-                 <widget class="QLineEdit" name="line_edit_angle_yaw">
+                <item row="1" column="0" colspan="3">
+                 <widget class="QLabel" name="label_angle_pitch_in">
                   <property name="text">
-                   <string>00.0</string>
-                  </property>
-                  <property name="readOnly">
-                   <bool>true</bool>
-                  </property>
-                 </widget>
-                </item>
-                <item row="3" column="0" colspan="2">
-                 <widget class="QLabel" name="label_height_in">
-                  <property name="text">
-                   <string>Height(cm)</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="4" column="0">
-                 <widget class="QLabel" name="label_thrust_in">
-                  <property name="text">
-                   <string>Thrust</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="3" column="3">
-                 <widget class="QLineEdit" name="line_edit_height">
-                  <property name="text">
-                   <string>00.0</string>
-                  </property>
-                  <property name="readOnly">
-                   <bool>true</bool>
+                   <string>Pitch(deg)</string>
                   </property>
                  </widget>
                 </item>
@@ -1078,29 +1054,59 @@
                   </property>
                  </widget>
                 </item>
+                <item row="0" column="3">
+                 <widget class="QLineEdit" name="line_edit_angle_roll">
+                  <property name="text">
+                   <string>00.0</string>
+                  </property>
+                  <property name="readOnly">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="0" colspan="3">
+                 <widget class="QLabel" name="label_angle_roll_in">
+                  <property name="text">
+                   <string>Roll(deg)</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="3" column="0" colspan="2">
+                 <widget class="QLabel" name="label_height_in">
+                  <property name="text">
+                   <string>Height(cm)</string>
+                  </property>
+                 </widget>
+                </item>
                </layout>
               </widget>
              </item>
              <item>
               <widget class="QGroupBox" name="group_box_camera_data">
+               <property name="minimumSize">
+                <size>
+                 <width>330</width>
+                 <height>0</height>
+                </size>
+               </property>
                <property name="title">
                 <string>Camera Data</string>
                </property>
                <layout class="QGridLayout" name="gridLayout_12">
-                <item row="1" column="0" colspan="3">
+                <item row="2" column="0" colspan="3">
                  <layout class="QHBoxLayout" name="horizontal_layout_camera"/>
                 </item>
-                <item row="0" column="2">
+                <item row="1" column="2">
                  <widget class="QPushButton" name="push_button_close">
                   <property name="text">
                    <string>close</string>
                   </property>
                  </widget>
                 </item>
-                <item row="0" column="0">
-                 <widget class="QComboBox" name="combo_box_camera"/>
+                <item row="0" column="0" colspan="2">
+                 <widget class="QComboBox" name="combo_box_camera_name"/>
                 </item>
-                <item row="0" column="1">
+                <item row="0" column="2">
                  <widget class="QPushButton" name="push_button_open">
                   <property name="text">
                    <string>open</string>
