@@ -1915,9 +1915,9 @@
         <string>Extension Modules</string>
        </attribute>
       </widget>
-      <widget class="QWidget" name="tab_program_setting">
+      <widget class="QWidget" name="tab_program_settings">
        <attribute name="title">
-        <string>Program Setting</string>
+        <string>Program Settings</string>
        </attribute>
        <layout class="QGridLayout" name="gridLayout_10">
         <item row="0" column="0">
