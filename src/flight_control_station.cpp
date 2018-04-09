@@ -104,6 +104,7 @@ FlightControlStation::FlightControlStation(QWidget *parent/*,
 //                  << std::endl;
 //    }
 
+
     serial_ports_info_ = QSerialPortInfo::availablePorts();
 
     foreach (const QSerialPortInfo &serial_port_info, serial_ports_info_) {
