@@ -104,7 +104,6 @@ FlightControlStation::FlightControlStation(QWidget *parent/*,
 //                  << std::endl;
 //    }
 
-
     serial_ports_info_ = QSerialPortInfo::availablePorts();
 
     foreach (const QSerialPortInfo &serial_port_info, serial_ports_info_) {
@@ -134,6 +133,7 @@ FlightControlStation::FlightControlStation(QWidget *parent/*,
             SLOT(openCameraViewFinder()));
     connect(ui->push_button_close, SIGNAL(clicked(bool)), this,
             SLOT(closeCameraViewFinder()));
+    connect(ui->action_exit, SIGNAL(triggered(bool)), this, SLOT(close()));
 }
 
 FlightControlStation::~FlightControlStation()
