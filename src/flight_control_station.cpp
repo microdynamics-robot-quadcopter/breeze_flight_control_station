@@ -134,7 +134,6 @@ FlightControlStation::FlightControlStation(QWidget *parent/*,
     connect(ui->push_button_close, SIGNAL(clicked(bool)), this,
             SLOT(closeCameraViewFinder()));
     connect(ui->action_exit, SIGNAL(triggered(bool)), this, SLOT(close()));
-
 }
 
 FlightControlStation::~FlightControlStation()
