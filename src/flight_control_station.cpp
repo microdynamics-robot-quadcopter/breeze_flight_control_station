@@ -134,6 +134,11 @@ FlightControlStation::FlightControlStation(QWidget *parent/*,
     connect(ui->push_button_close, SIGNAL(clicked(bool)), this,
             SLOT(closeCameraViewFinder()));
     connect(ui->action_exit, SIGNAL(triggered(bool)), this, SLOT(close()));
+
+    connect(ui->action_about_qt, SIGNAL(triggered(bool)), qApp,
+            SLOT(aboutQt()));
+    connect(ui->action_about, SIGNAL(triggered(bool)), this,
+            SLOT(openAboutWidget()));
 }
 
 FlightControlStation::~FlightControlStation()
@@ -167,10 +172,7 @@ void FlightControlStation::openAboutWidget(void)
 {
     about_widget_ = new QMessageBox(this);
     about_widget_->setWindowTitle(tr("About"));
-    about_widget_->setText(
-        QString("Breeze quadcopter flight control station can implement ") +
-        QString("the real-time monitoring and control on the computer ")   +
-        QString("client.\n\n\t\t\t                Team MicroDynamics"));
+    about_widget_->setText(QString("Breeze quadcopter flight control station"));
     about_widget_->setStandardButtons(QMessageBox::Yes);
     about_widget_->setDefaultButton(QMessageBox::Yes);
     about_widget_->exec();
