@@ -70,10 +70,6 @@ FlightControlStation::FlightControlStation(QWidget *parent/*,
 //    ui->verticalLayoutCompass->addWidget(flight_compass_indicator_);
 
 //    connect(timer_, SIGNAL(timeout()), this, SLOT(updateTimerOperation()));
-//    connect(ui->actionExit, SIGNAL(triggered()), this, SLOT(close()));
-//    connect(ui->actionAboutQt, SIGNAL(triggered()), qApp, SLOT(aboutQt()));
-//    connect(ui->actionAbout, SIGNAL(triggered()), this,
-//            SLOT(openAboutWidget()));
 
 //    count_ = 0;
 
