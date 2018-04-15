@@ -2031,16 +2031,6 @@
     </property>
     <addaction name="action_exit"/>
    </widget>
-   <widget class="QMenu" name="menu_edit">
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-    <property name="title">
-     <string>&amp;Edit</string>
-    </property>
-   </widget>
    <widget class="QMenu" name="menu_help">
     <property name="font">
      <font>
@@ -2054,7 +2044,6 @@
     <addaction name="action_about_qt"/>
    </widget>
    <addaction name="menu_file"/>
-   <addaction name="menu_edit"/>
    <addaction name="menu_help"/>
   </widget>
   <widget class="QStatusBar" name="status_bar"/>
