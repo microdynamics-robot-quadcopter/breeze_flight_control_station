@@ -325,17 +325,17 @@ void FlightControlStation::updateUIFromRead(void)
 //    float value_alt;
 //    float value_hei;
 
-    QString att_r, att_p, att_y;
-    QString alt, hei;
-    QString thrust;
-    QString motor_a, motor_b, motor_c, motor_d;
-    QString battery_capacity;
+//    QString att_r, att_p, att_y;
+//    QString alt, hei;
+//    QString thrust;
+//    QString motor_a, motor_b, motor_c, motor_d;
+//    QString battery_capacity;
 
-    att_r.sprintf("%.2f", att_r_actual_);
-    att_p.sprintf("%.2f", att_p_actual_);
-    att_y.sprintf("%.2f", att_y_actual_);
-    alt.sprintf("%.2f", robot_alt_actual_);
-    hei.sprintf("%.2f", robot_hei_actual_);
+//    att_r.sprintf("%.2f", att_r_actual_);
+//    att_p.sprintf("%.2f", att_p_actual_);
+//    att_y.sprintf("%.2f", att_y_actual_);
+//    alt.sprintf("%.2f", robot_alt_actual_);
+//    hei.sprintf("%.2f", robot_hei_actual_);
 
 //    ui->lineEditDataRoll->setText(att_r);
 //    ui->lineEditDataPitch->setText(att_p);
