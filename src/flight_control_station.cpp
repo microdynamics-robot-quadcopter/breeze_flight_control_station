@@ -173,8 +173,8 @@ void FlightControlStation::openAboutWidget(void)
     about_widget_->exec();
 }
 
-void FlightControlStation::updateTimerOperation(void)
-{
+//void FlightControlStation::updateTimerOperation(void)
+//{
 //    serial_interface_.checkShakeHandState();
 //    serial_interface_.updateCommandState(READ_ROBOT_IMU, count_);
 //    serial_interface_.updateCommandState(READ_MOTOR_SPEED, count_);
@@ -187,7 +187,7 @@ void FlightControlStation::updateTimerOperation(void)
 //    updateUIFromRead();
 
 //    count_++;
-}
+//}
 
 void FlightControlStation::keyPressEvent(QKeyEvent *event)
 {

@@ -77,8 +77,8 @@ public:
     ~FlightControlStation();
 protected slots:
     void openAboutWidget(void);
-    void updateTimerOperation(void);
     void openCameraViewFinder(void);
+//    void updateTimerOperation(void);
     void closeCameraViewFinder(void);
 protected:
     void keyPressEvent(QKeyEvent *event);
