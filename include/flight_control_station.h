@@ -48,8 +48,8 @@
 #include <QCamera>
 #include <QCameraInfo>
 #include <QCameraViewfinder>
-#include <QMessageBox>
 #include <QMainWindow>
+#include <QMessageBox>
 #include <QSerialPortInfo>
 #include <QTimer>
 
