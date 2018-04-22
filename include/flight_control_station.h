@@ -1,7 +1,6 @@
 /******************************************************************************
  * Software License Agreement (GPL V3 License)
  *
- * Copyright (C) 2013 Marek M. Cel
  * Copyright (c) 2018 myyerrol(Team MicroDynamics)
  *
  * This file is part of breeze_flight_control_station.
