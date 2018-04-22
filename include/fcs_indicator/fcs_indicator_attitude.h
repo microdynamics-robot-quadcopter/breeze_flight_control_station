@@ -32,7 +32,7 @@
  * History:
  * <Authors>     <Date>         <Version>     <Operation>
  * bushuhui      2014.12.03     --           Finish attitude indicator
- * myyerrol      2016.07.12     1.0          Modify attitude indicator
+ * myyerrol      2016.07.12     1.0.0        Modify attitude indicator
  *
  * Description:
  * This .h file defines some elements for implementing the indicator of

@@ -32,7 +32,7 @@
  * History:
  * <Authors>     <Date>         <Version>     <Operation>
  * Marek M. Cel  2013.--.--     --            Finish ADI instrument
- * myyerrol      2018.03.xx     1.0           Modify ADI instrument
+ * myyerrol      2018.03.xx     1.0.0         Modify ADI instrument
  *
  * Description:
  * This .cpp file implements the instrument of Attitude Director Indicator(ADI)
@@ -229,4 +229,3 @@ void FCSInstrucmentADI::updateADIView(void)
 
     adi_scene_->update();
 }
-

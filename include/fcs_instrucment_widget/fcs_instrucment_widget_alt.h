@@ -32,7 +32,7 @@
  * History:
  * <Authors>     <Date>         <Version>     <Operation>
  * Marek M. Cel  2013.--.--     --            Finish ALT widget
- * myyerrol      2018.03.14     1.0           Modify ALT widget
+ * myyerrol      2018.03.14     1.0.0         Modify ALT widget
  *
  * Description:
  * This .h file defines some elements for implementing the widget of

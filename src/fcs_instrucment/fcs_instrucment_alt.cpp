@@ -32,7 +32,7 @@
  * History:
  * <Authors>     <Date>         <Version>     <Operation>
  * Marek M. Cel  2013.--.--     --            Finish ALT instrument
- * myyerrol      2018.03.xx     1.0           Modify ALT instrument
+ * myyerrol      2018.03.xx     1.0.0         Modify ALT instrument
  *
  * Description:
  * This .cpp file implements the instrument of Altimeter(ALT) according to
@@ -224,4 +224,3 @@ void FCSInstrucmentALT::updateALTView(void)
 
     alt_scene_->update();
 }
-

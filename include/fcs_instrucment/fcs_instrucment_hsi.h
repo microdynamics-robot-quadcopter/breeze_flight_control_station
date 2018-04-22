@@ -32,7 +32,7 @@
  * History:
  * <Authors>     <Date>         <Version>     <Operation>
  * Marek M. Cel  2013.--.--     --            Finish HSI instrument
- * myyerrol      2018.03.xx     1.0           Modify HSI instrument
+ * myyerrol      2018.03.xx     1.0.0         Modify HSI instrument
  *
  * Description:
  * This .h file defines some elements for implementing the instrument of

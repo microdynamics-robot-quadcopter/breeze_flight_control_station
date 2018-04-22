@@ -32,7 +32,7 @@
  * History:
  * <Authors>     <Date>         <Version>     <Operation>
  * Marek M. Cel  2013.--.--     --            Finish ADI widget
- * myyerrol      2018.03.14     1.0           Modify ADI widget
+ * myyerrol      2018.03.14     1.0.0         Modify ADI widget
  *
  * Description:
  * This .cpp file implements the widget of Attitude Director Indicator(ADI)

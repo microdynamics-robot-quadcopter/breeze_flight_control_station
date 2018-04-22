@@ -32,7 +32,7 @@
  * History:
  * <Authors>     <Date>         <Version>     <Operation>
  * bushuhui      2014.12.03     --           Finish compass indicator
- * myyerrol      2016.07.12     1.0          Modify compass indicator
+ * myyerrol      2016.07.12     1.0.0        Modify compass indicator
  *
  * Description:
  * This .cpp file implements the indicator of compass according to
