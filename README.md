@@ -13,3 +13,42 @@ Breeze flight control station can implement real-time monitoring and control on 
 ![breeze_fcs_3_data_plotter](.images/breeze_fcs_3_data_plotter.png)
 
 ![breeze_fcs_7_program_settings](.images/breeze_fcs_7_program_settings.png)
+
+## Requirment
+
+- Ubuntu 16.04
+- Qt 5.9
+- GCC 5.4
+- Boost 1.58
+
+## Configuration
+
+Install some dependent pacages:
+
+```sh
+$> sudo apt-get update
+$> sudo apt-get install build-essential libboost-all-dev
+```
+
+Download the repository:
+
+```sh
+$> cd ~/Desktop
+$> git clone https://github.com/microdynamics-quadcopter/breeze_flight_control_station.git
+```
+
+Build the codes:
+
+```sh
+$> cd ~/Desktop/breeze_flight_control_station
+$> mkdir build; cd build
+$> /opt/Qt5.9.1/5.9.1/gcc_64/bin/qmake ../breeze_flight_control_station.pro
+$> make
+```
+
+## Usage
+
+```sh
+$> cd ~/Desktop/breeze_flight_control_station/build
+$> ./breeze_flight_control_station
+```
