@@ -31,7 +31,7 @@
  * History:
  * <Authors>     <Date>         <Version>     <Operation>
  * myyerrol      2016.07.12     -             Finish basic gui
- * myyerrol      2018.04.21     1.0           Modify basic gui
+ * myyerrol      2018.04.21     1.0.0         Modify basic gui
  *
  * Description:
  * This .cpp file implements the gui of flight control station.

@@ -32,7 +32,7 @@
  * History:
  * <Authors>     <Date>         <Version>     <Operation>
  * Marek M. Cel  2013.--.--     --            Finish instrucment's layout
- * myyerrol      2018.03.12     1.0           Modify instrucment's layout
+ * myyerrol      2018.03.12     1.0.0         Modify instrucment's layout
  *
  * Description:
  * This .h file defines some elements for implementing the square layout of

@@ -32,7 +32,7 @@
  * History:
  * <Authors>     <Date>         <Version>     <Operation>
  * Marek M. Cel  2013.--.--     --            Finish PFD widget
- * myyerrol      2018.03.13     1.0           Modify PFD widget
+ * myyerrol      2018.03.13     1.0.0         Modify PFD widget
  *
  * Description:
  * This .cpp file implements the widget of Primary Flight Display(PFD)

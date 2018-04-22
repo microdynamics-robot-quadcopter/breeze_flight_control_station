@@ -32,7 +32,7 @@
  * History:
  * <Authors>     <Date>         <Version>     <Operation>
  * Marek M. Cel  2013.--.--     --            Finish PFD instrument
- * myyerrol      2018.03.xx     1.0           Modify PFD instrument
+ * myyerrol      2018.03.10     1.0.0         Modify PFD instrument
  *
  * Description:
  * This .cpp file implements the instrument of Primary Flight Display(PFD)

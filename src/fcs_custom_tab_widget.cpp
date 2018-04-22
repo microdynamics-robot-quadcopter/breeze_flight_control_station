@@ -32,7 +32,7 @@
  * History:
  * <Authors>     <Date>         <Version>     <Operation>
  * qijiabo       2017.07.04     --            Finish custom tab widget
- * myyerrol      2018.03.14     1.0           Modify custom tab widget
+ * myyerrol      2018.03.14     1.0.0         Modify custom tab widget
  *
  * Description:
  * This .cpp file implements the custom tab widget of QTabWidget according to

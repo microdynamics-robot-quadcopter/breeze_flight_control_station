@@ -32,7 +32,7 @@
  * History:
  * <Authors>     <Date>         <Version>     <Operation>
  * qijiabo       2017.07.04     --            Finish custom tab style
- * myyerrol      2018.03.14     1.0           Modify custom tab style
+ * myyerrol      2018.03.14     1.0.0         Modify custom tab style
  *
  * Description:
  * This .h file defines some elements for implementing the custom tab style of
