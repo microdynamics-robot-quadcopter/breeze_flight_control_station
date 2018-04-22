@@ -11,8 +11,8 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets printsupport
 TARGET   = breeze_flight_control_station
 TEMPLATE = app
 
-#INCLUDEPATH += \
-#    /usr/include/boost
+INCLUDEPATH += \
+    /usr/include/boost
 
 INCLUDEPATH += \
     include \
@@ -23,9 +23,9 @@ INCLUDEPATH += \
 #    lib/communication_serial/include
     lib/qcustomplot
 
-#LIBS += \
-#    /usr/lib/x86_64-linux-gnu/libboost_system.so \
-#    /usr/lib/x86_64-linux-gnu/libboost_thread.so
+LIBS += \
+    /usr/lib/x86_64-linux-gnu/libboost_system.so \
+    /usr/lib/x86_64-linux-gnu/libboost_thread.so
 
 HEADERS += \
     include/flight_control_station.h \
