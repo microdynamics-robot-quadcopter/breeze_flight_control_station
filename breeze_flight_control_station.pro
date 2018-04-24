@@ -19,7 +19,7 @@ INCLUDEPATH += \
     include/fcs_instrucment \
     include/fcs_instrucment_widget \
     lib/communication_link/include \
-    lib/communication_serial/include
+    lib/communication_serial/include \
     lib/qcustomplot
 
 LIBS += \
