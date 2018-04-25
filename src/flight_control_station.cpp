@@ -186,40 +186,40 @@ void FlightControlStation::openAboutWidget(void)
 
 void FlightControlStation::keyPressEvent(QKeyEvent *event)
 {
-    switch (event->key()) {
-        case Qt::Key_W: {
-        }
-        case Qt::Key_S: {
-            break;
-        }
-        case Qt::Key_A: {
-            break;
-        }
-        case Qt::Key_D: {
-            break;
-        }
-        case Qt::Key_Q: {
-            break;
-        }
-        case Qt::Key_E: {
-            break;
-        }
-        case Qt::Key_U: {
-            break;
-        }
-        case Qt::Key_I: {
-            break;
-        }
-        case Qt::Key_J: {
-            break;
-        }
-        case Qt::Key_K: {
-            break;
-        }
-        default: {
-            break;
-        }
-    }
+//    switch (event->key()) {
+//        case Qt::Key_W: {
+//        }
+//        case Qt::Key_S: {
+//            break;
+//        }
+//        case Qt::Key_A: {
+//            break;
+//        }
+//        case Qt::Key_D: {
+//            break;
+//        }
+//        case Qt::Key_Q: {
+//            break;
+//        }
+//        case Qt::Key_E: {
+//            break;
+//        }
+//        case Qt::Key_U: {
+//            break;
+//        }
+//        case Qt::Key_I: {
+//            break;
+//        }
+//        case Qt::Key_J: {
+//            break;
+//        }
+//        case Qt::Key_K: {
+//            break;
+//        }
+//        default: {
+//            break;
+//        }
+//    }
 }
 
 void FlightControlStation::mousePressEvent(QMouseEvent *event)
