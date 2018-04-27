@@ -56,14 +56,6 @@ FlightControlStation::FlightControlStation(QWidget *parent/*,
 //    timer_ = new QTimer(this);
 //    timer_->start(1000);
 
-//    flight_attitude_indicator_ = new FlightAttitudeIndicator(this);
-//    flight_altitude_indicator_ = new FlightAltitudeIndicator(this);
-//    flight_compass_indicator_  = new FlightCompassIndicator(this);
-
-//    ui->verticalLayoutAttitude->addWidget(flight_attitude_indicator_);
-//    ui->verticalLayoutAltitude->addWidget(flight_altitude_indicator_);
-//    ui->verticalLayoutCompass->addWidget(flight_compass_indicator_);
-
 //    connect(timer_, SIGNAL(timeout()), this, SLOT(updateTimerOperation()));
 
 //    count_ = 0;
