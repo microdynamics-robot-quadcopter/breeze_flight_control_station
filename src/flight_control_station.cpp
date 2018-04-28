@@ -306,41 +306,6 @@ void FlightControlStation::updateBufferWrite(void)
 
 void FlightControlStation::updateUIFromRead(void)
 {
-//    float value_roll;
-//    float value_pitch;
-//    float value_yaw;
-//    float value_alt;
-//    float value_hei;
-
-//    QString att_r, att_p, att_y;
-//    QString alt, hei;
-//    QString thrust;
-//    QString motor_a, motor_b, motor_c, motor_d;
-//    QString battery_capacity;
-
-//    att_r.sprintf("%.2f", att_r_actual_);
-//    att_p.sprintf("%.2f", att_p_actual_);
-//    att_y.sprintf("%.2f", att_y_actual_);
-//    alt.sprintf("%.2f", robot_alt_actual_);
-//    hei.sprintf("%.2f", robot_hei_actual_);
-
-//    ui->lineEditDataRoll->setText(att_r);
-//    ui->lineEditDataPitch->setText(att_p);
-//    ui->lineEditDataYaw->setText(att_y);
-//    ui->lineEditDataAltitude->setText(alt);
-//    ui->lineEditDataHeight->setText(hei);
-
-//    value_roll  = flight_attitude_indicator_->getRoll();
-//    value_pitch = flight_attitude_indicator_->getPitch();
-//    value_yaw   = flight_compass_indicator_->getYaw();
-//    value_alt   = flight_altitude_indicator_->getAltitude();
-//    value_hei   = flight_altitude_indicator_->getHeight();
-
-//    flight_attitude_indicator_->setRoll(value_roll + att_r_actual_);
-//    flight_attitude_indicator_->setPitch(value_pitch + att_p_actual_);
-//    flight_compass_indicator_->setYaw(value_yaw + att_y_actual_);
-//    flight_altitude_indicator_->setAltitude(value_alt + robot_alt_actual_);
-//    flight_altitude_indicator_->setHeight(value_hei + robot_hei_actual_);
 }
 
 void FlightControlStation::updateUIFromWrite(void)
