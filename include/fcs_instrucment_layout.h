@@ -82,5 +82,4 @@ private:
     QLayoutItem *layout_item_;
 };
 
-
 #endif // FCS_INSTRUCMENT_LAYOUT_H
